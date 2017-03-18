@@ -3,7 +3,7 @@
 ## Description
 
 This Repo has our (David John Coleman II and Joann Vuong's) version of C
-function ``printf()`` from ``stdio.h`` coded in C Language.  It is a part of my
+function ``printf()`` from ``stdio.h`` coded in C Language.  It is a part of our
 work as a student at Holberton School.  The purpose of the primary functions in
 this repo is create a function, ``_printf()`` that behaves exactly the same as
 the C function ``printf()``.
@@ -15,7 +15,7 @@ the C function ``printf()``.
 
 ## Authors
 
-David John Coleman II.	Check out my website http://www.davidjohncoleman.com/
+David John Coleman II - http://www.davidjohncoleman.com/
 Joann Vuong - https://github.com/jvpupcat
 
 ## License
