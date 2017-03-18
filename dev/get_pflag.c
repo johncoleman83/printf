@@ -4,7 +4,7 @@
  * @c: the flag from input string
  * Return: pointer to the helper function or NULL
  */
-void (*get_pflag(char c))(va_list)
+int (*get_pflag(char c))(va_list)
 {
 	pflag_t flags[] = {
 		{"c", p_char},
@@ -15,6 +15,6 @@ void (*get_pflag(char c))(va_list)
 
 	for (int i = 0; flags[i].ch; i++)
 		if (flags[i].ch == c)
-			return (flags[i].f);
+			return (flags[i].func);
 	return (NULL);
 }

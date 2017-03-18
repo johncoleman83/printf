@@ -1,18 +1,18 @@
 #ifndef _HOLBERTON_H_
-#define _HOLBTERTON_H_
+#define _HOLBERTON_H_
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
 /**
  * struct pflag - struct for organizing printf flags and print helper functions
- * @c: the flag
- * @f: The helper function associated with the flag
+ * @ch: the flag
+ * @func: The helper function associated with the flag
  */
 typedef struct pflag
 {
 	char ch;
-	void (*f)(va_list valist);
+	void (*func)(va_list valist);
 } pflat_t
 int _putchar(char c);
 int _printf(const char *format, ...);
