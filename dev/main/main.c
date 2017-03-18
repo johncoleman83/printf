@@ -1,6 +1,6 @@
 #include "../holberton.h"
 /**
- * main - Entry point
+ * main - combined main file to test expected and custom and view results side by side
  * Return: Always 0
  */
 int main(void)

@@ -1,6 +1,6 @@
 #include "../holberton.h"
 /**
- * main - Entry point
+ * main - my main file to test for my _printf()
  * Return: Always 0
  */
 int main(void)
