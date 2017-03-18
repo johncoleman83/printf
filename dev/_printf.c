@@ -6,19 +6,19 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list valist;
+	va_list arg_list;
 	unsigned int i = 0, sum_chars = 0;
 	int (*temp_func)(va_list) = NULL;
 
-	va_start(valist, format);
+	va_start(arg_list, format);
 	while (format && format[i])
 	{
 		if (format[i] == '%')
 		{
-			temp_func = get_pflag(format[i + 1]);
+			temp_func = get_directive(format[i + 1]);
 			if (temp_func)
 			{
-				sum_chars += temp_func(valist);
+				sum_chars += temp_func(arg_list);
 				i += 2;
 			}
 			else
@@ -33,6 +33,6 @@ int _printf(const char *format, ...)
 			sum_chars++;
 		}
 	}
-	va_end(valist);
+	va_end(arg_list);
 	return (sum_chars);
 }

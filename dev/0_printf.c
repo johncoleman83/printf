@@ -1,23 +1,23 @@
 #include "holberton.h"
 /**
  * p_char - prints char
- * @valist: input list queued at appropriate char to print
+ * @arg_list: input list queued at appropriate char to print
  * Return: number of chars printed
  */
-int p_char(va_list valist)
+int p_char(va_list arg_list)
 {
-	_putchar(va_arg(valist, int));
+	_putchar(va_arg(arg_list, int));
 	return (1);
 }
 /**
  * p_string - prints sting
- * @valist: input list queued at appropriate string to print
+ * @arg_list: input list queued at appropriate string to print
  * Return: number of chars printed
  */
-int p_string(va_list valist)
+int p_string(va_list arg_list)
 {
 	int i;
-	char *str = va_arg(valist, char*);
+	char *str = va_arg(arg_list, char*);
 
 	for (i = 0; str[i] != '\0'; i++)
 		_putchar(str[i]);
@@ -25,12 +25,12 @@ int p_string(va_list valist)
 }
 /**
  * p_percent - prints char
- * @valist: void, not used
+ * @arg_list: void, not used
  * Return: number of chars printed
  */
-int p_percent(va_list valist)
+int p_percent(va_list arg_list)
 {
-	(void)valist;
+	(void)arg_list;
 	_putchar('%');
 	return (1);
 }

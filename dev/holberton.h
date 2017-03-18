@@ -9,14 +9,14 @@
  * @ch: the flag
  * @func: The helper function associated with the flag
  */
-typedef struct pflag
+typedef struct directive_struct
 {
 	char ch;
-	int (*func)(va_list valist);
-} pflag_t;
+	int (*func)(va_list arg_list);
+} directive_t;
 int _putchar(char c);
 int _printf(const char *format, ...);
-int (*get_pflag(char c))(va_list);
+int (*get_directive(char c))(va_list);
 int p_char(va_list);
 int p_string(va_list);
 int p_percent(va_list);
