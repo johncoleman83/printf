@@ -20,11 +20,17 @@ the C function ``printf()``.
 function
 * ``./get_directive.c``: helper function file to match the given directive with
 the associated helper print function
+* ``./_printf.c``: custom ``printf()`` function that loops through format string
+to then use a callback function, which finds the associated helper function,
+which uses custom ``_putchar()`` function to write characters to standard output
+one at a time.
+* ``./0_printf.c``: helper functions to print directives: ``c``, ``s``,
+and ``%``
+* ``./_putchar.c``: custom ``putchar()`` function to write chars to standard
+output 1 at a time
 * ``./holberton.h``: header file that contains all necessary included libraries
 for all functions, the struct definition and type def for struct, and prototypes
 for all functions
-* ``./0_printf.c``: helper functions to print directives: ``c``, ``s``,
-and ``%``
 * ``./dev/``: development directory that contains a template file with function
 template, the redirection of standard output into expected and my output of test
 cases, and other files used simply for testing
