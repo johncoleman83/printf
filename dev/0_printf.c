@@ -17,10 +17,16 @@ int p_char(va_list arg_list)
 int p_string(va_list arg_list)
 {
 	int i;
-	char *str = va_arg(arg_list, char*);
+	char *str = va_arg(arg_list, char*), *nl_str = "(null)";
 
-	for (i = 0; str[i] != '\0'; i++)
-		_putchar(str[i]);
+	if (str)
+	{
+		for (i = 0; str[i] != '\0'; i++)
+			_putchar(str[i]);
+		return (i);
+	}
+	for (i = 0; nl_str[i] != '\0'; i++)
+		_putchar(nl_str[i]);
 	return (i);
 }
 /**
