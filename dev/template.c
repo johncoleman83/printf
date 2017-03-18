@@ -1,11 +1,10 @@
-#include "variadic_functions.h"
+#include "holberton.h"
 /**
- *  - 
- * @: 
+ *  -
  * @: 
  * Return: 
  */
 
 {
-	return ();
+
 }
