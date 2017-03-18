@@ -5,9 +5,9 @@
 #include <stdio.h>
 #include <unistd.h>
 /**
- * struct pflag - struct for organizing printf flags and print helper functions
- * @ch: the flag
- * @func: The helper function associated with the flag
+ * struct directive_struct - printf directives and helper print functions
+ * @ch: the directive
+ * @func: pointer to the helper function
  */
 typedef struct directive_struct
 {
