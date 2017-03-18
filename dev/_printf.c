@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	unsigned int i = 0, sum_chars = 0;
 	int (*temp_func)(va_list) = NULL;
 
-	va_start(va_list, format);
+	va_start(valist, format);
 	while (format && format[i])
 	{
 		if (format[i] == '%')
@@ -19,11 +19,20 @@ int _printf(const char *format, ...)
 			if (temp_func)
 			{
 				sum_chars += temp_func(valist);
-				i++;
+				i += 2;
+			}
+			else
+			{
+				_putchar(format[i++]);
+				sum_chars++;
 			}
 		}
-		_putchar(format[i++]);
-		sum_chars++;
+		else
+		{
+			_putchar(format[i++]);
+			sum_chars++;
+		}
 	}
+	va_end(valist);
 	return (sum_chars);
 }

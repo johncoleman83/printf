@@ -6,7 +6,7 @@
  */
 int p_char(va_list valist)
 {
-	_putchar(va_arg(valist, char));
+	_putchar(va_arg(valist, int));
 	return (1);
 }
 /**
@@ -16,11 +16,12 @@ int p_char(va_list valist)
  */
 int p_string(va_list valist)
 {
+	int i;
 	char *str = va_arg(valist, char*);
 
-	for (int i = 0; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 		_putchar(str[i]);
-	return (i - 1);
+	return (i);
 }
 /**
  * p_percent - prints char
@@ -29,7 +30,7 @@ int p_string(va_list valist)
  */
 int p_percent(va_list valist)
 {
-	void(valist);
+	(void)valist;
 	_putchar('%');
 	return (1);
 }

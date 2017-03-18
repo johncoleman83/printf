@@ -12,12 +12,12 @@
 typedef struct pflag
 {
 	char ch;
-	void (*func)(va_list valist);
-} pflat_t
+	int (*func)(va_list valist);
+} pflag_t;
 int _putchar(char c);
 int _printf(const char *format, ...);
-void (*get_pflag(char c))(va_list);
-void p_char(va_list);
-void p_string(va_list);
-void p_percent(va_list);
+int (*get_pflag(char c))(va_list);
+int p_char(va_list);
+int p_string(va_list);
+int p_percent(va_list);
 #endif

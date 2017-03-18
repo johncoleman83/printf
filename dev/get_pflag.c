@@ -7,10 +7,10 @@
 int (*get_pflag(char c))(va_list)
 {
 	pflag_t flags[] = {
-		{"c", p_char},
-		{"s", p_string},
-		{"%", p_percent},
-		{NULL, NULL}
+		{'c', p_char},
+		{'s', p_string},
+		{'%', p_percent},
+		{'\0', NULL}
 	};
 
 	for (int i = 0; flags[i].ch; i++)
