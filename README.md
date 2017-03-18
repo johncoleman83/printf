@@ -1,6 +1,6 @@
 # _printf()
 
-<img src=""
+<img src="https://raw.githubusercontent.com/johncoleman83/printf/master/dev/printf-screen-shot.png" alt="screen shot of custom printf function">
 
 ## Description
 
