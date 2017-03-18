@@ -15,7 +15,7 @@ the C function ``printf()``.
 
 ## Authors
 
-David John Coleman II - http://www.davidjohncoleman.com/
+David John Coleman II - http://www.davidjohncoleman.com/  
 Joann Vuong - https://github.com/jvpupcat
 
 ## License
