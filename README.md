@@ -16,8 +16,7 @@ the C function ``printf()``.
 ## File List
 
 * ``./dev/main/main.c``: tests expected output of standard ``printf()`` function
-* ``./dev/main/my_main.c``: tests expected output of custom ``_printf()``
-function
+* ``./dev/main/my_main.c``: tests actual output of custom ``_printf()`` function
 * ``./get_directive.c``: helper function file to match the given directive with
 the associated helper print function
 * ``./_printf.c``: custom ``printf()`` function that loops through format string
