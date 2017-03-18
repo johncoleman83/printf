@@ -25,9 +25,9 @@ int p_string(va_list arg_list)
 			_putchar(str[i]);
 		return (i);
 	}
-	for (i = 0; nl_str[i] != '\0'; i++)
+	for (i = 0; i < 6; i++)
 		_putchar(nl_str[i]);
-	return (i);
+	return (6);
 }
 /**
  * p_percent - prints char
