@@ -1,5 +1,7 @@
 # _printf()
 
+<img src=""
+
 ## Description
 
 This Repo has our (David John Coleman II and Joann Vuong's) version of C
@@ -33,6 +35,7 @@ for all functions
 * ``./dev/``: development directory that contains a template file with function
 template, the redirection of standard output into expected and my output of test
 cases, and other files used simply for testing
+* ``./dev/prinf-screen-shot.png`` a screenshot of the custom ``_printf()``
 
 ## Authors
 

@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * _printf - behaves as the C function printf()
- * @format: character string
+ * @format: character string of directives
  * Return: number of characters printed
  */
 int _printf(const char *format, ...)
