@@ -1,0 +1,22 @@
+.TH man 3 "17 March 2017" "0.1" "printf man page"
+.SH NAME
+.B _printf
+- our version of printf.
+.SH SYNOPSIS
+this is a synopsis
+.SH DESCRIPTION
+this is a description
+.SS Return Value
+this is return value
+.SH The flag characters
+.SS 0
+this is a flag character
+.SH OPTIONS
+.B c
+this is the 'c' option
+.SH SEE ALSO
+.I printf(1), asprintf(3), dprintf(3), scanf(3), setlocale(3), wcrtomb(3), wprintf(3), locale(5)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+David John Coleman II and Joann Vuong
