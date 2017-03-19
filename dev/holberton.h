@@ -22,4 +22,5 @@ int p_char(char *, va_list);
 int p_string(char *, va_list);
 int p_percent(char *, va_list);
 int p_int(char *, va_list);
+int p_binary(char *, va_list);
 #endif

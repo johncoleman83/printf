@@ -1,9 +1,9 @@
 #include "holberton.h"
 /**
- * p_char - prints char
+ * p_char - writes char to buffer
  * @buffer: buffer to store chars
- * @arg_list: input list queued at appropriate char to print
- * Return: number of chars printed
+ * @arg_list: input list queued at appropriate char to write to buffer
+ * Return: number of chars wrote to buffer
  */
 int p_char(char *buffer, va_list arg_list)
 {
@@ -11,10 +11,10 @@ int p_char(char *buffer, va_list arg_list)
 	return (1);
 }
 /**
- * p_string - prints sting
+ * p_string - writes string to buffer
  * @buffer: buffer to store chars
  * @arg_list: input list queued at appropriate string to print
- * Return: number of chars printed
+ * Return: number of chars wrote to buffer
  */
 int p_string(char *buffer, va_list arg_list)
 {
@@ -32,10 +32,10 @@ int p_string(char *buffer, va_list arg_list)
 	return (6);
 }
 /**
- * p_percent - prints char
+ * p_percent - writes a percent symbol to buffer
  * @buffer: buffer to store chars
  * @arg_list: void, not used
- * Return: number of chars printed
+ * Return: number of chars wrote to buffer
  */
 int p_percent(char *buffer, va_list arg_list)
 {
