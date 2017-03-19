@@ -16,10 +16,10 @@ int main(void)
 	len = _printf("'string': %s NULL: %s\n", "string", NULL);
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("percent: %% & unknown directive: %y\n");
+	len = _printf("percent: %% & unknown directive: %y, %%%\n");
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("integer: %d, too large %i, not int: %d\n", 1024, 999999999999, 'c');
+	len = _printf("integer: %d, too large %i, char: %d, NULL: %d\n", 1024, 999999999999, 'c', NULL);
 	_printf("Len :[%d]\n", len);
 
 	return (0);

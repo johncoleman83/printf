@@ -16,12 +16,12 @@ int main(void)
 	len = printf("'string': %s NULL: %s\n", "string", NULL);
 	printf("Len :[%d]\n", len);
 
-	len = printf("percent: %% & unknown directive: %y\n");
+	len = printf("percent: %% & unknown directive: %y, %%%\n");
 	printf("Len :[%d]\n", len);
 
-	len = printf("integer: %d, too large %i, not int: %d\n", 1024, 999999999999, 'c');
+	len = printf("integer: %d, too large %i, char: %d, NULL: %d\n", 1024, 999999999999, 'c', NULL);
 	printf("Len :[%d]\n", len);
-	
+
 	return (0);
 
 // (EXPECTED for test case %y) warning: unknown conversion type character ‘y’ in format

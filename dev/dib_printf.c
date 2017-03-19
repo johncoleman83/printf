@@ -37,7 +37,7 @@ int p_int(char *buffer, va_list arg_list)
  * @arg_list: input list queued at appropriate integer to write to buffer
  * Return: number of chars wrote to buffer
  */
-int p_binary(car*buffer, va_list arg_list)
+int p_binary(char *buffer, va_list arg_list)
 {
 	int n = va_arg(arg_list, int), size = 1, ones = n % 10, copy, nth, digs = 0;
 	n /= 10;
@@ -46,7 +46,7 @@ int p_binary(car*buffer, va_list arg_list)
 	{
 		ones *= -1, copy *= -1, n *= -1;
 		buffer[digs++] = '-';
-	} 
+	}
 	if (copy > 0)
 	{
 		while (copy / 10 != 0)
