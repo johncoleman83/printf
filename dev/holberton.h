@@ -12,13 +12,14 @@
 typedef struct directive_struct
 {
 	char ch;
-	int (*func)(va_list arg_list);
+	int (*func)(char *buffer, va_list arg_list);
 } directive_t;
 int _putchar(char c);
 int _printf(const char *format, ...);
-int (*get_directive(char c))(va_list);
-int p_char(va_list);
-int p_string(va_list);
-int p_percent(va_list);
-int p_int(va_list);
+int (*get_directive(char c))(char *, va_list);
+void print_buffer(char *, int);
+int p_char(char *, va_list);
+int p_string(char *, va_list);
+int p_percent(char *, va_list);
+int p_int(char *, va_list);
 #endif
