@@ -29,7 +29,7 @@ the associated helper print function
 ``b`` (binary) to the buffer.
 * ``print_buffer.c``: this function prints the buffer when it reaches capacity
 of 1024 chars
-* ``./helper_func.c``: file that contains helper functions such as custom
+* ``./helper_funcs.c``: file that contains helper functions such as custom
 ``putchar()`` function called ``_putchar()`` to write chars to standard output
 1 at a time and custom reverse string function to reverse a string
 * ``./holberton.h``: header file that contains all necessary included libraries
