@@ -14,6 +14,7 @@ int p_int(va_list arg_list)
 	{
 		ones *= -1, copy *= -1, n *= -1;
 		_putchar('-');
+		digs++;
 	}
 	if (copy > 0)
 	{
@@ -28,5 +29,6 @@ int p_int(va_list arg_list)
 		}
 	}
 	_putchar('0' + ones);
+	digs++;
 	return (digs);
 }
