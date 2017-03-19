@@ -18,15 +18,20 @@ the C function ``printf()``.
 ## File List
 
 * ``./dev/main/main.c``: tests expected output of standard ``printf()`` function
-* ``./dev/main/my_main.c``: tests actual output of custom ``_printf()`` function
+* ``./dev/main/custom_main.c``: tests actual output of custom ``_printf()``
+function
 * ``./get_directive.c``: helper function file to match the given directive with
 the associated helper print function
 * ``./_printf.c``: custom ``printf()`` function that loops through format string
 to then use a callback function, which finds the associated helper function,
-which uses custom ``_putchar()`` function to write characters to standard output
-one at a time.
-* ``./0_printf.c``: helper functions to print directives: ``c``, ``s``,
-and ``%``
+which writes characters to a buffer to be printed with custom ``_putchar()``
+function that writes characters to standard output one at a time.
+* ``./0_printf.c``: helper functions to write directives: ``c``, ``s``, and
+``%`` to the buffer
+* ``./1_printf.c``: helper functions to write directives: ``d`` and ``i`` to the
+buffer.
+* ``print_buffer.c``: this function prints the buffer when it reaches capacity
+of 1024 chars
 * ``./_putchar.c``: custom ``putchar()`` function to write chars to standard
 output 1 at a time
 * ``./holberton.h``: header file that contains all necessary included libraries
