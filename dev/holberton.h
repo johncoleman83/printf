@@ -15,6 +15,7 @@ typedef struct directive_struct
 	int (*func)(char *buffer, va_list arg_list);
 } directive_t;
 int _putchar(char c);
+void rev_string(char *s);
 int _printf(const char *format, ...);
 int (*get_directive(char c))(char *, va_list);
 void print_buffer(char *, int);

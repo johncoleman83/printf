@@ -39,26 +39,27 @@ int p_int(char *buffer, va_list arg_list)
  */
 int p_binary(char *buffer, va_list arg_list)
 {
-	int n = va_arg(arg_list, int), size = 1, ones = n % 10, copy, nth, digs = 0;
-	n /= 10;
-	copy = n;
-	if (ones < 0)
+	unsigned int n = va_arg(arg_list, int);
+	int i, digs = 0;
+	char binary[33];
+
+	for (i = 0; i < 33; i++)
+		binary[i] = '0';
+	for (i = 0; n; i++)
 	{
-		ones *= -1, copy *= -1, n *= -1;
-		buffer[digs++] = '-';
+		binary[i] = ((n % 2) + '0');
+		n /= 2;
 	}
-	if (copy > 0)
+	rev_string(binary);
+	i = 0;
+	while (binary[i] == '0')
+		i++;
+	if (i == 33)
 	{
-		while (copy / 10 != 0)
-			copy /= 10, size *= 10;
-		while (size > 0)
-		{
-			nth = n / size;
-			buffer[digs++] = ('0' + nth);
-			n -= nth * size;
-			size /= 10;
-		}
+		buffer[digs] = '0';
+		return (1);
 	}
-	buffer[digs++] = ('0' + ones);
+	for (digs = 0; i < 33; i++, digs++)
+		buffer[digs] = binary[i];
 	return (digs);
 }

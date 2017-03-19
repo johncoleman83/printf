@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 	va_list arg_list;
 	char buffer[1024];
 	unsigned int i = 0, buf_len = 0, skip;
-	int (*temp_func)(char *, va_list) = NULL;
+	int (*temp_func)(char *, va_list);
 
 	va_start(arg_list, format);
 	while (format && format[i])
