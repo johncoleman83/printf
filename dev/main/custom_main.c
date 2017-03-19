@@ -19,6 +19,9 @@ int main(void)
 	len = _printf("percent: %% & unknown directive: %y, %%%\n");
 	_printf("Len :[%d]\n", len);
 
+	len = _printf("percent:\%  quote:\" quote:'hi' backslash: \\ \n");
+	_printf("Len :[%d]\n", len);
+
 	len = _printf("integer: %d, too large %i, char: %d, NULL: %d\n", 1024, 999999999999, 'c', NULL);
 	_printf("Len :[%d]\n", len);
 
