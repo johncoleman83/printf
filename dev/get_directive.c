@@ -8,6 +8,7 @@ int (*get_directive(char c))(va_list)
 {
 	directive_t directives[] = {
 		{'c', p_char}, {'s', p_string}, {'%', p_percent},
+		{'d', p_int}, {'i', p_int},
 		{'\0', NULL}
 	};
 

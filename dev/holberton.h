@@ -20,4 +20,5 @@ int (*get_directive(char c))(va_list);
 int p_char(va_list);
 int p_string(va_list);
 int p_percent(va_list);
+int p_int(va_list);
 #endif
