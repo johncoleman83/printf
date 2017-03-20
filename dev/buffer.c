@@ -32,11 +32,11 @@ int add_to_buffer(char *buffer, char c)
 {
 	int i, buf_len = _strlen(buffer);
 
-	if (buf_len > 1022)
+	if (buf_len > LINE_MAX - 2)
 	{
 		print_buffer(buffer);
 		buffer[0] = c;
-		for (i = 1; i < 1024; i++)
+		for (i = 1; i < LINE_MAX; i++)
 			buffer[i] = '\0';
 		return (1);
 	}

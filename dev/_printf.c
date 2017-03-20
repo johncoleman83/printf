@@ -9,7 +9,7 @@
 int _printf(const char *format, ...)
 {
 	va_list arg_list;
-	char *buffer = _calloc(1024, sizeof(char));
+	char *buffer = _calloc(LINE_MAX, sizeof(char));
 	unsigned int i = 0, temp_i, chars_processed = 0;
 	int (*temp_func)(char *, va_list), no_directive;
 
