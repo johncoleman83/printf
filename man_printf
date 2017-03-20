@@ -3,17 +3,58 @@
 .B _printf
 - our version of printf.
 .SH SYNOPSIS
-this is a synopsis
+.B	#include <stdio.h>
+	#include <stdarg.h>
+
+	int _printf(const char *format, ...);
+
 .SH DESCRIPTION
-this is a description
+	The functions in _printf produce output according to a format as describ\
+ed. The function _printf() write output to stdout. It writes the output under th
+e control of a format string that specifies how subsequent arguments are convert
+ed for output.
 .SS Return Value
-this is return value
-.SH The flag characters
+	Upon successful return, these functions return the number of characters 
+	printed, which exclude the null byte ('\0').
+.SH THE FLAG CHARACTERS
 .SS 0
-this is a flag character
-.SH OPTIONS
-.B c
-this is the 'c' option
+	Pads the number with zeroes instead of spaces, where padding is clearly defined.
+.P
+.SS +
+	A sign (+ or -) should always precede a number produced by a signed conversion. By default a sign is used only for negative numbers. By default, only negative numbers are preceded with a sign.
+.P
+.SS #
+	Used with o,x or X specifiers, the value is preceded with 0, 0x, or 0X respectively for values different than zero. for a, A, e, E, f, F, g, and G conversions, the result will always contain a decimal point, even if no digits follow it. For g and G conversions, trailing zeros are not removed from the result as they would otherwise be. The result is undefined for other conversions.
+.P
+
+.SH THE LENGTH MODIFIERS
+
+.SS l
+	A length modifer is used to specify the length of the input. The l (ell) modifier specifies that a following d, i, o, u, x, or X conversion specifier applies to a long or unsigned long argument.
+.P
+
+.SH THE CONVERSION SPECIFIERS
+
+.SS c
+	If no 'l' modifier is present, the int argument converts to an unsigned char, and the resulting character is written.
+.P
+.SS s 
+	The argument shall be a literal string. No special provisions are made for multibyte characters.The behavior of printf with the s conversion specifier is undefined if the argument value is not a pointer to a literal string. Characters from the literal string array are written up to, but not including, the terminating null byte ('\0').
+.P
+.SS % 
+	A % character is written and no argument is converted. The complete conversion specification is '%%'.
+.P
+.SS d, i
+	The int argument is converted to signed decimal notation. The precision, if any, specifies the minimum number of digits to appear; if the converted value requires fewer digits, it is padded on the left with zeros. The default precision is 1. When 0 is printed with an explicit precision 0,the output is empty. 
+.P
+.SS b
+	this is the 'b' option
+.P
+.SS o, u, x, X
+	The unsigned int argument is converted to unsigned octal (o), unsigned decimal (u), or unsigned hexidecimal notation (x or X) in the style dddd; the letters abcdef are used for x conversion and the letters ABCDEF for X conversion. The precision specifies the minumum number of digits to appear; if the value being converted can be represented in fewer digits, it is expanded with leading zeros. The default precision is 1. The result of converting a zero value with a precision of zero is no characters.
+.P
+.SS S
+	Prints the string.
 .SH SEE ALSO
 .I printf(1), asprintf(3), dprintf(3), scanf(3), setlocale(3), wcrtomb(3), wprintf(3), locale(5)
 .SH BUGS
