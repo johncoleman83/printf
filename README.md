@@ -25,8 +25,8 @@ is matched with, which directive and returns a pointer to that function.
 the next argument from the ``arg_list``.  Each helper function stores each
 character from the value in ``arg_list`` into a buffer.  If no directive is
 found, whatever character being evaluated in the ``format`` string is added to
-the buffer one at a time.  In the end of ``_printf``, the buffer is print to
-standard output using ``write()`` function.
+the buffer one at a time.  When the buffer is full or in the end of ``_printf``,
+the buffer is print to standard output using ``write()`` function.
 
 ## File List
 
