@@ -4,10 +4,11 @@
  * @c: the specific directive for this case from input string
  * Return: pointer to the helper function or NULL
  */
-int (*get_directive(char c))(va_list)
+int (*get_directive(char c))(char *, va_list)
 {
 	directive_t directives[] = {
 		{'c', p_char}, {'s', p_string}, {'%', p_percent},
+		{'d', p_int}, {'i', p_int}, {'b', p_binary},
 		{'\0', NULL}
 	};
 

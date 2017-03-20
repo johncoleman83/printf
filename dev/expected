@@ -1,8 +1,16 @@
-Let's try to printf a simple sentence.
-Len :[39, 39]
-'c': c char 1024: 
-Len :[20, 20]
-'string': string NULL: (null)
-Len :[30, 30]
-percent: % & unknown directive: %y
-Len :[35, 35]
+Let's try to printf a simple sentence:
+Len :[39]
+'c': c char 1024: :
+Len :[21]
+'string': string NULL: (null):
+Len :[31]
+percent: 1:% 5:%%%, unknown directive: %y:
+Len :[43]
+spaces after %: string, spaces with no directive:% :
+Len :[53]
+percent:2147483639ote:" quote:'hi' backslash: \ :
+Len :[50]
+integer: 1024, too large -727379969, char: 99, NULL: 0:
+Len :[56]
+CANNOT TEST FOR BINARY:
+Len :[24]

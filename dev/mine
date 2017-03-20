@@ -1,8 +1,0 @@
-Let's try to printf a simple sentence.
-Len :[39, 39]
-'c': c char 1024: 
-Len :[20, 20]
-'string': string NULL: (null)
-Len :[30, 30]
-percent: % & unknown directive: %y
-Len :[35, 35]
