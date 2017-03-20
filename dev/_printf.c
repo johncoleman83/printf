@@ -19,17 +19,19 @@ int _printf(const char *format, ...)
 		no_directive = 1;
 		if (format[i] == '%')
 		{
-			temp_i = i++;
-			while (format[i] && format[i] == ' ')
-				i++;
+			temp_i = i;
+			i += skip_spaces(format + i);
 			temp_func = get_directive(format[i]);
 			if (temp_func)
 			{
 				buf_len += temp_func(buffer + buf_len, arg_list);
 				i++, no_directive = 0;
 			}
-			else
-				i = temp_i;
+			else if (format[temp_i + 1] == ' ')
+				{
+					buffer[buf_len++] = '%';
+					i = temp_i + skip_spaces(format + temp_i) - 1;
+				}
 		}
 		if (no_directive)
 			buffer[buf_len++] = format[i++];

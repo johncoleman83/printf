@@ -17,6 +17,18 @@ void rev_string(char *s)
 	}
 }
 /**
+ * skip_spaces - skips through spaces after '%' directive
+ * @format: input pointer to format string
+ * Return: new index value corresponding with first non space
+ */
+int skip_spaces(const char *format)
+{
+	int i = 1;
+	while (format[i] && format[i] == ' ')
+		i++;
+	return (i);
+}
+/**
  * _putchar - writes the character c to stdout
  * @c: The character to print
  * Return: On success 1.
