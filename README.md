@@ -41,31 +41,43 @@ the associated helper print function
 * ``./dib_printf.c``: helper functions to write directives: ``d``, ``i``, and
 ``b`` (binary) to the buffer.
 * ``./buffer.c``: contains functions for working with the buffer
-  #### functions include:
+
+  #### functions in this file:
   * ``_calloc()``: allocates memory slots filled with null: '\0' byte
   * ``add_to_buffer()``: adds characters 1 at at a time to the buffer
   * ``print_buffer()``: prints the entire buffer using ``_putchar()`` function
-of 1024 chars
+  of 1024 chars
+
 * ``./helper_funcs.c``: file that contains helper functions
-  #### functions include:
+
+  #### functions in this file:
   * ``putchar()``: function called ``_putchar()`` to write chars to standard
   output 1 at a time
   * ``_strlen``: custom function to find string length
   * ``rev_string()``: custom reverse string function to reverse a string
   * ``skip_spaces()``: which is a function to skip trailing spaces after the '%'
   directive.
+
 * ``./holberton.h``: header file that contains all necessary included libraries
-for all functions, the struct definition and type def for struct, and prototypes
-for all functions
-* ``./man_printf``: manual page describing how our custom printf functions.
-* ``./dev/``: development directory that contains a template file with function
-template, the redirection of standard output into expected and my output of test
-cases, and other files used simply for testing
-* ``./dev/prinf-screen-shot.png`` a screenshot of the custom ``_printf()``
-* ``./dev/main/main.c``: tests expected output of standard ``printf()``
-function.  Can be compiled on its own - no need for other functions
-* ``./dev/main/custom_main.c``: tests actual output of custom ``_printf()``
-function
+for all functions, the struct prototype and type definition for the struct,
+and prototypes for all functions
+* ``./man_printf``: manual file including the manual for how our custom printf
+functions.
+
+#### development directory
+  * ``./dev/``: contains a template file with function template, the redirection
+  of standard output into 'expected' from test cases of standard ``printf()``
+  and my output of test cases into 'custom' file.  directory also included all
+  other files of function ``_printf()``.
+  * ``./dev/prinf-screen-shot.png`` a screenshot of the custom ``_printf()``
+
+#### main directory
+  * this directory contains ``main()`` functions for testing custom .c files and
+  testing the expected output of standard C version of ``printf()``
+  * ``./dev/main/main.c``: tests expected output of standard ``printf()``
+  function.  Can be compiled on its own - no need for other functions
+  * ``./dev/main/custom_main.c``: tests actual output of custom ``_printf()``
+  function
 
 ## Authors
 
