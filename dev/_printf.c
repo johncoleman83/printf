@@ -13,8 +13,11 @@ int _printf(const char *format, ...)
 	unsigned int i = 0, temp_i, chars_processed = 0;
 	int (*temp_func)(char *, va_list), no_directive;
 
+	if (!format)
+		return (0);
+
 	va_start(arg_list, format);
-	while (format && format[i])
+	while (format[i])
 	{
 		no_directive = 1;
 		if (format[i] == '%')
@@ -39,7 +42,6 @@ int _printf(const char *format, ...)
 			chars_processed += add_to_buffer(buffer, format[i++]);
 	}
 	print_buffer(buffer);
-	free(buffer);
 	va_end(arg_list);
 	return (chars_processed);
 }

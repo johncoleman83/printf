@@ -5,7 +5,29 @@
  */
 int main(void)
 {
-    int len;
+	int len;
+
+	len = _printf("long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string\n");
+	_printf("Len :[%d]\n", len);
 
 	len = _printf("Let's try to printf a simple sentence:\n");
 	_printf("Len :[%d]\n", len);
@@ -30,6 +52,7 @@ int main(void)
 
 	len = _printf("give me binary or give me death: 2: %b, 0: %b, 4294967295: %b:\n", 2, 0, 4294967295);
 	_printf("Len :[%d]\n", len);
+
 
 	return (0);
 

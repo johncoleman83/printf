@@ -5,7 +5,29 @@
  */
 int main(void)
 {
-    int len;
+	int len;
+
+	len = printf("long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string \
+long string long string long string long string long string long string\n");
+	printf("Len :[%d]\n", len);
 
 	len = printf("Let's try to printf a simple sentence:\n");
 	printf("Len :[%d]\n", len);

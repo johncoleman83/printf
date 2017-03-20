@@ -30,7 +30,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 //void add_to_buffer(char *buffer, int buf_len, char c)
 int add_to_buffer(char *buffer, char c)
 {
-	int i = 0, buf_len = _strlen(buffer);
+	int i, buf_len = _strlen(buffer);
 
 	if (buf_len > 1022)
 	{
@@ -40,7 +40,7 @@ int add_to_buffer(char *buffer, char c)
 			buffer[i] = '\0';
 		return (1);
 	}
-	*(buffer + buf_len++) = c;
+	*(buffer + buf_len) = c;
 	return (1);
 }
 /**
