@@ -3,17 +3,75 @@
 .B _printf
 - our version of printf.
 .SH SYNOPSIS
-this is a synopsis
+.B	#include <stdio.h>
+	#include <stdarg.h>
+
+	int _printf(const char *format, ...);
+
 .SH DESCRIPTION
-this is a description
+	The functions in _printf produce output according to a format as described. The function _printf()
+	write output to stdout. It writes the output under the control of a format string that specifies how
+	subsequent arguments are converted for output.
 .SS Return Value
-this is return value
-.SH The flag characters
+	Upon successful return, these functions return the number of characters printed, which exclude the
+	null byte ('\0').
+.SH THE FLAG CHARACTERS
 .SS 0
-this is a flag character
-.SH OPTIONS
-.B c
-this is the 'c' option
+	Pads the number with zeroes instead of spaces, where padding is clearly defined.
+.P
+.SS +
+	A sign (+ or -) should always precede a number produced by a signed conversion. By default a 
+	sign is used only for negative numbers. By default, only negative numbers are preceded with a 
+	sign.
+.P
+.SS #
+	Used with o,x or X specifiers, the value is preceded with 0, 0x, or 0X respectively for values 
+	differnt than zero. for a, A, e, E, f, F, g, and G conversions, the result will always contain a 
+	decimal point, even if no digits follow it. For g and G conversions, trailing zeros are not 
+	removed from the result as they would otherwise be. The result is undefined for other conversions.
+.P
+
+.SH THE LENGTH MODIFIERS
+
+.SS l
+	This is the l modifier
+.P
+
+.SH THE CONVERSION SPECIFIERS
+
+.SS c
+	If no 'l' modifier is present, the int argument converts to an unsigned char, and the resulting 
+	character is written.   
+.P
+.B s 
+	this is the 's' option
+.P
+.B % 
+	this is the '%' option
+.P
+.B d
+	this is the 'd' option
+.P
+.B i
+	this is the 'i' option
+.P
+.B b
+	this is the 'b' option
+.P
+.B u
+	this is the 'u' option
+.P
+.B o
+	this is the 'o' option
+.P
+.B x
+	this is the 'x' option
+.P
+.B X
+	this is the 'X' option
+.P
+.B S
+	this is the 'S' option
 .SH SEE ALSO
 .I printf(1), asprintf(3), dprintf(3), scanf(3), setlocale(3), wcrtomb(3), wprintf(3), locale(5)
 .SH BUGS
