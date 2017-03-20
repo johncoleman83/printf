@@ -24,6 +24,7 @@ void rev_string(char *s)
 int skip_spaces(const char *format)
 {
 	int i = 1;
+
 	while (format[i] && format[i] == ' ')
 		i++;
 	return (i);
