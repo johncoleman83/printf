@@ -40,7 +40,10 @@ the associated helper print function
 ``%`` to the buffer
 * ``./dib_printf.c``: helper functions to write directives: ``d``, ``i``, and
 ``b`` (binary) to the buffer.
-* ``print_buffer.c``: this function prints the buffer when it reaches capacity
+* ``./buffer.c``: contains functions for working with the buffer such as
+``_calloc()`` for allocating memory, ``add_to_buffer()`` which adds characters 1
+at a time to the buffer and ``print_buffer()`` which prints the entire buffer
+using custom ``_putchar()``
 of 1024 chars
 * ``./helper_funcs.c``: file that contains helper functions such as custom
 ``putchar()`` function called ``_putchar()`` to write chars to standard output
