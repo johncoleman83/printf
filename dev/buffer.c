@@ -24,11 +24,14 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 /**
  * add_to_buffer - adds input char to buffer 1 at a time, and updates buf_length
  * @buffer: buffer
+ * @buf_len: length of buffer
  * @c: char to be added to buffer
  * Return: void
  */
+//void add_to_buffer(char *buffer, int buf_len, char c)
 void add_to_buffer(char *buffer, char c)
 {
+//	*(buffer + buf_len) = c;
 	*buffer = c;
 }
 /**
