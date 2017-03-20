@@ -22,8 +22,9 @@ int _printf(const char *format, ...);
 void *_calloc(unsigned int nmemb, unsigned int size);
 void rev_string(char *s);
 int skip_spaces(const char *format);
+int _strlen(char *s);
 int _putchar(char c);
-void add_to_buffer(char *buffer, char c);
+int add_to_buffer(char *buffer, char c);
 int (*get_directive(char c))(char *buffer, va_list arg_list);
 void print_buffer(char *);
 /* end prototypes for helper functions */

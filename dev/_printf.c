@@ -10,8 +10,8 @@ int _printf(const char *format, ...)
 {
 	va_list arg_list;
 	char *buffer = _calloc(1024, sizeof(char));
-	unsigned int i = 0, temp_i, buf_len = 0, no_directive;
-	int (*temp_func)(char *, va_list);
+	unsigned int i = 0, temp_i, chars_processed = 0;
+	int (*temp_func)(char *, va_list), no_directive;
 
 	va_start(arg_list, format);
 	while (format && format[i])
@@ -24,19 +24,22 @@ int _printf(const char *format, ...)
 			temp_func = get_directive(format[i]);
 			if (temp_func)
 			{
-				buf_len += temp_func(buffer + buf_len, arg_list);
+				chars_processed += temp_func(buffer, arg_list);
 				i++, no_directive = 0;
 			}
 			else if (format[temp_i + 1] == ' ')
-				{
-					add_to_buffer(buffer + buf_len++, '%');
-					i = temp_i + skip_spaces(format + temp_i) - 1;
-				}
+			{
+				chars_processed += add_to_buffer(buffer, '%');
+				i = temp_i + skip_spaces(format + temp_i) - 1;
+			}
+			else
+				i = temp_i;
 		}
 		if (no_directive)
-			add_to_buffer(buffer + buf_len++, format[i++]);
+			chars_processed += add_to_buffer(buffer, format[i++]);
 	}
 	print_buffer(buffer);
+	free(buffer);
 	va_end(arg_list);
-	return (buf_len);
+	return (chars_processed);
 }

@@ -45,11 +45,14 @@ the associated helper print function
 at a time to the buffer and ``print_buffer()`` which prints the entire buffer
 using custom ``_putchar()``
 of 1024 chars
-* ``./helper_funcs.c``: file that contains helper functions such as custom
-``putchar()`` function called ``_putchar()`` to write chars to standard output
-1 at a time and custom reverse string function to reverse a string, and
-``skip_spaces()``, which is a function to skip trailing spaces after the '%'
-directive.
+* ``./helper_funcs.c``: file that contains helper functions
+  functions include:
+  * ``putchar()``: function called ``_putchar()`` to write chars to standard
+  output 1 at a time
+  * ``_strlen``: custom function to find string length
+  * ``rev_string()``: custom reverse string function to reverse a string
+  * ``skip_spaces()``: which is a function to skip trailing spaces after the '%'
+  directive.
 * ``./holberton.h``: header file that contains all necessary included libraries
 for all functions, the struct definition and type def for struct, and prototypes
 for all functions
@@ -58,7 +61,8 @@ for all functions
 template, the redirection of standard output into expected and my output of test
 cases, and other files used simply for testing
 * ``./dev/prinf-screen-shot.png`` a screenshot of the custom ``_printf()``
-* ``./dev/main/main.c``: tests expected output of standard ``printf()`` function
+* ``./dev/main/main.c``: tests expected output of standard ``printf()``
+function.  Can be compiled on its own - no need for other functions
 * ``./dev/main/custom_main.c``: tests actual output of custom ``_printf()``
 function
 

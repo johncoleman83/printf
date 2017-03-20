@@ -24,11 +24,11 @@ int p_string(char *buffer, va_list arg_list)
 	if (str)
 	{
 		for (i = 0; str[i] != '\0'; i++)
-			add_to_buffer(buffer + i, str[i]);
+			add_to_buffer(buffer, str[i]);
 		return (i);
 	}
 	for (i = 0; i < 6; i++)
-		add_to_buffer(buffer + i, nl_str[i]);
+		add_to_buffer(buffer, nl_str[i]);
 	return (6);
 }
 /**
