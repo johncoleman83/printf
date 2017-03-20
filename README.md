@@ -41,13 +41,13 @@ the associated helper print function
 * ``./dib_printf.c``: helper functions to write directives: ``d``, ``i``, and
 ``b`` (binary) to the buffer.
 * ``./buffer.c``: contains functions for working with the buffer
-  functions include:
+#### functions include:
   * ``_calloc()``: allocates memory slots filled with null: '\0' byte
   * ``add_to_buffer()``: adds characters 1 at at a time to the buffer
   * ``print_buffer()``: prints the entire buffer using ``_putchar()`` function
 of 1024 chars
-* ``./helper_funcs.c``: file that contains helper functions  
-  functions include:
+* ``./helper_funcs.c``: file that contains helper functions
+  #### functions include:
   * ``putchar()``: function called ``_putchar()`` to write chars to standard
   output 1 at a time
   * ``_strlen``: custom function to find string length
