@@ -44,7 +44,9 @@ the associated helper print function
 of 1024 chars
 * ``./helper_funcs.c``: file that contains helper functions such as custom
 ``putchar()`` function called ``_putchar()`` to write chars to standard output
-1 at a time and custom reverse string function to reverse a string
+1 at a time and custom reverse string function to reverse a string, and
+``skip_spaces()``, which is a function to skip trailing spaces after the '%'
+directive.
 * ``./holberton.h``: header file that contains all necessary included libraries
 for all functions, the struct definition and type def for struct, and prototypes
 for all functions
