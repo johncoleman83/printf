@@ -1,10 +1,15 @@
-#include "../holberton.h"
+#include <stdlib.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <limits.h>
 /**
  * main - main file to test for expected output of printf()
  * Return: Always 0
  */
 int main(void)
 {
+// COMPILE with no -W flags, EXPECT MULTIPLE WARNINGS, then execute file
 	int len;
 
 	len = printf("long string long string long string long string long string \
@@ -55,5 +60,4 @@ long string long string long string long string long string long string\n");
 
 	return (0);
 
-// (EXPECTED for test case %y) warning: unknown conversion type character ‘y’ in format
 }

@@ -56,5 +56,4 @@ long string long string long string long string long string long string\n");
 
 	return (0);
 
-// (EXPECTED for test case %y) warning: unknown conversion type character ‘y’ in format
 }
