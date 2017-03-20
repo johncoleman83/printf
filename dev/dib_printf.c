@@ -45,23 +45,14 @@ int p_binary(char *buffer, va_list arg_list)
 	int i, digs = 0;
 	char *binary = _calloc(33, sizeof(char));
 
-	for (i = 0; i < 33; i++)
-		binary[i] = '0';
-	for (i = 0; n; i++)
-	{
+	for (i = 0; n; i++, n /= 2)
 		binary[i] = ((n % 2) + '0');
-		n /= 2;
-	}
-	rev_string(binary);
-	i = 0;
-	while (binary[i] == '0')
-		i++;
-	if (i == 33)
+	if (i == 0)
 	{
 		add_to_buffer(buffer, '0');
 		return (1);
 	}
-	for (digs = 0; i < 33; i++, digs++)
+	for (i--, digs = 0; i >= 0; i--, digs++)
 		add_to_buffer(buffer, binary[i]);
 	free(binary);
 	return (digs);

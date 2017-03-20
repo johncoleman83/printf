@@ -44,10 +44,13 @@ long string long string long string long string long string long string\n");
 	len = _printf("spaces after %%: %     s, spaces with no directive:%        :\n", "string");
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("percent:\%  quote:\" quote:'hi' backslash: \\ :\n");
+	len = _printf("percent:\%  :quote:\" quote:'hi' backslash: \\ :\n");
 	_printf("Len :[%d]\n", len);
 
 	len = _printf("integer: %d, too large %i, char: %d, NULL: %d:\n", 1024, 999999999999, 'c', NULL);
+	_printf("Len :[%d]\n", len);
+
+	len = _printf("hex: %x, too large %X, char: %x, NULL: %X:\n", 32, 999999999999, 'c', NULL);
 	_printf("Len :[%d]\n", len);
 
 	len = _printf("give me binary or give me death: 2: %b, 0: %b, 4294967295: %b:\n", 2, 0, 4294967295);
