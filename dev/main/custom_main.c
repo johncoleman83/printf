@@ -53,7 +53,5 @@ long string long string long string long string long string long string\n");
 	len = _printf("give me binary or give me death: 2: %b, 0: %b, 4294967295: %b:\n", 2, 0, 4294967295);
 	_printf("Len :[%d]\n", len);
 
-
 	return (0);
-
 }

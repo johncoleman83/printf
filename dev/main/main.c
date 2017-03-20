@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-// COMPILE with no -W flags, EXPECT MULTIPLE WARNINGS, then execute file
+// COMPILE with no -W flags, EXPECT MULTIPLE WARNINGS, then execute file to test
 	int len;
 
 	len = printf("long string long string long string long string long string \
