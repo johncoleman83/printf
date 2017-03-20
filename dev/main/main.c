@@ -13,10 +13,13 @@ int main(void)
 	len = printf("'c': %c char 1024: %c\n", 'c', 1024);
 	printf("Len :[%d]\n", len);
 
-	len = printf("'string': %s NULL: %s\n", "string", NULL);
+	len = printf("'string': %     s NULL: %s\n", "string", NULL);
 	printf("Len :[%d]\n", len);
 
-	len = printf("percent: %% & unknown directive: %y, %%%\n");
+	len = pprintf("percent: 1:%% 5:%%%%%, unknown directive: %y:\n");
+	pprintf("Len :[%d]\n", len);
+
+	len = printf("spaces after %%: %     s, spaces with no directive:%         \n", "string");
 	printf("Len :[%d]\n", len);
 
 	len = printf("percent:\%  quote:\" quote:'hi' backslash: \\ \n");

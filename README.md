@@ -10,10 +10,23 @@ work as a student at Holberton School.  The purpose of the primary functions in
 this repo is create a function, ``_printf()`` that behaves exactly the same as
 the C function ``printf()``.
 
-### Commands / functions used
+### C functions used
 
 * ``write``, ``malloc``, ``free``, ``va_start``, ``va_end``, ``va_copy``,
 ``va_arg``
+
+## Brief Synopsis
+
+``_printf()`` function takes 2 arguments: a character pointer to a string:
+``format``, and a 'variable arguments list': ``arg_list``.  The
+``get_directive()`` function uses a struct to determines what helper function
+is matched with, which directive and returns a pointer to that function.
+``_printf()`` uses the pointer to that function to call the helper function on
+the next argument from the ``arg_list``.  Each helper function stores each
+character from the value in ``arg_list`` into a buffer.  If no directive is
+found, whatever character being evaluated in the ``format`` string is added to
+the buffer one at a time.  In the end of ``_printf``, the buffer is print to
+standard output using ``write()`` function.
 
 ## File List
 

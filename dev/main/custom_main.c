@@ -16,7 +16,10 @@ int main(void)
 	len = _printf("'string': %s NULL: %s\n", "string", NULL);
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("percent: %% & unknown directive: %y, %%%\n");
+	len = _printf("percent: 1:%% 5:%%%%%, unknown directive: %y:\n");
+	_printf("Len :[%d]\n", len);
+
+	len = _printf("spaces after %%: %     s, spaces with no directive:%        :\n", "string");
 	_printf("Len :[%d]\n", len);
 
 	len = _printf("percent:\%  quote:\" quote:'hi' backslash: \\ \n");
