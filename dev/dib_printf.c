@@ -14,7 +14,7 @@ int p_int(char *buffer, va_list arg_list)
 	if (ones < 0)
 	{
 		ones *= -1, copy *= -1, n *= -1;
-		buffer[digs++] = '-';
+		add_to_buffer(buffer + digs++, '-');
 	}
 	if (copy > 0)
 	{
@@ -23,7 +23,7 @@ int p_int(char *buffer, va_list arg_list)
 		while (size > 0)
 		{
 			nth = n / size;
-			buffer[digs++] = ('0' + nth);
+			add_to_buffer(buffer + digs++, ('0' + nth));
 			n -= nth * size;
 			size /= 10;
 		}
@@ -56,10 +56,10 @@ int p_binary(char *buffer, va_list arg_list)
 		i++;
 	if (i == 33)
 	{
-		buffer[digs] = '0';
+		add_to_buffer(buffer + digs, '0');
 		return (1);
 	}
 	for (digs = 0; i < 33; i++, digs++)
-		buffer[digs] = binary[i];
+		add_to_buffer(buffer + digs, binary[i]);
 	return (digs);
 }

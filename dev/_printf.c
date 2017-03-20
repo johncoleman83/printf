@@ -9,7 +9,7 @@
 int _printf(const char *format, ...)
 {
 	va_list arg_list;
-	char buffer[1024];
+	char *buffer = _calloc(1024, sizeof(char));
 	unsigned int i = 0, temp_i, buf_len = 0, no_directive;
 	int (*temp_func)(char *, va_list);
 
@@ -29,14 +29,14 @@ int _printf(const char *format, ...)
 			}
 			else if (format[temp_i + 1] == ' ')
 				{
-					buffer[buf_len++] = '%';
+					add_to_buffer(buffer + buf_len++, '%');
 					i = temp_i + skip_spaces(format + temp_i) - 1;
 				}
 		}
 		if (no_directive)
-			buffer[buf_len++] = format[i++];
+			add_to_buffer(buffer + buf_len++, format[i++]);
 	}
-	print_buffer(buffer, buf_len);
+	print_buffer(buffer);
 	va_end(arg_list);
 	return (buf_len);
 }

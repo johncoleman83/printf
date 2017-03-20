@@ -7,7 +7,7 @@
  */
 int p_char(char *buffer, va_list arg_list)
 {
-	*buffer = va_arg(arg_list, int);
+	add_to_buffer(buffer, va_arg(arg_list, int));
 	return (1);
 }
 /**
@@ -24,11 +24,11 @@ int p_string(char *buffer, va_list arg_list)
 	if (str)
 	{
 		for (i = 0; str[i] != '\0'; i++)
-			buffer[i] = str[i];
+			add_to_buffer(buffer + i, str[i]);
 		return (i);
 	}
 	for (i = 0; i < 6; i++)
-		buffer[i] = nl_str[i];
+		add_to_buffer(buffer + i, nl_str[i]);
 	return (6);
 }
 /**
@@ -40,6 +40,6 @@ int p_string(char *buffer, va_list arg_list)
 int p_percent(char *buffer, va_list arg_list)
 {
 	(void)arg_list;
-	buffer[0] = '%';
+	add_to_buffer(buffer, '%');
 	return (1);
 }
