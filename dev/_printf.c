@@ -42,6 +42,7 @@ int _printf(const char *format, ...)
 			chars_written += add_to_buffer(buffer, format[i++]);
 	}
 	print_buffer(buffer);
+	free(buffer);
 	va_end(arg_list);
 	return (chars_written);
 }
