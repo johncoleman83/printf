@@ -38,10 +38,10 @@ int add_to_buffer(char *buffer, char c)
 		buffer[0] = c;
 		for (i = 1; i < LINE_MAX; i++)
 			buffer[i] = '\0';
-		return (1);
+		return (0);
 	}
 	*(buffer + buf_len) = c;
-	return (1);
+	return (0);
 }
 /**
  * print_buffer - prints buffer to stdout using putchar

@@ -32,14 +32,18 @@ int _printf(const char *format, ...)
 			}
 			else if (format[temp_i + 1] == ' ')
 			{
-				chars_written += add_to_buffer(buffer, '%');
+				add_to_buffer(buffer, '%');
+				chars_written++;
 				i = temp_i + skip_spaces(format + temp_i) - 1;
 			}
 			else
 				i = temp_i;
 		}
 		if (no_conversion)
-			chars_written += add_to_buffer(buffer, format[i++]);
+		{
+			add_to_buffer(buffer, format[i++]);
+			chars_written++;
+		}
 	}
 	print_buffer(buffer);
 	free(buffer);
