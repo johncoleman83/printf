@@ -27,7 +27,7 @@ from the format string, and then returns a pointer to that paired function.
 ``_printf()`` uses the pointer to that specifier function to call the specifier
 function on the next argument from the ``arg_list``.  Each specifier function
 writes a character one at a time as determined from the value in ``arg_list``.
-Our code writes the characters to a buffer, but it could be easily modified to
+Our code writes the characters to a buffer, but it could be quickly modified to
 write instead to standard output.  For instances of the format string that are
 not specifiers (non '%' prefixed characters, whatever character is processed in
 the ``format`` string is written to the buffer one at a time.  When the buffer
