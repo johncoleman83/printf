@@ -6,7 +6,7 @@
  */
 int p_char(va_list arg_list)
 {
-	int c = va_arg(arg_list, int);
+	unsigned int c = va_arg(arg_list, unsigned int);
 
 	_putchar(c);
 	return (1);
