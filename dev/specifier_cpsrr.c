@@ -8,8 +8,6 @@ int p_char(va_list arg_list)
 {
 	int c = va_arg(arg_list, int);
 
-	if (!c)
-		return (1);
 	_putchar(c);
 	return (1);
 }
