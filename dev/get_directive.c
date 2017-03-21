@@ -10,6 +10,7 @@ int (*get_directive(char c))(char *, va_list)
 		{'c', p_char}, {'s', p_string}, {'%', p_percent},
 		{'d', p_int}, {'i', p_int}, {'b', p_binary},
 		{'u', p_uint}, {'o', p_oct}, {'x', p_lowhex}, {'X', p_uphex},
+		{'r', p_rev_string}, {'R', p_rot13},
 		{'\0', NULL}
 	};
 

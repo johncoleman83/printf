@@ -31,6 +31,8 @@ void print_buffer(char *);
 /* begin prototypes for functions that write to the buffer */
 int p_char(char *buffer, va_list arg_list);
 int p_string(char *buffer, va_list arg_list);
+int p_rev_string(char *buffer, va_list arg_list);
+int p_rot13(char *buffer, va_list arg_list);
 int p_percent(char *buffer, va_list arg_list);
 int p_int(char *buffer, va_list arg_list);
 int p_uint(char *buffer, va_list arg_list);

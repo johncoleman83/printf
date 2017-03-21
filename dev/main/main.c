@@ -64,9 +64,9 @@ long string long string long string long string long string long string\n");
 	len = printf("oct: %u, max:%u, too large %u, char: %u, NULL: %u:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
 	printf("Len :[%d]\n", len);
 
+	len = printf("reversed string: CANNOT TEST WITH PRINTF\n");
+
+	len = printf("rot13: CANNOT TEST WITH ROT13\n");
 	len = printf("CANNOT TEST FOR BINARY:\n");
-	printf("Len :[%d]\n", len);
-
 	return (0);
-
 }
