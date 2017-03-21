@@ -27,19 +27,20 @@ from the format string, and then returns a pointer to that paired function.
 ``_printf()`` uses the pointer to that specifier function to call the specifier
 function on the next argument from the ``arg_list``.  Each specifier function
 writes a character one at a time as determined from the value in ``arg_list``.
-Our code writes the characters to a buffer, but it could be quickly modified to
-write instead to standard output.  For instances of the format string that are
-not specifiers (non '%' prefixed characters, whatever character is processed in
-the ``format`` string is written to the buffer one at a time.  When the buffer
-is full or in the end of ``_printf``, the buffer is then written to standard
-output using ``write()`` function.
+Our code writes the characters to the buffer, in the 'buffer' branch and in the
+'bo-buffer' branch, our code is instead written to standard output.
+For instances of the format string that are not specifiers (non '%' prefixed
+characters, whatever character is processed in the ``format`` string is written
+to the buffer one at a time (or written to the standard output).  When the
+buffer is full or in the end of ``_printf``, the buffer is then written to
+standard output using ``write()`` function.
 
 ## File List
 
 * ``./_printf.c``: custom ``printf()`` function that loops through format string
 to then use a callback function, which finds the associated helper function,
-which writes characters to a buffer to be printed with custom ``_putchar()``
-function that writes characters to standard output one at a time.
+which writes characters to buffer or standard output using custom ``_putchar()``
+function.
 * ``./match_specifier.c``: helper function file to match the given directive
 with the associated helper print function
 
@@ -53,13 +54,6 @@ with the associated helper print function
   (integer), and ``b`` (binary) to the buffer.
   * ``./specifier_Sp.c``: functions to write specifiers: ``S`` (string and hex
   combination), and ``p`` (pointers in hexidecimal).
-
-* ``./buffer.c``: contains functions for working with the buffer
-  #### functions in buffer file:
-  * ``_calloc()``: allocates memory slots filled with null: '\0' byte
-  * ``add_to_buffer()``: adds characters 1 at at a time to the buffer
-  * ``print_buffer()``: prints the entire buffer using ``_putchar()`` function
-  of 1024 chars
 
 * ``./helper_funcs.c``: file that contains helper functions
 
@@ -91,6 +85,15 @@ functions.
   function.  Can be compiled on its own - no need for other functions
   * ``./dev/main/custom_main.c``: tests actual output of custom ``_printf()``
   function
+
+## buffer branch specifications
+
+* ``./buffer.c``: contains functions for working with the buffer
+  #### functions in buffer file:
+  * ``_calloc()``: allocates memory slots filled with null: '\0' byte
+  * ``add_to_buffer()``: adds characters 1 at at a time to the buffer
+  * ``print_buffer()``: prints the entire buffer using ``_putchar()`` function
+  of 1024 chars
 
 ## Authors
 
