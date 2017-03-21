@@ -14,7 +14,7 @@
 typedef struct specifier_struct
 {
 	char ch;
-	int (*func)(char *buffer, va_list arg_list);
+	int (*func)(va_list arg_list);
 } specifiers_t;
 /* the one and only */
 int _printf(const char *format, ...);
@@ -24,23 +24,21 @@ void rev_string(char *s);
 int skip_spaces(const char *format);
 int _strlen(char *s);
 int _putchar(char c);
-int add_to_buffer(char *buffer, char c);
-int (*match_specifier(char c))(char *buffer, va_list arg_list);
-void print_buffer(char *);
+int (*match_specifier(char c))(va_list arg_list);
 /* end prototypes for helper functions */
 /* begin prototypes for functions that write to the buffer */
-int p_char(char *buffer, va_list arg_list);
-int p_string(char *buffer, va_list arg_list);
-int p_string_hex(char *buffer, va_list arg_list);
-int p_pointer(char *buffer, va_list arg_list);
-int p_rev_string(char *buffer, va_list arg_list);
-int p_rot13(char *buffer, va_list arg_list);
-int p_percent(char *buffer, va_list arg_list);
-int p_int(char *buffer, va_list arg_list);
-int p_uint(char *buffer, va_list arg_list);
-int p_oct(char *buffer, va_list arg_list);
-int p_lowhex(char *buffer, va_list arg_list);
-int p_uphex(char *buffer, va_list arg_list);
-int p_binary(char *buffer, va_list arg_list);
+int p_char(va_list arg_list);
+int p_string(va_list arg_list);
+int p_string_hex(va_list arg_list);
+int p_pointer(va_list arg_list);
+int p_rev_string(va_list arg_list);
+int p_rot13(va_list arg_list);
+int p_percent(va_list arg_list);
+int p_int(va_list arg_list);
+int p_uint(va_list arg_list);
+int p_oct(va_list arg_list);
+int p_lowhex(va_list arg_list);
+int p_uphex(va_list arg_list);
+int p_binary(va_list arg_list);
 /* end prototypes for functions that write to the buffer */
 #endif /* end include guard for header files */

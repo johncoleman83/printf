@@ -4,7 +4,7 @@
  * @c: the specific character specifier from format input string
  * Return: pointer to the helper function or NULL
  */
-int (*match_specifier(char c))(char *, va_list)
+int (*match_specifier(char c))(va_list)
 {
 	specifiers_t specifiers_list[] = {
 		{'c', p_char}, {'s', p_string}, {'%', p_percent},

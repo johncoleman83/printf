@@ -1,11 +1,10 @@
 #include "holberton.h"
 /**
  * p_string_hex - writes string to buffer switching non-alphas to hexidecimal
- * @buffer: buffer to store chars
  * @arg_list: input list queued at appropriate string to print
  * Return: number of chars wrote to buffer
  */
-int p_string_hex(char *buffer, va_list arg_list)
+int p_string_hex(va_list arg_list)
 {
 	char *string = va_arg(arg_list, char*);
 	int c = 0, chars_written = 0;
@@ -18,13 +17,13 @@ int p_string_hex(char *buffer, va_list arg_list)
 	{
 		num = string[c];
 		if (num > 31 && num < 127)
-			add_to_buffer(buffer, num);
+			_putchar(num);
 		else
 		{
-			add_to_buffer(buffer, 92);
-			add_to_buffer(buffer, 'x');
-			add_to_buffer(buffer, hexvalues[(num / 16) % 16]);
-			add_to_buffer(buffer, hexvalues[num % 16]);
+			_putchar(92);
+			_putchar('x');
+			_putchar(hexvalues[(num / 16) % 16]);
+			_putchar(hexvalues[num % 16]);
 			chars_written += 3;
 		}
 		chars_written++;
@@ -34,11 +33,10 @@ int p_string_hex(char *buffer, va_list arg_list)
 }
 /**
  * p_pointer - writes pointer value (an address) to buffer in hexidecimal
- * @buffer: buffer to store chars
  * @arg_list: input list queued at appropriate string to print
  * Return: number of chars wrote to buffer
  */
-int p_pointer(char *buffer, va_list arg_list)
+int p_pointer(va_list arg_list)
 {
 	int i, chars_written = 0;
 	void *pointer = va_arg(arg_list, void *);
@@ -49,14 +47,14 @@ int p_pointer(char *buffer, va_list arg_list)
 	if (!pointer)
 	{
 		for (i = 0; null_string[i] != '\0'; i++)
-			add_to_buffer(buffer, null_string[i]);
+			_putchar(null_string[i]);
 		return (i);
 	}
 	pointer_value = (unsigned long int)pointer;
 	for (i = 0; pointer_value; i++, pointer_value /= 16)
 		hex[i] = hexvalues[pointer_value % 16];
 	for (i--; i >= 0; i--, chars_written++)
-		add_to_buffer(buffer, hex[i]);
+		_putchar(hex[i]);
 	free(hex);
 	return (chars_written);
 }

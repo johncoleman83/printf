@@ -9,9 +9,8 @@
 int _printf(const char *format, ...)
 {
 	va_list arg_list;
-	char *buffer = _calloc(LINE_MAX, sizeof(char));
 	unsigned int i = 0, temp_i, chars_written = 0;
-	int (*temp_func)(char *, va_list), no_conversion;
+	int (*temp_func)(va_list), no_conversion;
 
 	if (!format)
 		return (0);
@@ -27,12 +26,12 @@ int _printf(const char *format, ...)
 			temp_func = match_specifier(format[i]);
 			if (temp_func)
 			{
-				chars_written += temp_func(buffer, arg_list);
+				chars_written += temp_func(arg_list);
 				i++, no_conversion = 0;
 			}
 			else if (format[temp_i + 1] == ' ')
 			{
-				add_to_buffer(buffer, '%');
+				_putchar('%');
 				chars_written++;
 				i = temp_i + skip_spaces(format + temp_i) - 1;
 			}
@@ -41,12 +40,10 @@ int _printf(const char *format, ...)
 		}
 		if (no_conversion)
 		{
-			add_to_buffer(buffer, format[i++]);
+			_putchar(format[i++]);
 			chars_written++;
 		}
 	}
-	print_buffer(buffer);
-	free(buffer);
 	va_end(arg_list);
 	return (chars_written);
 }
