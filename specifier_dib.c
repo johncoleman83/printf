@@ -40,7 +40,7 @@ int p_int(va_list arg_list)
  */
 int p_binary(va_list arg_list)
 {
-	unsigned int n = va_arg(arg_list, int);
+	unsigned int n = va_arg(arg_list, unsigned int);
 	int i, chars_written = 0;
 	char *binary = _calloc(33, sizeof(char));
 
