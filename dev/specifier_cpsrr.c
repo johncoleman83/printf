@@ -7,6 +7,9 @@
 int p_char(va_list arg_list)
 {
 	char c = va_arg(arg_list, int);
+
+	if (!c)
+		return (0);
 	_putchar(c);
 	return (1);
 }
@@ -18,6 +21,7 @@ int p_char(va_list arg_list)
 int p_percent(va_list arg_list)
 {
 	(void)arg_list;
+
 	_putchar('%');
 	return (1);
 }
