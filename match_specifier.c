@@ -6,6 +6,7 @@
  */
 int (*match_specifier(char c))(va_list)
 {
+	int i;
 	specifiers_t specifiers_list[] = {
 		{'c', p_char}, {'s', p_string}, {'%', p_percent},
 		{'d', p_int}, {'i', p_int}, {'b', p_binary}, {'p', p_pointer},
@@ -14,7 +15,7 @@ int (*match_specifier(char c))(va_list)
 		{'\0', NULL}
 	};
 
-	for (int i = 0; specifiers_list[i].ch; i++)
+	for (i = 0; specifiers_list[i].ch; i++)
 		if (specifiers_list[i].ch == c)
 			return (specifiers_list[i].func);
 	return (NULL);
