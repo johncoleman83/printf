@@ -7,15 +7,15 @@
 #include <unistd.h>
 #include <limits.h>
 /**
- * struct directive_struct - printf directives and helper print functions
- * @ch: the directive
- * @func: pointer to the helper function
+ * struct specifier_struct - printf specifiers and paired function
+ * @ch: the specifier
+ * @func: pointer to the conversion specifier function
  */
-typedef struct directive_struct
+typedef struct specifier_struct
 {
 	char ch;
 	int (*func)(char *buffer, va_list arg_list);
-} directive_t;
+} specifiers_t;
 /* the one and only */
 int _printf(const char *format, ...);
 /* begin prototypes for helper functions */
@@ -25,7 +25,7 @@ int skip_spaces(const char *format);
 int _strlen(char *s);
 int _putchar(char c);
 int add_to_buffer(char *buffer, char c);
-int (*get_directive(char c))(char *buffer, va_list arg_list);
+int (*match_specifier(char c))(char *buffer, va_list arg_list);
 void print_buffer(char *);
 /* end prototypes for helper functions */
 /* begin prototypes for functions that write to the buffer */

@@ -19,14 +19,17 @@ the C function ``printf()``.
 
 ``_printf()`` function takes 2 arguments: a character pointer to a string:
 ``format``, and a 'variable arguments list': ``arg_list``.  The
-``get_directive()`` function uses a struct to determines what helper function
-is matched with, which directive and returns a pointer to that function.
-``_printf()`` uses the pointer to that function to call the helper function on
-the next argument from the ``arg_list``.  Each helper function stores each
-character from the value in ``arg_list`` into a buffer.  If no directive is
-found, whatever character being evaluated in the ``format`` string is added to
-the buffer one at a time.  When the buffer is full or in the end of ``_printf``,
-the buffer is print to standard output using ``write()`` function.
+``match_specifier()`` function uses a struct to determine what specifier
+function is matched with which conversion specifier, and then returns a pointer
+to that function.  ``_printf()`` uses the pointer to that specifier function to
+call the specifier function on the next argument from the ``arg_list``.  Each
+specifier function writes a character one at a time as determined from the value
+in ``arg_list``.  Our code writes the characters to a buffer, but it could
+be easily modified to write instead to standard output.  For instances of the
+format string that are not specifiers (non '%' prefixed characters, whatever
+character is processed in the ``format`` string is written to the buffer one at
+a time.  When the buffer is full or in the end of ``_printf``, the buffer is
+then written to standard output using ``write()`` function.
 
 ## File List
 
@@ -34,8 +37,8 @@ the buffer is print to standard output using ``write()`` function.
 to then use a callback function, which finds the associated helper function,
 which writes characters to a buffer to be printed with custom ``_putchar()``
 function that writes characters to standard output one at a time.
-* ``./get_directive.c``: helper function file to match the given directive with
-the associated helper print function
+* ``./match_specifier.c``: helper function file to match the given directive
+with the associated helper print function
 
   #### files that contain the functions associated with all the specifiers
   * ``./specifier_cpsrr.c``: helper functions to write specifier: ``c``
