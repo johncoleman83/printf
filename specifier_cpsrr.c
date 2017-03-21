@@ -10,11 +10,8 @@ int p_char(va_list arg_list)
 
 	if (!c)
 		return (0);
-	else
-	{
-		_putchar(c);
-		return (1);
-	}
+	_putchar(c);
+	return (1);
 }
 /**
  * p_percent - writes a percent symbol to buffer
