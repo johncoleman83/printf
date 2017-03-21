@@ -53,11 +53,17 @@ long string long string long string long string long string long string\n");
 	len = _printf("hex: %x, max:%x, too large %X, char: %x, NULL: %X:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
 	_printf("Len :[%d]\n", len);
 
-	len = printf("oct: %o, max:%o, too large %o, char: %o, NULL: %o:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
-	printf("Len :[%d]\n", len);
+	len = _printf("oct: %o, max:%o, too large %o, char: %o, NULL: %o:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
+	_printf("Len :[%d]\n", len);
 
-	len = printf("oct: %u, max:%u, too large %u, char: %u, NULL: %u:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
-	printf("Len :[%d]\n", len);
+	len = _printf("unsigned: %u, max:%u, too large %u, char: %u, NULL: %u:\n", 4, UINT_MAX, 999999999999, 'c', NULL);
+	_printf("Len :[%d]\n", len);
+
+	len = _printf("String_Hex: %S, char: %S, NULL: %S:\n", "Holberton\nSchool\t", 300, NULL);
+	_printf("Len :[%d]\n", len);
+
+	len = _printf("NO TEST YET\n");
+	_printf("Len :[%d]\n", len);
 
 	len = _printf("reversed string: %r NULL: %r:\n", "Holberton", NULL);
 	_printf("Len :[%d]\n", len);

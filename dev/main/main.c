@@ -61,7 +61,7 @@ long string long string long string long string long string long string\n");
 	len = printf("oct: %o, max:%o, too large %o, char: %o, NULL: %o:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
 	printf("Len :[%d]\n", len);
 
-	len = printf("oct: %u, max:%u, too large %u, char: %u, NULL: %u:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
+	len = printf("unsigned: %u, max:%u, too large %u, char: %u, NULL: %u:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
 	printf("Len :[%d]\n", len);
 
 	len = printf("reversed string: CANNOT TEST WITH PRINTF\n");
