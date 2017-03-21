@@ -44,7 +44,7 @@ long string long string long string long string long string long string\n");
 	len = _printf("spaces after %%: %     s, spaces with no directive:%        :\n", "string");
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("percent:\%  :quote:\" quote:'hi' backslash: \\ :\n");
+	len = _printf("escapes:  :quote:\" quote:'hi' backslash: \\ :\n");
 	_printf("Len :[%d]\n", len);
 
 	len = _printf("integer: %d, max:%i, too large %i, char: %d, NULL: %d:\n", 1024, INT_MAX, 999999999999, 'c', NULL);

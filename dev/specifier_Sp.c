@@ -8,7 +8,7 @@
 int p_string_hex(char *buffer, va_list arg_list)
 {
 	char *string = va_arg(arg_list, char*);
-	int i, c = 0, chars_written = 0;
+	int c = 0, chars_written = 0;
 	int num;
 	char hexvalues[] = "0123456789ABCDEF", *null_string = "(null)";
 
@@ -42,7 +42,7 @@ int p_pointer(char *buffer, va_list arg_list)
 {
 	int i, chars_written = 0;
 	void *pointer = va_arg(arg_list, void *);
-	long unsigned int pointer_value;
+	unsigned long int pointer_value;
 	char *hex = _calloc(13, sizeof(char)), *null_string = "(null)";
 	char hexvalues[] = "0123456789ABCDEF";
 
@@ -52,7 +52,7 @@ int p_pointer(char *buffer, va_list arg_list)
 			add_to_buffer(buffer, null_string[i]);
 		return (i);
 	}
-	pointer_value = (long unsigned int)pointer;
+	pointer_value = (unsigned long int)pointer;
 	for (i = 0; pointer_value; i++, pointer_value /= 16)
 		hex[i] = hexvalues[pointer_value % 16];
 	for (i--; i >= 0; i--, chars_written++)

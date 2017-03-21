@@ -8,7 +8,7 @@
 int p_uint(char *buffer, va_list arg_list)
 {
 	unsigned int n = va_arg(arg_list, int), nth, copy = n;
-	int size = 1, ones = n % 10, chars_written = 0;
+	int size = 1, chars_written = 0;
 
 	if (n < 10)
 	{
@@ -28,7 +28,7 @@ int p_uint(char *buffer, va_list arg_list)
 	return (chars_written);
 }
 /**
- * p_hex - writes unsigned integer to buffer in base hexidecimal
+ * p_lowhex - writes unsigned integer to buffer in base hexidecimal
  * @buffer: buffer to store chars for printing
  * @arg_list: input list queued at appropriate int to write to buffer
  * Return: number of chars wrote to buffer
@@ -53,7 +53,7 @@ int p_lowhex(char *buffer, va_list arg_list)
 	return (chars_written);
 }
 /**
- * p_hex - writes unsigned integer to buffer in base hexidecimal upcase
+ * p_uphex - writes unsigned integer to buffer in base hexidecimal upcase
  * @buffer: buffer to store chars for printing
  * @arg_list: input list queued at appropriate int to write to buffer
  * Return: number of chars wrote to buffer
