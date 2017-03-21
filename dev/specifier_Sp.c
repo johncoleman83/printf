@@ -10,17 +10,17 @@ int p_string_hex(char *buffer, va_list arg_list)
 	char *string = va_arg(arg_list, char*);
 	int i, c = 0, chars_written = 0;
 	int num;
-	char hexvalues[] = "0123456789ABCDEF";
+	char hexvalues[] = "0123456789ABCDEF", *null_string = "(null)";
 
+	if (!string)
+		string = null_string;
 	while (string[c] != '\0')
 	{
 		num = string[c];
-		printf("num = %c, %d :", num, num);
 		if (num > 31 && num < 127)
 			add_to_buffer(buffer, num);
 		else
 		{
-			printf("\nfound non-ascii, gonna add this: %c", 92);
 			add_to_buffer(buffer, 92);
 			add_to_buffer(buffer, 'x');
 			add_to_buffer(buffer, hexvalues[(num / 16) % 16]);

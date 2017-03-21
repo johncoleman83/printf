@@ -59,7 +59,7 @@ long string long string long string long string long string long string\n");
 	len = _printf("unsigned: %u, max:%u, too large %u, char: %u, NULL: %u:\n", 4, UINT_MAX, 999999999999, 'c', NULL);
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("String_Hex: %S, char: %S, NULL: %S:\n", "Holberton\nSchool\t", 300, NULL);
+	len = _printf("String_Hex: %S, NULL: %S:\n", "Holberton\nSchool\t", NULL);
 	_printf("Len :[%d]\n", len);
 
 	len = _printf("NO TEST YET\n");

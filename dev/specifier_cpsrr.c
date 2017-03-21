@@ -48,7 +48,7 @@ int p_string(char *buffer, va_list arg_list)
 int p_rev_string(char *buffer, va_list arg_list)
 {
 	int i, length;
-	char *str = va_arg(arg_list, char *), *null_str = "(null)";
+	char *str = va_arg(arg_list, char *), *null_str = ")llun(";
 
 	if (str == NULL)
 		str = null_str;
