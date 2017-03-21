@@ -49,7 +49,7 @@ long string long string long string long string long string long string\n");
 	len = printf("spaces after %%: %     s, spaces with no directive:%        :\n", "string");
 	printf("Len :[%d]\n", len);
 
-	len = printf("percent:\%  :quote:\" quote:'hi' backslash: \\ :\n");
+	len = printf("escapes:  :quote:\" quote:'hi' backslash: \\ :\n");
 	printf("Len :[%d]\n", len);
 
 	len = printf("integer: %d, max:%i, too large %i, char: %d, NULL: %d:\n", 1024, INT_MAX, 999999999999, 'c', NULL);
