@@ -42,7 +42,7 @@ int p_pointer(va_list arg_list)
 	void *pointer = va_arg(arg_list, void *);
 	unsigned long int pointer_value;
 	char *hex = _calloc(13, sizeof(char)), *null_string = "(null)";
-	char hexvalues[] = "0123456789ABCDEF";
+	char hexvalues[] = "0123456789abcdef";
 
 	if (!pointer)
 	{
@@ -50,6 +50,9 @@ int p_pointer(va_list arg_list)
 			_putchar(null_string[i]);
 		return (i);
 	}
+	_putchar('0');
+	_putchar('x');
+	chars_written++;
 	pointer_value = (unsigned long int)pointer;
 	for (i = 0; pointer_value; i++, pointer_value /= 16)
 		hex[i] = hexvalues[pointer_value % 16];
