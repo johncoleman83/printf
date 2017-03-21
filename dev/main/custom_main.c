@@ -47,13 +47,19 @@ long string long string long string long string long string long string\n");
 	len = _printf("percent:\%  :quote:\" quote:'hi' backslash: \\ :\n");
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("integer: %d, too large %i, char: %d, NULL: %d:\n", 1024, 999999999999, 'c', NULL);
+	len = _printf("integer: %d, max:%i, too large %i, char: %d, NULL: %d:\n", 1024, INT_MAX, 999999999999, 'c', NULL);
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("hex: %x, too large %X, char: %x, NULL: %X:\n", 32, 999999999999, 'c', NULL);
+	len = _printf("hex: %x, max:%x, too large %X, char: %x, NULL: %X:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("give me binary or give me death: 2: %b, 0: %b, 4294967295: %b:\n", 2, 0, 4294967295);
+	len = printf("oct: %o, max:%o, too large %o, char: %o, NULL: %o:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
+	printf("Len :[%d]\n", len);
+
+	len = printf("oct: %u, max:%u, too large %u, char: %u, NULL: %u:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
+	printf("Len :[%d]\n", len);
+
+	len = _printf("give me binary or give me death: 2: %b, 0: %b, 4294967295: %b, 99999999999999: %b:\n", 2, 0, UINT_MAX, 99999999999999);
 	_printf("Len :[%d]\n", len);
 
 	return (0);

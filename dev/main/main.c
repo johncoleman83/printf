@@ -52,10 +52,16 @@ long string long string long string long string long string long string\n");
 	len = printf("percent:\%  :quote:\" quote:'hi' backslash: \\ :\n");
 	printf("Len :[%d]\n", len);
 
-	len = printf("integer: %d, too large %i, char: %d, NULL: %d:\n", 1024, 999999999999, 'c', NULL);
+	len = printf("integer: %d, max:%i, too large %i, char: %d, NULL: %d:\n", 1024, INT_MAX, 999999999999, 'c', NULL);
 	printf("Len :[%d]\n", len);
 
-	len = printf("hex: %x, too large %X, char: %x, NULL: %X:\n", 32, 999999999999, 'c', NULL);
+	len = printf("hex: %x, max:%x, too large %X, char: %x, NULL: %X:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
+	printf("Len :[%d]\n", len);
+
+	len = printf("oct: %o, max:%o, too large %o, char: %o, NULL: %o:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
+	printf("Len :[%d]\n", len);
+
+	len = printf("oct: %u, max:%u, too large %u, char: %u, NULL: %u:\n", 31, UINT_MAX, 999999999999, 'c', NULL);
 	printf("Len :[%d]\n", len);
 
 	len = printf("CANNOT TEST FOR BINARY:\n");
