@@ -19,19 +19,6 @@ void rev_string(char *string)
 	}
 }
 /**
- * skip_spaces - skips through spaces after '%' directive
- * @format: input pointer to format string
- * Return: new index value corresponding with first non space
- */
-int skip_spaces(const char *format)
-{
-	int i = 1;
-
-	while (format[i] && format[i] == ' ')
-		i++;
-	return (i);
-}
-/**
  * _strlen - returns string length of input string
  * @s: string to check length of
  * Return: length of string
