@@ -7,7 +7,8 @@
  */
 int p_int(char *buffer, va_list arg_list)
 {
-	int n = va_arg(arg_list, int), size = 1, ones = n % 10, copy, nth, digs = 0;
+	int n = va_arg(arg_list, int), size = 1, ones = n % 10, copy, nth,
+		chars_written = 0;
 
 	n /= 10;
 	copy = n;
@@ -15,7 +16,7 @@ int p_int(char *buffer, va_list arg_list)
 	{
 		ones *= -1, copy *= -1, n *= -1;
 		add_to_buffer(buffer, '-');
-		digs++;
+		chars_written++;
 	}
 	if (copy > 0)
 	{
@@ -27,11 +28,11 @@ int p_int(char *buffer, va_list arg_list)
 			add_to_buffer(buffer, ('0' + nth));
 			n -= nth * size;
 			size /= 10;
-			digs++;
+			chars_written++;
 		}
 	}
 	add_to_buffer(buffer, ('0' + ones));
-	return (++digs);
+	return (++chars_written);
 }
 /**
  * p_binary - writes unsigned integer to buffer
@@ -42,7 +43,7 @@ int p_int(char *buffer, va_list arg_list)
 int p_binary(char *buffer, va_list arg_list)
 {
 	unsigned int n = va_arg(arg_list, int);
-	int i, digs = 0;
+	int i, chars_written = 0;
 	char *binary = _calloc(33, sizeof(char));
 
 	for (i = 0; n; i++, n /= 2)
@@ -52,8 +53,8 @@ int p_binary(char *buffer, va_list arg_list)
 		add_to_buffer(buffer, '0');
 		return (1);
 	}
-	for (i--, digs = 0; i >= 0; i--, digs++)
+	for (i--; i >= 0; i--, chars_written++)
 		add_to_buffer(buffer, binary[i]);
 	free(binary);
-	return (digs);
+	return (chars_written);
 }

@@ -8,7 +8,7 @@
 int p_uint(char *buffer, va_list arg_list)
 {
 	unsigned int n = va_arg(arg_list, int), nth;
-	int size = 1, ones = n % 10, copy, digs = 1;
+	int size = 1, ones = n % 10, copy, chars_written = 0;
 
 	n /= 10;
 	copy = n;
@@ -16,7 +16,7 @@ int p_uint(char *buffer, va_list arg_list)
 	{
 		ones *= -1, copy *= -1, n *= -1;
 		add_to_buffer(buffer, '-');
-		digs++;
+		chars_written++;
 	}
 	if (copy > 0)
 	{
@@ -27,11 +27,12 @@ int p_uint(char *buffer, va_list arg_list)
 			nth = n / size;
 			add_to_buffer(buffer, ('0' + nth));
 			n -= nth * size;
-			size /= 10, digs++;
+			size /= 10;
+			chars_written++;
 		}
 	}
 	add_to_buffer(buffer, ('0' + ones));
-	return (digs);
+	return (++chars_written);
 }
 /**
  * p_hex - writes unsigned integer to buffer in base hexidecimal
@@ -42,7 +43,7 @@ int p_uint(char *buffer, va_list arg_list)
 int p_lowhex(char *buffer, va_list arg_list)
 {
 	unsigned int n = va_arg(arg_list, int);
-	int i, digs = 0;
+	int i, chars_written = 0;
 	char *hex = _calloc(9, sizeof(char));
 	char hexvalues[] = "0123456789abcdef";
 
@@ -53,10 +54,10 @@ int p_lowhex(char *buffer, va_list arg_list)
 		add_to_buffer(buffer, '0');
 		return (1);
 	}
-	for (i--, digs = 0; i >= 0; i--, digs++)
+	for (i--; i >= 0; i--, chars_written++)
 		add_to_buffer(buffer, hex[i]);
 	free(hex);
-	return (digs);
+	return (chars_written);
 }
 /**
  * p_hex - writes unsigned integer to buffer in base hexidecimal upcase
@@ -67,7 +68,7 @@ int p_lowhex(char *buffer, va_list arg_list)
 int p_uphex(char *buffer, va_list arg_list)
 {
 	unsigned int n = va_arg(arg_list, int);
-	int i, digs = 0;
+	int i, chars_written = 0;
 	char *hex = _calloc(9, sizeof(char));
 	char hexvalues[] = "0123456789ABCDEF";
 
@@ -78,10 +79,10 @@ int p_uphex(char *buffer, va_list arg_list)
 		add_to_buffer(buffer, '0');
 		return (1);
 	}
-	for (i--, digs = 0; i >= 0; i--, digs++)
+	for (i--; i >= 0; i--, chars_written++)
 		add_to_buffer(buffer, hex[i]);
 	free(hex);
-	return (digs);
+	return (chars_written);
 }
 /**
  * p_oct - writes unsigned integer to buffer in base 8: octal
@@ -92,7 +93,7 @@ int p_uphex(char *buffer, va_list arg_list)
 int p_oct(char *buffer, va_list arg_list)
 {
 	unsigned int n = va_arg(arg_list, int);
-	int i, digs = 0;
+	int i, chars_written = 0;
 	char *oct = _calloc(12, sizeof(char));
 
 	for (i = 0; n; i++, n /= 8)
@@ -102,8 +103,8 @@ int p_oct(char *buffer, va_list arg_list)
 		add_to_buffer(buffer, '0');
 		return (1);
 	}
-	for (i--, digs = 0; i >= 0; i--, digs++)
+	for (i--; i >= 0; i--, chars_written++)
 		add_to_buffer(buffer, oct[i]);
 	free(oct);
-	return (digs);
+	return (chars_written);
 }
