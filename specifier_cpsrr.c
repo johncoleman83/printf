@@ -8,7 +8,7 @@ int p_char(va_list arg_list)
 {
 	char c = va_arg(arg_list, int);
 
-	if (!c)
+	if (c == '\0')
 		return (0);
 	_putchar(c);
 	return (1);
@@ -49,13 +49,13 @@ int p_string(va_list arg_list)
 int p_rev_string(va_list arg_list)
 {
 	int i, length;
-	char *str = va_arg(arg_list, char *), *null_str = ")llun(";
+	char *string = va_arg(arg_list, char *), *null_str = ")llun(";
 
-	if (str == NULL)
-		str = null_str;
-	length = _strlen(str);
+	if (string == NULL)
+		string = null_str;
+	length = _strlen(string);
 	for (i = length - 1; i >= 0; i--)
-		_putchar(str[i]);
+		_putchar(string[i]);
 	return (i);
 }
 /**
