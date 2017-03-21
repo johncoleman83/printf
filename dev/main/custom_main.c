@@ -62,7 +62,7 @@ long string long string long string long string long string long string\n");
 	len = _printf("String_Hex: %S, NULL: %S:\n", "Holberton\nSchool\t", NULL);
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("NO TEST YET\n");
+	len = _printf("pointer: %p, NULL: %p\n", &len, NULL);
 	_printf("Len :[%d]\n", len);
 
 	len = _printf("reversed string: %r NULL: %r:\n", "Holberton", NULL);

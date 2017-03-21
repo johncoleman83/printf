@@ -37,17 +37,26 @@ int p_string_hex(char *buffer, va_list arg_list)
  * @buffer: buffer to store chars
  * @arg_list: input list queued at appropriate string to print
  * Return: number of chars wrote to buffer
-
+ */
 int p_pointer(char *buffer, va_list arg_list)
 {
-	int i, length;
-	char *str = va_arg(arg_list, char *), *null_str = "(null)";
+	int i, chars_written = 0;
+	void *pointer = va_arg(arg_list, void *);
+	long unsigned int pointer_value;
+	char *hex = _calloc(13, sizeof(char)), *null_string = "(null)";
+	char hexvalues[] = "0123456789ABCDEF";
 
-	if (str == NULL)
-		str = null_str;
-	length = _strlen(str);
-	for (i = length - 1; i >= 0; i--)
-		add_to_buffer(buffer, str[i]);
-	return (i);
+	if (!pointer)
+	{
+		for (i = 0; null_string[i] != '\0'; i++)
+			add_to_buffer(buffer, null_string[i]);
+		return (i);
+	}
+	pointer_value = (long unsigned int)pointer;
+	for (i = 0; pointer_value; i++, pointer_value /= 16)
+		hex[i] = hexvalues[pointer_value % 16];
+	for (i--; i >= 0; i--, chars_written++)
+		add_to_buffer(buffer, hex[i]);
+	free(hex);
+	return (chars_written);
 }
-*/
