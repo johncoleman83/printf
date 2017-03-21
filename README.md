@@ -36,13 +36,19 @@ which writes characters to a buffer to be printed with custom ``_putchar()``
 function that writes characters to standard output one at a time.
 * ``./get_directive.c``: helper function file to match the given directive with
 the associated helper print function
-* ``./csp_printf.c``: helper functions to write directives: ``c``, ``s``, and
-``%`` to the buffer
-* ``./dib_printf.c``: helper functions to write directives: ``d``, ``i``, and
-``b`` (binary) to the buffer.
-* ``./buffer.c``: contains functions for working with the buffer
 
-  #### functions in this file:
+#### files that contain the functions associated with all the directives
+  * ``./directives_cpsrr.c``: helper functions to write directives: ``c``
+  (char),``s`` (string), ``%`` (percent), ``r`` (reverse string), and ``R``
+  (rot13) to the buffer.
+  * ``./directives_uoxX.c``: helper functions to write directives: ``u``
+  (unsigned int), ``o`` (octal), ``x`` (hexidecimal lowercase), ``X``
+  (hexidecimal uppercase)
+  * ``./directives_dib.c``: helper functions to write directives: ``d``
+  (integer), ``i`` (integer), and ``b`` (binary) to the buffer.
+
+* ``./buffer.c``: contains functions for working with the buffer
+  #### functions in buffer file:
   * ``_calloc()``: allocates memory slots filled with null: '\0' byte
   * ``add_to_buffer()``: adds characters 1 at at a time to the buffer
   * ``print_buffer()``: prints the entire buffer using ``_putchar()`` function
@@ -50,7 +56,7 @@ the associated helper print function
 
 * ``./helper_funcs.c``: file that contains helper functions
 
-  #### functions in this file:
+  #### functions in helper file:
   * ``putchar()``: function called ``_putchar()`` to write chars to standard
   output 1 at a time
   * ``_strlen``: custom function to find string length
