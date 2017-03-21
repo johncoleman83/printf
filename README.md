@@ -18,18 +18,21 @@ the C function ``printf()``.
 ## Brief Synopsis
 
 ``_printf()`` function takes 2 arguments: a character pointer to a string:
-``format``, and a 'variable arguments list': ``arg_list``.  The
-``match_specifier()`` function uses a struct to determine what specifier
-function is matched with which conversion specifier, and then returns a pointer
-to that function.  ``_printf()`` uses the pointer to that specifier function to
-call the specifier function on the next argument from the ``arg_list``.  Each
-specifier function writes a character one at a time as determined from the value
-in ``arg_list``.  Our code writes the characters to a buffer, but it could
-be easily modified to write instead to standard output.  For instances of the
-format string that are not specifiers (non '%' prefixed characters, whatever
-character is processed in the ``format`` string is written to the buffer one at
-a time.  When the buffer is full or in the end of ``_printf``, the buffer is
-then written to standard output using ``write()`` function.
+``format``, and a 'variable arguments list': ``arg_list``.  ``_printf()`` loops
+through the format string searching for a conversion specifier, which is
+indicated with the '%' symbol.  If found, the ``match_specifier()`` function
+loops through an array of structs (contianing character and function pairs) to
+find the specifier function that is matched with the given conversion specifier
+from the format string, and then returns a pointer to that paired function.
+``_printf()`` uses the pointer to that specifier function to call the specifier
+function on the next argument from the ``arg_list``.  Each specifier function
+writes a character one at a time as determined from the value in ``arg_list``.
+Our code writes the characters to a buffer, but it could be easily modified to
+write instead to standard output.  For instances of the format string that are
+not specifiers (non '%' prefixed characters, whatever character is processed in
+the ``format`` string is written to the buffer one at a time.  When the buffer
+is full or in the end of ``_printf``, the buffer is then written to standard
+output using ``write()`` function.
 
 ## File List
 
