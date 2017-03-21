@@ -8,8 +8,8 @@ int p_char(va_list arg_list)
 {
 	char c = va_arg(arg_list, int);
 
-	if (c == '\0')
-		return (0);
+	if (!c)
+		return (1);
 	_putchar(c);
 	return (1);
 }
