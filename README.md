@@ -44,14 +44,15 @@ function that writes characters to standard output one at a time.
 with the associated helper print function
 
   #### files that contain the functions associated with all the specifiers
-  * ``./specifier_cpsrr.c``: helper functions to write specifier: ``c``
-  (char),``s`` (string), ``%`` (percent), ``r`` (reverse string), and ``R``
-  (rot13) to the buffer.
-  * ``./specifier_uoxX.c``: helper functions to write specifier: ``u``
-  (unsigned int), ``o`` (octal), ``x`` (hexidecimal lowercase), ``X``
-  (hexidecimal uppercase)
-  * ``./specifier_dib.c``: helper functions to write specifier: ``d``
-  (integer), ``i`` (integer), and ``b`` (binary) to the buffer.
+  * ``./specifier_cpsrr.c``: functions to write specifiers: ``c`` (char),``s``
+  (string), ``%`` (percent), ``r`` (reverse string), and ``R`` (rot13) to the
+  buffer.
+  * ``./specifier_uoxX.c``: functions to write specifiers: ``u`` (unsigned int),
+  ``o`` (octal), ``x`` (hexidecimal lowercase), ``X`` (hexidecimal uppercase)
+  * ``./specifier_dib.c``: functions to write specifiers: ``d`` (integer), ``i``
+  (integer), and ``b`` (binary) to the buffer.
+  * ``./specifier_Sp.c``: functions to write specifiers: ``S`` (string and hex
+  combination), and ``p`` (pointers in hexidecimal).
 
 * ``./buffer.c``: contains functions for working with the buffer
   #### functions in buffer file:
