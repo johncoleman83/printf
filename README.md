@@ -37,14 +37,14 @@ function that writes characters to standard output one at a time.
 * ``./get_directive.c``: helper function file to match the given directive with
 the associated helper print function
 
-  #### files that contain the functions associated with all the directives
-  * ``./directives_cpsrr.c``: helper functions to write directives: ``c``
+  #### files that contain the functions associated with all the specifiers
+  * ``./specifier_cpsrr.c``: helper functions to write specifier: ``c``
   (char),``s`` (string), ``%`` (percent), ``r`` (reverse string), and ``R``
   (rot13) to the buffer.
-  * ``./directives_uoxX.c``: helper functions to write directives: ``u``
+  * ``./specifier_uoxX.c``: helper functions to write specifier: ``u``
   (unsigned int), ``o`` (octal), ``x`` (hexidecimal lowercase), ``X``
   (hexidecimal uppercase)
-  * ``./directives_dib.c``: helper functions to write directives: ``d``
+  * ``./specifier_dib.c``: helper functions to write specifier: ``d``
   (integer), ``i`` (integer), and ``b`` (binary) to the buffer.
 
 * ``./buffer.c``: contains functions for working with the buffer
