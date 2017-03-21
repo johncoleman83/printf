@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 {
 	va_list arg_list;
 	unsigned int i = 0, chars_written = 0;
-	int (*temp_func)(va_list), no_conversion;
+	int (*temp_func)(va_list);
 
 	if (!format)
 		return (0);
@@ -18,21 +18,26 @@ int _printf(const char *format, ...)
 	va_start(arg_list, format);
 	while (format[i])
 	{
-		no_conversion = 1;
-		if (format[i] == '%')
+		if (format[i] != '%')
 		{
-			temp_func = match_specifier(format[++i]);
+			_putchar(format[i]);
+			chars_written++;
+		}
+		else
+		{
+			temp_func = match_specifier(format[i + 1]);
 			if (temp_func)
 			{
 				chars_written += temp_func(arg_list);
-				i++, no_conversion = 0;
+				i++;
+			}
+			else
+			{
+				_putchar('%');
+				chars_written++;
 			}
 		}
-		if (no_conversion)
-		{
-			_putchar(format[i++]);
-			chars_written++;
-		}
+		i++;
 	}
 	va_end(arg_list);
 	return (chars_written);
