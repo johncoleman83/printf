@@ -37,7 +37,7 @@ function that writes characters to standard output one at a time.
 * ``./get_directive.c``: helper function file to match the given directive with
 the associated helper print function
 
-#### files that contain the functions associated with all the directives
+  #### files that contain the functions associated with all the directives
   * ``./directives_cpsrr.c``: helper functions to write directives: ``c``
   (char),``s`` (string), ``%`` (percent), ``r`` (reverse string), and ``R``
   (rot13) to the buffer.
