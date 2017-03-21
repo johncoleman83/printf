@@ -18,7 +18,6 @@ typedef struct specifier_struct
 int _printf(const char *format, ...);
 void *_calloc(unsigned int nmemb, unsigned int size);
 void rev_string(char *s);
-int skip_spaces(const char *format);
 int _strlen(char *s);
 int _putchar(char c);
 int (*match_specifier(char c))(va_list arg_list);

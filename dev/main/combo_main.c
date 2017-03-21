@@ -1,32 +1,41 @@
 #include "../holberton.h"
 /**
- * main - combined main file to test expected and custom and view results side by side
+ * main - Entry point
+ *
  * Return: Always 0
  */
 int main(void)
+{
     int len;
-    int l2;
+    int len2;
+    unsigned int ui;
+    void *addr;
 
-    len = printf("standard  |Let's try to printf a simple sentence.\n");
-    l2 = _printf("custom    |Let's try to printf a simple sentence.\n");
-    printf("standard  |Len :[%d, %i]\n", len, len);
-    printf("custom    |Len2:[%d, %i]\n", l2, l2);
-
-    len = printf("standard  |testing 'c': %c char 1024: %c\n", 'c', 1024);
-    l2 = _printf("custom    |testing 'c': %c char 1024: %c\n", 'c', 1024);
-    printf("standard  |Len :[%d, %i]\n", len, len);
-    printf("custom    |Len2:[%d, %i]\n", l2, l2);
-
-    len = printf("standard  |testing: 'string': %s NULL: %s\n", "string", NULL);
-    l2 = _printf("custom    |testing: 'string': %s NULL: %s\n", "string", NULL);
-    printf("standard  |Len :[%d, %i]\n", len, len);
-    printf("custom    |Len2:[%d, %i]\n", l2, l2);
-
-    len = printf("standard  |testing: %% & unknown directive: %y\n");
-    l2 = _printf("custom    |testing: %% & unknown directive: %y\n");
-    printf("standard  |Len :[%d, %i]\n", len, len);
-    printf("custom    |Len2:[%d, %i]\n", l2, l2);
-
+    len = _printf("Let's try to printf a simple sentence.\n");
+    len2 = printf("Let's try to printf a simple sentence.\n");
+    ui = (unsigned int)INT_MAX + 1024;
+    addr = (void *)0x7ffe637541f0;
+    _printf("Length:[%d, %i]\n", len, len);
+    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("Negative:[%d]\n", -762534);
+    printf("Negative:[%d]\n", -762534);
+    _printf("Unsigned:[%u]\n", ui);
+    printf("Unsigned:[%u]\n", ui);
+    _printf("Unsigned octal:[%o]\n", ui);
+    printf("Unsigned octal:[%o]\n", ui);
+    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    _printf("Character:[%c]\n", 'H');
+    printf("Character:[%c]\n", 'H');
+    _printf("String:[%s]\n", "I am a string !");
+    printf("String:[%s]\n", "I am a string !");
+    _printf("Address:[%p]\n", addr);
+    printf("Address:[%p]\n", addr);
+    len = _printf("Percent:[%%]\n");
+    len2 = printf("Percent:[%%]\n");
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    _printf("Unknown:[%r]\n", "hello!");
+    printf("Unknown:[r]\n");
     return (0);
-// (EXPECTED for test case %y) warning: unknown conversion type character 'y' in format
 }
