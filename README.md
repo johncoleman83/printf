@@ -76,7 +76,9 @@ functions.
   of standard output into 'expected' from test cases of standard ``printf()``
   and my output of test cases into 'custom' file.  directory also included all
   other files of function ``_printf()``.
-  * ``./dev/prinf-screen-shot.png`` a screenshot of the custom ``_printf()``
+  * ``./dev/prinf-screen-shot.png`` a screenshot of the custom ``_printf()``.
+  This is a former version of our function.  For updated screenshot see root
+  directory of our repository.
 
 #### main directory
   * this directory contains ``main()`` functions for testing custom .c files and
@@ -85,6 +87,9 @@ functions.
   function.  Can be compiled on its own - no need for other functions
   * ``./dev/main/custom_main.c``: tests actual output of custom ``_printf()``
   function
+  * ``./dev/main/combo_main.c``: tests actual output of custom ``_printf()``
+  function and expected output of ``printf()`` function together.  Most test
+  cases are for standard functions.
 
 ## buffer branch specifications
 
