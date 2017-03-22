@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * _printf - replication of some of some features from C function printf()
+ * _printf - replication of some of the features from C function printf()
  * @format: character string of directives, flags, modifiers, & specifiers
  * Description: This function uses the variable arguments functionality and is
  * supposed to resemble printf().  Please review the README for more
