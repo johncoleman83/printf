@@ -52,12 +52,12 @@ int p_pointer(va_list arg_list)
 	}
 	_putchar('0');
 	_putchar('x');
-	chars_written++;
+	chars_written += 2;
 	pointer_value = (unsigned long int)pointer;
 	for (i = 0; pointer_value; i++, pointer_value /= 16)
 		hex[i] = hexvalues[pointer_value % 16];
 	for (i--; i >= 0; i--, chars_written++)
 		_putchar(hex[i]);
 	free(hex);
-	return (++chars_written);
+	return (chars_written);
 }
