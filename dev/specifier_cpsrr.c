@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * p_char - writes char to buffer
+ * p_char - writes char to buffer or standard output
  * @arg_list: input list queued at appropriate char to write to buffer
  * Return: number of chars wrote to buffer
  */
@@ -12,7 +12,7 @@ int p_char(va_list arg_list)
 	return (1);
 }
 /**
- * p_percent - writes a percent symbol to buffer
+ * p_percent - writes a percent symbol to buffer or stdout
  * @arg_list: void, not used due to having printed a '%'
  * Return: number of chars wrote to buffer
  */
@@ -24,7 +24,7 @@ int p_percent(va_list arg_list)
 	return (1);
 }
 /**
- * p_string - writes string to buffer
+ * p_string - writes string to buffer or stdout
  * @arg_list: input list queued at appropriate string to print
  * Return: number of chars wrote to buffer
  */
@@ -40,24 +40,27 @@ int p_string(va_list arg_list)
 	return (i);
 }
 /**
- * p_rev_string - writes string to buffer in reverse
+ * p_rev_string - writes string to buffer or stdout in reverse
  * @arg_list: input list queued at appropriate string to print
  * Return: number of chars wrote to buffer
  */
 int p_rev_string(va_list arg_list)
 {
-	int i, length;
-	char *string = va_arg(arg_list, char *), *null_str = ")llun(";
+	int i = 0, length;
+	char *string = va_arg(arg_list, char *);
 
-	if (string == NULL)
-		string = null_str;
 	length = _strlen(string);
+	if (length == 1)
+	{
+		_putchar(string[0]);
+		return (1);
+	}
 	for (i = length - 1; i >= 0; i--)
 		_putchar(string[i]);
 	return (i);
 }
 /**
- * p_rot13 - translates string to ROT13 and writes to buffer
+ * p_rot13 - translates string to ROT13 and writes to stdout buffer
  * @arg_list: input list queued at appropriate string to print
  * Return: string after conversion of ROT13
  */

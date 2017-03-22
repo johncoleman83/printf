@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * p_uint - writes unsigned integers to buffer in decimal
+ * p_uint - writes unsigned integers to buffer or stdout in decimal
  * @arg_list: input list queued at appropriate unsigned int to write to buffer
  * Return: number of wrote to buffer
  */
@@ -27,7 +27,7 @@ int p_uint(va_list arg_list)
 	return (chars_written);
 }
 /**
- * p_lowhex - writes unsigned integer to buffer in base hexidecimal
+ * p_lowhex - writes unsigned integer to buffer or stdout in base hexidecimal
  * @arg_list: input list queued at appropriate int to write to buffer
  * Return: number of chars wrote to buffer
  */
@@ -75,7 +75,7 @@ int p_uphex(va_list arg_list)
 	return (chars_written);
 }
 /**
- * p_oct - writes unsigned integer to buffer in base 8: octal
+ * p_oct - writes unsigned integer to buffer or stdout in base 8: octal
  * @arg_list: input list queued at appropriate int to write to buffer
  * Return: number of chars wrote to buffer
  */
