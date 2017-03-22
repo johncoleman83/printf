@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int (*temp_func)(va_list);
 
 	if (!format)
-		return (-1);
+		goto exit;
 
 	va_start(arg_list, format);
 	while (format[i])
@@ -34,6 +34,8 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
+				if (i == 0 && format[i + 1] == '\0')
+					goto exit;
 				_putchar('%');
 				chars_written++;
 			}
@@ -42,4 +44,5 @@ int _printf(const char *format, ...)
 	}
 	va_end(arg_list);
 	return (chars_written);
+exit: return (-1);
 }
