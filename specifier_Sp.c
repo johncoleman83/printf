@@ -52,7 +52,7 @@ int p_pointer(va_list arg_list)
 	}
 	_putchar('0');
 	_putchar('x');
-	chars_written += 2;
+	chars_written++;
 	pointer_value = (unsigned long int)pointer;
 	for (i = 0; pointer_value; i++, pointer_value /= 16)
 		hex[i] = hexvalues[pointer_value % 16];
