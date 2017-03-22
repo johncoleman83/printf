@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * p_string_hex - writes string to buffer switching non-alphas to hexidecimal
+ * p_string_hex - writes string to buffer or stdout ascii
  * @arg_list: input list queued at appropriate string to print
  * Return: number of chars wrote to buffer
  */
