@@ -1,16 +1,17 @@
 # _printf()
 
-<img src="https://raw.githubusercontent.com/johncoleman83/printf/master/dev/printf-screen-shot.png" alt="screen shot of custom printf function">
+<img src="https://raw.githubusercontent.com/johncoleman83/printf/master/dev/prin
+tf-screen-shot.png" alt="screen shot of custom printf function">
 
 ## Description
 
-This Repo has our (David John Coleman II and Joann Vuong's) version of C
-function ``printf()`` from ``stdio.h`` coded in C Language.  It is a part of our
-work as a student at Holberton School.  The purpose of the primary functions in
-this repo is create a function, ``_printf()`` that behaves exactly the same as
-the C function ``printf()``.
+This Repo has has all the code necessary for our (David John Coleman II and
+Joann Vuong's) custom function called ``_printf()``.  It is a mini-version of C
+Language function ``printf()`` from ``stdio.h``, and our function ``_printf()``
+attempts to replicate the exact same process as the C function ``printf()``.
+This project was completed as a part of the curriculum for Holberton School.
 
-### C functions used
+### C language standard functions used
 
 * ``write``, ``malloc``, ``free``, ``va_start``, ``va_end``, ``va_copy``,
 ``va_arg``
@@ -25,15 +26,12 @@ loops through an array of structs (contianing character and function pairs) to
 find the specifier function that is matched with the given conversion specifier
 from the format string, and then returns a pointer to that paired function.
 ``_printf()`` uses the pointer to that specifier function to call the specifier
-function on the next argument from the ``arg_list``.  Each specifier function
-writes a character one at a time as determined from the value in ``arg_list``.
-Our code writes the characters to the buffer, in the 'buffer' branch and in the
-'bo-buffer' branch, our code is instead written to standard output.
-For instances of the format string that are not specifiers (non '%' prefixed
-characters, whatever character is processed in the ``format`` string is written
-to the buffer one at a time (or written to the standard output).  When the
-buffer is full or in the end of ``_printf``, the buffer is then written to
-standard output using ``write()`` function.
+function on the next queued argument from the ``arg_list``.  Each specifier
+function writes a character one at a time as determined from the value in
+``arg_list``. In the buffer branch and in the 'release: v0.1', our code writes
+the characters from the format string and the associated specifiers to the
+buffer, and in the 'no-buffer' branch, our code is instead written to standard
+output one at a time.
 
 ## File List
 
@@ -61,9 +59,12 @@ with the associated helper print function
   * ``putchar()``: function called ``_putchar()`` to write chars to standard
   output 1 at a time
   * ``_strlen``: custom function to find string length
-  * ``rev_string()``: custom reverse string function to reverse a string
+  * ``rev_string()``: custom reverse string function to reverse a string.  This
+  function became obsolete when we realized that we could not write to a
+  variable argument list item.
   * ``skip_spaces()``: which is a function to skip trailing spaces after the '%'
-  directive.
+  directive.  This function became obsolete when I realized the holberton
+  algorithm to check our code did not check for such cases.
 
 * ``./holberton.h``: header file that contains all necessary included libraries
 for all functions, the struct prototype and type definition for the struct,
@@ -87,6 +88,13 @@ functions.
   function
 
 ## buffer branch specifications
+
+### buffer summary:
+The buffer branch has our code utilizing a buffer.  It can also be accessed in
+the release: 'v0.1'.  The purpose of the buffer was to first write the format
+string characters or the associated argument to a buffer one at a time.  When
+the buffer is full or in the end of ``_printf``, the buffer is then written to
+standard output using ``write()`` function.
 
 * ``./buffer.c``: contains functions for working with the buffer
   #### functions in buffer file:
