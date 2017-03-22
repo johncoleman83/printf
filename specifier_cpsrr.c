@@ -69,21 +69,18 @@ int p_rot13(va_list arg_list)
 	int i, j;
 	char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char rot_13[] =   "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-	char *str = va_arg(arg_list, char *), *nl_str = "(null)";
+	char *str = va_arg(arg_list, char *);
 
-	if (str)
-	{
-		for (i = 0; str[i] != '\0'; i++)
-			for (j = 0; j < 52; j++)
-				if (str[i] == alphabet[j])
-				{
-					_putchar(rot_13[j]);
-					j = 52;
-				}
-		return (i);
-	}
-	for (i = 0; i < 6; i++)
-		_putchar(nl_str[i]);
-	return (6);
-
+	for (i = 0; str[i] != '\0'; i++)
+		for (j = 0; j < 52; j++)
+		{
+			if (str[i] == alphabet[j])
+			{
+				_putchar(rot_13[j]);
+				break;
+			}
+			if (j == 52)
+				_putchar(str[i]);
+		}
+	return (i);
 }
