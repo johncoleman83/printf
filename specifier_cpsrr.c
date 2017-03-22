@@ -81,7 +81,7 @@ int p_rot13(va_list arg_list)
 				break;
 			}
 		}
-		if (j == 53)
+		if (j == 52)
 			_putchar(str[i]);
 	}
 	return (i);
