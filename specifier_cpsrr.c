@@ -57,6 +57,7 @@ int p_rev_string(va_list arg_list)
 	}
 	for (i = length - 1; i >= 0; i--)
 		_putchar(string[i]);
+	printf("LENGTH:\n", length);
 	return (length);
 }
 /**
