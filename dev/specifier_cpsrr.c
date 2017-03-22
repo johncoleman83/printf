@@ -57,7 +57,7 @@ int p_rev_string(va_list arg_list)
 	}
 	for (i = length - 1; i >= 0; i--)
 		_putchar(string[i]);
-	return (i);
+	return (length);
 }
 /**
  * p_rot13 - translates string to ROT13 and writes to stdout buffer
