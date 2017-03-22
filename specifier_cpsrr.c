@@ -73,10 +73,14 @@ int p_rot13(va_list arg_list)
 
 	for (i = 0; str[i] != '\0'; i++)
 		for (j = 0; j < 52; j++)
+		{
 			if (str[i] == alphabet[j])
 			{
 				_putchar(rot_13[j]);
-				j = 52;
+				break;
 			}
+			if (j == 52)
+				_putchar(str[i]);
+		}
 	return (i);
 }
