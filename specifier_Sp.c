@@ -59,5 +59,5 @@ int p_pointer(va_list arg_list)
 	for (i--; i >= 0; i--, chars_written++)
 		_putchar(hex[i]);
 	free(hex);
-	return (chars_written);
+	return (++chars_written);
 }
