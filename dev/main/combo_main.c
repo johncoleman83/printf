@@ -30,8 +30,10 @@ int main(void)
     printf("Character:[%c]\n", 'H');
     _printf("String:[%s]\n", "I am a string !");
     printf("String:[%s]\n", "I am a string !");
-    _printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
+    len = _printf("Address:[%p]\n", addr);
+    len2 = printf("Address:[%p]\n", addr);
+    _printf("Length:[%d, %i]\n", len, len);
+    printf("Length:[%d, %i]\n", len2, len2);
     len = _printf("Percent:[6%%%%%%, % ]\n");
     len2 = printf("Percent:[6%%%%%%, % ]\n");
     _printf("Len:[%d]\n", len);
