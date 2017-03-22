@@ -72,6 +72,7 @@ int p_rot13(va_list arg_list)
 	char *str = va_arg(arg_list, char *);
 
 	for (i = 0; str[i] != '\0'; i++)
+	{
 		for (j = 0; j < 52; j++)
 		{
 			if (str[i] == alphabet[j])
@@ -79,8 +80,9 @@ int p_rot13(va_list arg_list)
 				_putchar(rot_13[j]);
 				break;
 			}
-			if (j == 52)
-				_putchar(str[i]);
 		}
+		if (j == 53)
+			_putchar(str[i]);
+	}
 	return (i);
 }
