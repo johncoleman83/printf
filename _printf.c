@@ -3,8 +3,8 @@
  * _printf - replication of some of some features from C function printf()
  * @format: character string of directives, flags, modifiers, & specifiers
  * Description: This function uses the variable arguments functionality and is
- * supposed to resemble printf().  Please review the README for more information
- * on how it works.
+ * supposed to resemble printf().  Please review the README for more
+ * information on how it works.
  * Return: number of characters printed
  */
 int _printf(const char *format, ...)
