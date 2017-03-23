@@ -6,9 +6,11 @@
  */
 int p_int(va_list arg_list)
 {
-	int n = va_arg(arg_list, int), size = 1, ones = n % 10, copy, nth,
-		chars_written = 0;
-
+	int n, size, ones, copy, nth, chars_written;
+	chars_written = 0;
+	n = va_arg(arg_list, int);
+	ones = n % 10;
+	size = 1;
 	n /= 10;
 	copy = n;
 	if (ones < 0)
