@@ -1,63 +1,73 @@
-.TH man 3 "17 March 2017" "0.1" "printf man page"
+.TH _PRINTF 3 "17 March 2017" "0.1" "Holberton Students _printf Manual"
 .SH NAME
 .B _printf
 - our version of printf.
 .SH SYNOPSIS
-.B	#include <stdio.h>
-	#include <stdarg.h>
+.B	#include "holberton.h"
 
-	int _printf(const char *format, ...);
+int _printf(const char *format, ...);
 
 .SH DESCRIPTION
-	The functions in _printf produce output according to a format as describ\
-ed. The function _printf() write output to stdout. It writes the output under th
-e control of a format string that specifies how subsequent arguments are convert
-ed for output.
-.SS Return Value
-	Upon successful return, these functions return the number of characters 
-	printed, which exclude the null byte ('\0').
+The function _printf() writes output to standard output. It writes the\
+output under the control of a format string that specifies how subsequent\
+arguments are converted for output.
+.SH Return Value
+Upon successful return, these functions return the number of characters\
+printed, which exclude the terminating null byte ('\0').
 .SH THE FLAG CHARACTERS
-.SS 0
-	Pads the number with zeroes instead of spaces, where padding is clearly defined.
-.P
-.SS +
-	A sign (+ or -) should always precede a number produced by a signed conversion. By default a sign is used only for negative numbers. By default, only negative numbers are preceded with a sign.
-.P
-.SS #
-	Used with o,x or X specifiers, the value is preceded with 0, 0x, or 0X respectively for values different than zero. for a, A, e, E, f, F, g, and G conversions, the result will always contain a decimal point, even if no digits follow it. For g and G conversions, trailing zeros are not removed from the result as they would otherwise be. The result is undefined for other conversions.
-.P
+
+.B  The flag characters are currently in development phase.
 
 .SH THE LENGTH MODIFIERS
 
-.SS l
-	A length modifer is used to specify the length of the input. The l (ell) modifier specifies that a following d, i, o, u, x, or X conversion specifier applies to a long or unsigned long argument.
-.P
+.B  The length modifiers are currently in development phase.
 
 .SH THE CONVERSION SPECIFIERS
 
-.SS c
-	If no 'l' modifier is present, the int argument converts to an unsigned char, and the resulting character is written.
+.B c
+The int argument converts to an unsigned char, and the resulting charac\
+ter is written.
 .P
-.SS s 
-	The argument shall be a literal string. No special provisions are made for multibyte characters.The behavior of printf with the s conversion specifier is undefined if the argument value is not a pointer to a literal string. Characters from the literal string array are written up to, but not including, the terminating null byte ('\0').
+.B s
+The argument shall be a literal string. No special provisions are made\
+for multibyte characters.The behavior of printf with the s conversion\
+specifier is undefined if the argument value is not a pointer to a literal\
+string. Characters from the literal string array are written up to, but not\
+including, the terminating null byte ('\0').
 .P
-.SS % 
-	A % character is written and no argument is converted. The complete conversion specification is '%%'.
+.B %
+A % character is written and no argument is converted. The complete con\
+version specification is '%%'.
 .P
-.SS d, i
-	The int argument is converted to signed decimal notation. The precision, if any, specifies the minimum number of digits to appear; if the converted value requires fewer digits, it is padded on the left with zeros. The default precision is 1. When 0 is printed with an explicit precision 0,the output is empty. 
+.B b
+The unsigned int argument is converted to binary.
 .P
-.SS b
-	this is the 'b' option
+.B d, i
+The int argument is converted to signed decimal notation.
 .P
-.SS o, u, x, X
-	The unsigned int argument is converted to unsigned octal (o), unsigned decimal (u), or unsigned hexidecimal notation (x or X) in the style dddd; the letters abcdef are used for x conversion and the letters ABCDEF for X conversion. The precision specifies the minumum number of digits to appear; if the value being converted can be represented in fewer digits, it is expanded with leading zeros. The default precision is 1. The result of converting a zero value with a precision of zero is no characters.
+.B p
+The pointer is printed in hexidecimal format preceded by '0x'.
 .P
-.SS S
-	Prints the string.
+.B r, R
+'r' prints string in reverse. 'R' prints encrypted rot13.
+.P
+.B o, u, x, X
+The unsigned int argument is converted to unsigned octal (o), unsigned\
+decimal (u), or unsigned hexidecimal notation (x or X); the letters abcdef are\
+used for x conversion and the letters ABCDEF for X conversion.
+.P
+.B S
+Prints ascii characters #32 - #127 as they appear in the argument\
+string. All other ascii characters are converted to hexidecimal, then written
+to standard output.
+.P
 .SH SEE ALSO
-.I printf(1), asprintf(3), dprintf(3), scanf(3), setlocale(3), wcrtomb(3), wprintf(3), locale(5)
+.I printf(1), asprintf(3), dprintf(3), scanf(3), setlocale(3), wcrtomb(3),\
+wprintf(3), locale(5)
+.P
 .SH BUGS
-No known bugs.
+Unknown bugs exist for unknown cases of either 'c', 's', or % specifiers\
+Additionally, 'p' specifier has unknown bugs.  The 'r' and 'R' specifiers also\
+have unknown bugs.  Precision and flags have not been accounted for.\
 .SH AUTHOR
 David John Coleman II and Joann Vuong

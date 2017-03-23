@@ -9,11 +9,12 @@ int main(void)
 {
     int len;
     int len2;
-    unsigned int ui;
+	unsigned int ui;
+    unsigned long int uli = ULONG_MAX;
     void *addr;
 
-    len = _printf("Let's try to printf a simple sentence.\n");
-    len2 = printf("Let's try to printf a simple sentence.\n");
+    len = _printf("Order, my function first.\n");
+    len2 = printf("standard printf() second.\n");
     ui = (unsigned int)INT_MAX + 1024;
     addr = (void *)0x7ffe637541f0;
     _printf("Length:[%d, %i]\n", len, len);
@@ -30,6 +31,14 @@ int main(void)
     printf("Unsigned octal:[%o]\n", ui);
     _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
     printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    _printf("Length:[%d, %i]\n", len, len);
+    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("Unsigned:[%lu]\n", uli);
+    printf("Unsigned:[%lu]\n", uli);
+    _printf("Unsigned octal:[%lo]\n", uli);
+    printf("Unsigned octal:[%lo]\n", uli);
+    _printf("Unsigned hexadecimal:[%lx, %lX]\n", uli, uli);
+    printf("Unsigned hexadecimal:[%lx, %lX]\n", uli, uli);
     _printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
     _printf("String:[%s]\n", "I am a string !");
