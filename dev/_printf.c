@@ -9,14 +9,13 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list arg_list;
 	unsigned int i = 0, chars_written = 0;
 	int (*temp_func)(va_list);
-
-	if (!format)
-		goto exit;
+	va_list arg_list;
 
 	va_start(arg_list, format);
+	if (!format)
+		return (end_func(arg_list));
 	while (format[i])
 	{
 		if (format[i] != '%')
@@ -35,7 +34,7 @@ int _printf(const char *format, ...)
 			else
 			{
 				if (i == 0 && format[i + 1] == '\0')
-					goto exit;
+					return (end_func(arg_list));
 				_putchar('%');
 				chars_written++;
 			}
@@ -44,5 +43,4 @@ int _printf(const char *format, ...)
 	}
 	va_end(arg_list);
 	return (chars_written);
-exit: return (-1);
 }
