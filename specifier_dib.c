@@ -7,6 +7,7 @@
 int p_int(va_list arg_list)
 {
 	int n, size, ones, copy, nth, chars_written;
+
 	chars_written = 0;
 	n = va_arg(arg_list, int);
 	ones = n % 10;
