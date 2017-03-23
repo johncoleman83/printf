@@ -6,10 +6,7 @@
  */
 int p_char(va_list arg_list)
 {
-	unsigned int c = va_arg(arg_list, unsigned int);
-
-	_putchar(c);
-	return (1);
+	return (_putchar(va_arg(arg_list, int)));
 }
 /**
  * p_percent - writes a percent symbol to buffer or stdout
@@ -20,8 +17,7 @@ int p_percent(va_list arg_list)
 {
 	(void)arg_list;
 
-	_putchar('%');
-	return (1);
+	return (_putchar('%'));
 }
 /**
  * p_string - writes string to buffer or stdout
@@ -30,14 +26,11 @@ int p_percent(va_list arg_list)
  */
 int p_string(va_list arg_list)
 {
-	int i;
 	char *string = va_arg(arg_list, char *), *null_string = "(null)";
 
 	if (string == NULL)
 		string = null_string;
-	for (i = 0; string[i] != '\0'; i++)
-		_putchar(string[i]);
-	return (i);
+	return (write(1, string, _strlen(string)));
 }
 /**
  * p_rev_string - writes string to buffer or stdout in reverse
