@@ -38,10 +38,10 @@ int _printf(const char *format, ...)
 					chars_written += temp_func(arg_list);
 					i++;
 				}
-				else if (i == 0 && char1 == '\0')
-					return (end_func(arg_list));
-				else
+				else if (i != 0 && format[char1] != '\0')
 					chars_written += _putchar('%');
+				else
+					return (end_func(arg_list));
 			}
 		}
 		i++;
