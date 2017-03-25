@@ -38,8 +38,14 @@ output one at a time.
 to then use a callback function, which finds the associated helper function,
 which writes characters to buffer or standard output using custom ``_putchar()``
 function.
-* ``./match_specifier.c``: helper function file to match the given directive
-with the associated helper print function
+* ``./match_cases.c``: helper function file to match the given directives and
+modifiers with the associated helper functions
+
+  #### functions contianed in this file:
+  * ``match_modifier()``: checks if the trailing character after the '%' is a
+  modifier
+  * ``match_specifier()``: checks if the trailing character after the '%' is a
+  specifier
 
   #### files that contain the functions associated with all the specifiers
   * ``./specifier_cpsrr.c``: functions to write specifiers: ``c`` (char),``s``
@@ -51,6 +57,10 @@ with the associated helper print function
   (integer), and ``b`` (binary) to the buffer.
   * ``./specifier_Sp.c``: functions to write specifiers: ``S`` (string and hex
   combination), and ``p`` (pointers in hexidecimal).
+
+  #### files that comtain modifier functions
+  * ``./modifiers_long.c``: contains functions to print long integers in
+  signed and unsigned decimal, and unsigned hex and octal.
 
 * ``./helper_funcs.c``: file that contains helper functions
 

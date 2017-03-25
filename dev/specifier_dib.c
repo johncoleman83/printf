@@ -6,7 +6,7 @@
  */
 int p_int(va_list arg_list)
 {
-	long int n, size, ones, copy;
+	int n, size, ones, copy;
 	int nth, chars_written;
 
 	chars_written = 0;
