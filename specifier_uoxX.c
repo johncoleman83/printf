@@ -6,9 +6,11 @@
  */
 int p_uint(va_list arg_list)
 {
-	unsigned int n = va_arg(arg_list, int), nth, copy = n;
-	int size = 1, chars_written = 0;
+	unsigned int n = va_arg(arg_list, int), copy, size;
+	int nth, chars_written = 0;
 
+	size = 1;
+	copy = n;
 	if (n < 10)
 	{
 		_putchar('0' + n);

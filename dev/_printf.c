@@ -12,6 +12,7 @@ int _printf(const char *format, ...)
 	unsigned int i = 0, chars_written = 0;
 	int (*temp_func)(va_list);
 	va_list arg_list;
+	char char1, char2;
 
 	va_start(arg_list, format);
 	if (!format)
@@ -19,24 +20,28 @@ int _printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] != '%')
-		{
-			_putchar(format[i]);
-			chars_written++;
-		}
+			chars_written += _putchar(format[i]);
 		else
 		{
-			temp_func = match_specifier(format[i + 1]);
+			char1 = format[i + 1], char2 = format[i + 2];
+			temp_func = is_modifier(char1, char2);
 			if (temp_func)
 			{
 				chars_written += temp_func(arg_list);
-				i++;
+				i += 2;
 			}
 			else
 			{
-				if (i == 0 && format[i + 1] == '\0')
+				temp_func = match_specifier(char1);
+				if (temp_func)
+				{
+					chars_written += temp_func(arg_list);
+					i++;
+				}
+				else if (i == 0 && char1 == '\0')
 					return (end_func(arg_list));
-				_putchar('%');
-				chars_written++;
+				else
+					chars_written += _putchar('%');
 			}
 		}
 		i++;
