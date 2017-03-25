@@ -24,6 +24,7 @@ int _strlen(char *s);
 int _putchar(char c);
 int end_func(va_list arg_list);
 int (*match_specifier(char c))(va_list arg_list);
+/* modifier function */
 int (*is_modifier(char c1, char c2))(va_list arg_list);
 /* end prototypes for helper functions */
 /* begin prototypes for functions that write to stdout */
