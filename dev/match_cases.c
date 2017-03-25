@@ -46,13 +46,13 @@ int (*is_modifier(char c1, char c2))(va_list)
 	{
 	case 'l':
 		for (i = 0; modifiers_long[i].ch; i++)
-				if (modifiers_long[i].ch == c2)
-					return (modifiers_long[i].func);
+			if (modifiers_long[i].ch == c2)
+				return (modifiers_long[i].func);
 		break;
 	case 'h':
 		for (i = 0; modifiers_short[i].ch; i++)
-				if (modifiers_short[i].ch == c2)
-					return (modifiers_short[i].func);
+			if (modifiers_short[i].ch == c2)
+				return (modifiers_short[i].func);
 		break;
 	default:
 		break;

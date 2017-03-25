@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <limits.h>
 /**
- * struct specifier_struct - printf specifiers and paired function
+ * struct matches_struct - printf specifiers and paired function
  * @ch: the specifier
  * @func: pointer to the conversion specifier function
  */
