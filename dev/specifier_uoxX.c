@@ -6,11 +6,11 @@
  */
 int p_uint(va_list arg_list)
 {
-	unsigned long int n = va_arg(arg_list, int), copy, size;
+	unsigned int n = va_arg(arg_list, int), copy, size;
 	int nth, chars_written = 0;
 
 	size = 1;
-	n = copy;
+	copy = n;
 	if (n < 10)
 	{
 		_putchar('0' + n);
@@ -35,7 +35,7 @@ int p_uint(va_list arg_list)
  */
 int p_lowhex(va_list arg_list)
 {
-	unsigned long int n = va_arg(arg_list, int);
+	unsigned int n = va_arg(arg_list, int);
 	int i, chars_written = 0;
 	char *hex = _calloc(9, sizeof(char));
 	char hexvalues[] = "0123456789abcdef";
@@ -59,7 +59,7 @@ int p_lowhex(va_list arg_list)
  */
 int p_uphex(va_list arg_list)
 {
-	unsigned long int n = va_arg(arg_list, int);
+	unsigned int n = va_arg(arg_list, int);
 	int i, chars_written = 0;
 	char *hex = _calloc(9, sizeof(char));
 	char hexvalues[] = "0123456789ABCDEF";
@@ -83,7 +83,7 @@ int p_uphex(va_list arg_list)
  */
 int p_oct(va_list arg_list)
 {
-	unsigned long int n = va_arg(arg_list, int);
+	unsigned int n = va_arg(arg_list, int);
 	int i, chars_written = 0;
 	char *oct = _calloc(12, sizeof(char));
 

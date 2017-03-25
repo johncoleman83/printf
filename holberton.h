@@ -24,10 +24,16 @@ int _strlen(char *s);
 int _putchar(char c);
 int end_func(va_list arg_list);
 int (*match_specifier(char c))(va_list arg_list);
-/* modifier function */
 int (*is_modifier(char c1, char c2))(va_list arg_list);
 /* end prototypes for helper functions */
 /* begin prototypes for functions that write to stdout */
+/* long integers */
+int p_longint(va_list arg_list);
+int p_ulongint(va_list arg_list);
+int p_longoct(va_list arg_list);
+int p_longlowhex(va_list arg_list);
+int p_longuphex(va_list arg_list);
+/* end long ints */
 int p_char(va_list arg_list);
 int p_string(va_list arg_list);
 int p_string_hex(va_list arg_list);

@@ -29,24 +29,30 @@ int (*match_specifier(char c))(va_list)
 int (*is_modifier(char c1, char c2))(va_list)
 {
 	int i;
-	matches_t modifiers_list[] = {
+	matches_t modifiers_short[] = {
 		{'d', p_int}, {'i', p_int},
 		{'x', p_lowhex}, {'X', p_uphex},
 		{'o', p_oct}, {'u', p_uint},
+		{'\0', NULL}
+	};
+	matches_t modifiers_long[] = {
+		{'d', p_longint}, {'i', p_longint},
+		{'x', p_longlowhex}, {'X', p_longuphex},
+		{'o', p_longoct}, {'u', p_ulongint},
 		{'\0', NULL}
 	};
 
 	switch (c1)
 	{
 	case 'l':
-		for (i = 0; modifiers_list[i].ch; i++)
-				if (modifiers_list[i].ch == c2)
-					return (modifiers_list[i].func);
+		for (i = 0; modifiers_long[i].ch; i++)
+				if (modifiers_long[i].ch == c2)
+					return (modifiers_long[i].func);
 		break;
 	case 'h':
-		for (i = 0; modifiers_list[i].ch; i++)
-				if (modifiers_list[i].ch == c2)
-					return (modifiers_list[i].func);
+		for (i = 0; modifiers_short[i].ch; i++)
+				if (modifiers_short[i].ch == c2)
+					return (modifiers_short[i].func);
 		break;
 	default:
 		break;

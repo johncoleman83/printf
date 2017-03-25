@@ -9,13 +9,13 @@ int main(void)
 {
     int len;
     int len2;
-	unsigned int ui;
-    unsigned long int uli = ULONG_MAX;
+	unsigned int ui = UINT_MAX;
+	unsigned long int uli = ULONG_MAX;
+	unsigned short int usi = USHRT_MAX;
     void *addr;
 
     len = _printf("Order, my function first.\n");
     len2 = printf("standard printf() second.\n");
-    ui = (unsigned int)INT_MAX + 1024;
     addr = (void *)0x7ffe637541f0;
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
@@ -33,12 +33,20 @@ int main(void)
     printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
-    _printf("Unsigned:[%lu]\n", uli);
-    printf("Unsigned:[%lu]\n", uli);
-    _printf("Unsigned octal:[%lo]\n", uli);
-    printf("Unsigned octal:[%lo]\n", uli);
-    _printf("Unsigned hexadecimal:[%lx, %lX]\n", uli, uli);
-    printf("Unsigned hexadecimal:[%lx, %lX]\n", uli, uli);
+    _printf("Unsigned Short:[%hu]\n", usi);
+    printf("Unsigned Short:[%hu]\n", usi);
+    _printf("Unsigned octal Short:[%ho]\n", usi);
+    printf("Unsigned octal Short:[%ho]\n", usi);
+    _printf("Unsigned hexadecimal Short:[%hx, %hX]\n", usi, usi);
+    printf("Unsigned hexadecimal Short:[%hx, %hX]\n", usi, usi);
+    _printf("Length:[%d, %i]\n", len, len);
+    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("Unsigned long:[%lu]\n", uli);
+    printf("Unsigned long:[%lu]\n", uli);
+    _printf("Unsigned long octal:[%lo]\n", uli);
+    printf("Unsigned long octal:[%lo]\n", uli);
+    _printf("Unsigned long hexadecimal:[%lx, %lX]\n", uli, uli);
+    printf("Unsigned long hexadecimal:[%lx, %lX]\n", uli, uli);
     _printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
     _printf("String:[%s]\n", "I am a string !");
@@ -47,10 +55,12 @@ int main(void)
     len2 = printf("Address:[%p]\n", addr);
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
+	_printf("print '%%' here:");
     len = _printf("%");
+    _printf("\nLen:[%d]\n", len);
+	printf("print '%%' here:");
     len2 = printf("%");
-    _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
+    printf("\nLen:[%d]\n", len2);
 	len = _printf("Unknown:[%r]\n", "hello!");
     _printf("Length:[%d, %i]\n", len, len);
 	len = _printf("rot13[%R]\n", "Holberton");
