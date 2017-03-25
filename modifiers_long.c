@@ -10,7 +10,7 @@ int p_longint(va_list arg_list)
 	int nth, chars_written;
 
 	chars_written = 0;
-	n = va_arg(arg_list, int);
+	n = va_arg(arg_list, long int);
 	ones = n % 10;
 	size = 1;
 	n /= 10;
@@ -44,7 +44,7 @@ int p_longint(va_list arg_list)
  */
 int p_ulongint(va_list arg_list)
 {
-	unsigned long int n = va_arg(arg_list, int), copy, size;
+	unsigned long int n = va_arg(arg_list, unsigned long int), copy, size;
 	int nth, chars_written = 0;
 
 	size = 1;
@@ -73,7 +73,7 @@ int p_ulongint(va_list arg_list)
  */
 int p_longlowhex(va_list arg_list)
 {
-	unsigned long int n = va_arg(arg_list, int);
+	unsigned long int n = va_arg(arg_list, unsigned long int);
 	int i, chars_written = 0;
 	char *hex = _calloc(17, sizeof(char));
 	char hexvalues[] = "0123456789abcdef";
@@ -97,7 +97,7 @@ int p_longlowhex(va_list arg_list)
  */
 int p_longuphex(va_list arg_list)
 {
-	unsigned long int n = va_arg(arg_list, int);
+	unsigned long int n = va_arg(arg_list, unsigned long int);
 	int i, chars_written = 0;
 	char *hex = _calloc(17, sizeof(char));
 	char hexvalues[] = "0123456789ABCDEF";
@@ -121,7 +121,7 @@ int p_longuphex(va_list arg_list)
  */
 int p_longoct(va_list arg_list)
 {
-	unsigned long int n = va_arg(arg_list, int);
+	unsigned long int n = va_arg(arg_list, unsigned long int);
 	int i, chars_written = 0;
 	char *oct = _calloc(23, sizeof(char));
 
