@@ -47,6 +47,14 @@ int main(void)
     printf("Unsigned long octal:[%lo]\n", uli);
     _printf("Unsigned long hexadecimal:[%lx, %lX]\n", uli, uli);
     printf("Unsigned long hexadecimal:[%lx, %lX]\n", uli, uli);
+	len = _printf("long max: %ld\n", LONG_MAX);
+	len2 = printf("long max: %ld\n", LONG_MAX);
+    _printf("Length:[%d, %i]\n", len, len);
+    printf("Length:[%d, %i]\n", len2, len2);
+	len = _printf("long min: %ld\n", LONG_MIN);
+	len2 = printf("long min: %ld\n", LONG_MIN);
+    _printf("Length:[%d, %i]\n", len, len);
+    printf("Length:[%d, %i]\n", len2, len2);
     _printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
     _printf("String:[%s]\n", "I am a string !");
