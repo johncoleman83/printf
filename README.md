@@ -58,22 +58,23 @@ modifiers with the associated helper functions
   * ``./specifier_Sp.c``: functions to write specifiers: ``S`` (string and hex
   combination), and ``p`` (pointers in hexidecimal).
 
-  #### files that comtain modifier functions
+  #### files that contain modifier functions
   * ``./modifiers_long.c``: contains functions to print long integers in
   signed and unsigned decimal, and unsigned hex and octal.
 
 * ``./helper_funcs.c``: file that contains helper functions
 
   #### functions in helper file:
-  * ``putchar()``: function called ``_putchar()`` to write chars to standard
+  * ``_putchar()``: function called ``_putchar()`` to write chars to standard
   output 1 at a time
   * ``_strlen``: custom function to find string length
+  * ``_strlenconst``: custom function to find string length for type 'const
+  char'.
   * ``rev_string()``: custom reverse string function to reverse a string.  This
   function became obsolete when we realized that we could not write to a
   variable argument list item.
   * ``skip_spaces()``: which is a function to skip trailing spaces after the '%'
-  directive.  This function became obsolete when I realized the holberton
-  algorithm to check our code did not check for such cases.
+  directive.  This function is in development phase.
 
 * ``./holberton.h``: header file that contains all necessary included libraries
 for all functions, the struct prototype and type definition for the struct,
