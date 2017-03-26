@@ -55,6 +55,10 @@ int main(void)
 	len2 = printf("long min: %ld\n", LONG_MIN);
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
+	len = _printf("another test: %hX - %hX = %hX\n", USHRT_MAX, 2048, USHRT_MAX - 2048);
+	len2 = printf("another test: %hX - %hX = %hX\n", USHRT_MAX, 2048, USHRT_MAX - 2048);
+    _printf("Length:[%d, %i]\n", len, len);
+    printf("Length:[%d, %i]\n", len2, len2);
     _printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
     _printf("String:[%s]\n", "I am a string !");
@@ -63,6 +67,12 @@ int main(void)
     len2 = printf("Address:[%p]\n", addr);
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
+	_printf("print '%%' here:");
+    len = _printf("%!\n");
+    _printf("\nLen:[%d]\n", len);
+	printf("print '%%' here:");
+    len2 = printf("%!\n");
+    printf("\nLen:[%d]\n", len2);
 	_printf("print '%%' here:");
     len = _printf("%");
     _printf("\nLen:[%d]\n", len);
