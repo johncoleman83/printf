@@ -21,6 +21,7 @@ int _printf(const char *format, ...);
 void *_calloc(unsigned int nmemb, unsigned int size);
 void rev_string(char *s);
 int _strlen(char *s);
+int _strlenconst(const char *s);
 int _putchar(char c);
 int end_func(va_list arg_list);
 int (*match_specifier(char c))(va_list arg_list);
