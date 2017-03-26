@@ -67,11 +67,11 @@ int main(void)
     len2 = printf("Address:[%p]\n", addr);
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
-	_printf("print '%%' here:");
-    len = _printf("%!\n");
+	_printf("print '%%hnewline' here:");
+    len = _printf("%hy\n");
     _printf("\nLen:[%d]\n", len);
-	printf("print '%%' here:");
-    len2 = printf("%!\n");
+	printf("print '%%hnewline' here:");
+    len2 = printf("%hy\n");
     printf("\nLen:[%d]\n", len2);
 	_printf("print '%%' here:");
     len = _printf("%");
