@@ -78,12 +78,11 @@ int main(void)
     _printf("\nLen:[%d]\n", len);
 	printf("print '%%' here:");
     printf("\nLen:[%d]\n", len2);
-	len = _printf("Unknown:[%r]\n", "hello!");
-    _printf("Length:[%d, %i]\n", len, len);
-	len = _printf("rot13[%R]\n", "Holberton");
-    _printf("Length:[%d, %i]\n", len, len);
-	len = _printf("reversed 1 char[%r]\n", "c");
-    _printf("Length:[%d, %i]\n", len, len);
-    printf("Unknown:[%%r]\n");
+	_printf("*****************\nCUSTOME TO MY _PRINTF\n");
+	len = _printf("Reverse, 'hello!' :[%r]\n", "hello!");
+	len = _printf("rot13 of 'Holberton': [%R]\n", "Holberton");
+	len = _printf("reversed 1 char: [%r]\n", "c");
+    _printf("print percent symbol + 'r' with no args: [%%r]\n");
+	_printf("print percent symbol + 'd' with no args: [%%d]\n");
     return (0);
 }
