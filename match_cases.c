@@ -7,7 +7,7 @@
 int (*match_specifier(char c))(va_list)
 {
 	int i;
-	matches_t specifiers_list[] = {
+	static matches_t specifiers_list[] = {
 		{'c', p_char}, {'s', p_string}, {'%', p_percent},
 		{'d', p_int}, {'i', p_int}, {'b', p_binary}, {'p', p_pointer},
 		{'u', p_uint}, {'o', p_oct}, {'x', p_lowhex}, {'X', p_uphex},
