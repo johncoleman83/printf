@@ -1,10 +1,13 @@
 #ifndef _HOLBERTON_H_
 #define _HOLBERTON_H_
-/* begin include guard for header files */
+
+/* begin standard C header files */
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
 #include <limits.h>
+
+/* structs */
 /**
  * struct matches_struct - printf specifiers and paired function
  * @ch: the specifier
@@ -15,26 +18,31 @@ typedef struct matches_struct
 	char ch;
 	int (*func)(va_list arg_list);
 } matches_t;
+
 /* the one and only */
 int _printf(const char *format, ...);
-/* begin prototypes for helper functions */
+
+/* begin prototypes for support functions */
 void *_calloc(unsigned int nmemb, unsigned int size);
 void rev_string(char *s);
 int _strlen(char *s);
 int _strlenconst(const char *s);
 int _putchar(char c);
+int puts_mod(char *str);
 int end_func(va_list arg_list);
 int (*match_specifier(char c))(va_list arg_list);
 int (*is_modifier(char c1, char c2))(va_list arg_list);
-/* end prototypes for helper functions */
+
 /* begin prototypes for functions that write to stdout */
+
 /* long integers */
 int p_longint(va_list arg_list);
 int p_ulongint(va_list arg_list);
 int p_longoct(va_list arg_list);
 int p_longlowhex(va_list arg_list);
 int p_longuphex(va_list arg_list);
-/* end long ints */
+
+/* print specifier functions */
 int p_char(va_list arg_list);
 int p_string(va_list arg_list);
 int p_string_hex(va_list arg_list);
@@ -49,4 +57,6 @@ int p_lowhex(va_list arg_list);
 int p_uphex(va_list arg_list);
 int p_binary(va_list arg_list);
 /* end prototypes for functions that write to the buffer */
+
+
 #endif /* end include guard for header files */

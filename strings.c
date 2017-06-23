@@ -55,3 +55,18 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
+
+/**
+ * puts_mod - prints string from pointer to string
+ * @str: string to print
+ *
+ * Return: void
+ */
+int puts_mod(char *str)
+{
+	int l = _strlen(str);
+
+	write(STDOUT_FILENO, str, l);
+
+	return (l);
+}

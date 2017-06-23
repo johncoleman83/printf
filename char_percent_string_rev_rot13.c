@@ -30,7 +30,7 @@ int p_string(va_list arg_list)
 
 	if (string == NULL)
 		string = null_string;
-	return (write(1, string, _strlen(string)));
+	return (puts_mod(string));
 }
 /**
  * p_rev_string - writes string to buffer or stdout in reverse
