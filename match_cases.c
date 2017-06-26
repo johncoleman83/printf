@@ -1,10 +1,10 @@
 #include "holberton.h"
 /**
  * match_specifier - matches specifier function for each conversion specifier
- * @c: the specific character specifier from format input string
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: pointer to the helper function or NULL
  */
-int (*match_specifier(char c))(inventory_t *)
+int (*match_specifier(inventory_t *inv))(inventory_t *)
 {
 	int i;
 	static matches_t specifiers_list[] = {
@@ -16,8 +16,12 @@ int (*match_specifier(char c))(inventory_t *)
 	};
 
 	for (i = 0; specifiers_list[i].ch; i++)
-		if (specifiers_list[i].ch == c)
+		if (specifiers_list[i].ch == inv->c1)
+		{
+			inv->i++;
 			return (specifiers_list[i].func);
+		}
+
 	return (NULL);
 }
 /**
@@ -46,12 +50,18 @@ int (*is_modifier(inventory_t *inv))(inventory_t *)
 	case 'l':
 		for (i = 0; modifiers_long[i].ch; i++)
 			if (modifiers_long[i].ch == inv->c2)
+			{
+				inv->i += 2;
 				return (modifiers_long[i].func);
+			}
 		break;
 	case 'h':
 		for (i = 0; modifiers_short[i].ch; i++)
 			if (modifiers_short[i].ch == inv->c2)
+			{
+				inv->i += 2;
 				return (modifiers_short[i].func);
+			}
 		break;
 	default:
 		break;

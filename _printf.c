@@ -38,6 +38,7 @@ int _printf(const char *format, ...)
 	va_start(args_list, format);
 	inv->args = &args_list;
 	inv->fmt = format;
+
 	while (format[inv->i])
 	{
 		if (format[inv->i] != '%')
@@ -47,18 +48,12 @@ int _printf(const char *format, ...)
 			inv->c1 = format[inv->i + 1], inv->c2 = format[inv->i + 2];
 			temp_func = is_modifier(inv);
 			if (temp_func)
-			{
 				inv->buf_index += temp_func(inv);
-				inv->i += 2;
-			}
 			else
 			{
-				temp_func = match_specifier(inv->c1);
+				temp_func = match_specifier(inv);
 				if (temp_func)
-				{
 					inv->buf_index += temp_func(inv);
-					inv->i++;
-				}
 				else if (_strlenconst(format) != 1)
 					inv->buf_index += _putchar('%');
 				else

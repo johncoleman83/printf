@@ -69,7 +69,7 @@ int _putchar(char c);
 int puts_mod(char *str);
 
 /* functions to match input with _printf functionality */
-int (*match_specifier(char c))(inventory_t *inv);
+int (*match_specifier(inventory_t *inv))(inventory_t *inv);
 int (*is_modifier(inventory_t *inv))(inventory_t *inv);
 
 /* handles long integers */
