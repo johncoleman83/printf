@@ -4,7 +4,7 @@
  * build_inventory - builds variables inventory
  * Return: struct of arguments initialized
  */
-inventory_t *build_inventory(void)
+inventory_t *build_inventory(va_list *args_list, const char *format)
 {
 	inventory_t *inv;
 
@@ -12,6 +12,8 @@ inventory_t *build_inventory(void)
 
 	inv->buffer = _calloc(BUFSIZE, sizeof(char));
 	inv->buf_index = 0;
+	inv->args = args_list;
+	inv->fmt = format;
 	inv->i = 0;
 	inv->error = 0;
 
@@ -34,10 +36,8 @@ int _printf(const char *format, ...)
 
 	if (!format)
 		return (-1);
-	inv = build_inventory();
 	va_start(args_list, format);
-	inv->args = &args_list;
-	inv->fmt = format;
+	inv = build_inventory(&args_list, format);
 
 	while (format[inv->i])
 	{

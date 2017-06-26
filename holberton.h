@@ -52,7 +52,7 @@ typedef struct matches_s
 
 /* initializing and ending functions */
 int _printf(const char *format, ...);
-inventory_t *build_inventory(void);
+inventory_t *build_inventory(va_list *args_list, const char *format);
 int end_func(inventory_t *arg_inv);
 
 /* custom memory allocation and buffer */
