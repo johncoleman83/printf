@@ -17,7 +17,7 @@ int main(void)
     len = _printf("Order, my function first.\n");
     len2 = printf("standard printf() second.\n");
     addr = (void *)0x7ffe637541f0;
-    _printf("My Length:OA[%d, %i]\n", len, len);
+    _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
     len = _printf("Negative:[%d]\n", -762534);
     len2 = printf("Negative:[%d]\n", -762534);
@@ -80,7 +80,7 @@ int main(void)
     _printf("\nLen:[%d]\n", len);
 	printf("print '%%' here:");
     printf("\nLen:[%d]\n", len2);
-	_printf("*****************\nCUSTOME TO MY _PRINTF\n");
+	_printf("*****************\nCUSTOM _PRINTF ONLY FUNCTIONALITY\n");
 	len = _printf("Reverse, 'hello!' :[%r]\n", "hello!");
 	len = _printf("rot13 of 'Holberton': [%R]\n", "Holberton");
 	len = _printf("reversed 1 char: [%r]\n", "c");

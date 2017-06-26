@@ -1,12 +1,12 @@
 #include "holberton.h"
 /**
  * p_string_hex - writes string to buffer or stdout ascii
- * @arg_list: input list queued at appropriate string to print
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_string_hex(va_list arg_list)
+int p_string_hex(inventory_t *inv)
 {
-	char *string = va_arg(arg_list, char*);
+	char *string = va_arg(*(inv->args), char*);
 	int c = 0, chars_written = 0;
 	int num;
 	char hexvalues[] = "0123456789ABCDEF", *null_string = "(null)";
@@ -33,13 +33,13 @@ int p_string_hex(va_list arg_list)
 }
 /**
  * p_pointer - writes pointer value (an address) to buffer in hexidecimal
- * @arg_list: input list queued at appropriate string to print
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_pointer(va_list arg_list)
+int p_pointer(inventory_t *inv)
 {
 	int i, chars_written = 0;
-	void *pointer = va_arg(arg_list, void *);
+	void *pointer = va_arg(*(inv->args), void *);
 	unsigned long int pointer_value;
 	char *hex = _calloc(13, sizeof(char)), *null_string = "(nil)";
 	char hexvalues[] = "0123456789abcdef";

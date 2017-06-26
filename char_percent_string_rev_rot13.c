@@ -1,32 +1,32 @@
 #include "holberton.h"
 /**
  * p_char - writes char to buffer or standard output
- * @arg_list: input list queued at appropriate char to write to buffer
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_char(va_list arg_list)
+int p_char(inventory_t *inv)
 {
-	return (_putchar(va_arg(arg_list, int)));
+	return (_putchar(va_arg(*(inv->args), int)));
 }
 /**
  * p_percent - writes a percent symbol to buffer or stdout
- * @arg_list: void, not used due to having printed a '%'
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_percent(va_list arg_list)
+int p_percent(inventory_t *inv)
 {
-	(void)arg_list;
+	(void)inv;
 
 	return (_putchar('%'));
 }
 /**
  * p_string - writes string to buffer or stdout
- * @arg_list: input list queued at appropriate string to print
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_string(va_list arg_list)
+int p_string(inventory_t *inv)
 {
-	char *string = va_arg(arg_list, char *), *null_string = "(null)";
+	char *string = va_arg(*(inv->args), char *), *null_string = "(null)";
 
 	if (string == NULL)
 		string = null_string;
@@ -34,13 +34,13 @@ int p_string(va_list arg_list)
 }
 /**
  * p_rev_string - writes string to buffer or stdout in reverse
- * @arg_list: input list queued at appropriate string to print
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_rev_string(va_list arg_list)
+int p_rev_string(inventory_t *inv)
 {
 	int i = 0, length;
-	char *string = va_arg(arg_list, char *);
+	char *string = va_arg(*(inv->args), char *);
 
 	length = _strlen(string);
 	if (length == 1)
@@ -54,15 +54,15 @@ int p_rev_string(va_list arg_list)
 }
 /**
  * p_rot13 - translates string to ROT13 and writes to stdout buffer
- * @arg_list: input list queued at appropriate string to print
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: string after conversion of ROT13
  */
-int p_rot13(va_list arg_list)
+int p_rot13(inventory_t *inv)
 {
 	int i, j;
 	char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char rot_13[] =   "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-	char *str = va_arg(arg_list, char *);
+	char *str = va_arg(*(inv->args), char *);
 
 	for (i = 0; str[i] != '\0'; i++)
 	{

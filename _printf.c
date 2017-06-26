@@ -1,4 +1,23 @@
 #include "holberton.h"
+
+/**
+ * build_inventory - builds variables inventory
+ * Return: struct of arguments initialized
+ */
+inventory_t *build_inventory(void)
+{
+	inventory_t *inv;
+
+	inv = malloc(sizeof(inventory_t) * 1);
+
+	inv->buffer = _calloc(BUFSIZE, sizeof(char));
+	inv->buf_index = 0;
+	inv->i = 0;
+	inv->error = 0;
+
+	return (inv);
+}
+
 /**
  * _printf - replication of some of the features from C function printf()
  * @format: character string of directives, flags, modifiers, & specifiers
@@ -9,43 +28,47 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0, chars_written = 0;
-	int (*temp_func)(va_list);
-	va_list arg_list;
-	char char1, char2;
+	va_list args_list;
+	inventory_t *inv;
+	int (*temp_func)(inventory_t *);
 
-	va_start(arg_list, format);
 	if (!format)
-		return (end_func(arg_list));
-	while (format[i])
+		return (-1);
+	inv = build_inventory();
+	va_start(args_list, format);
+	inv->args = &args_list;
+	inv->fmt = format;
+	while (format[inv->i])
 	{
-		if (format[i] != '%')
-			chars_written += _putchar(format[i]);
+		if (format[inv->i] != '%')
+			inv->buf_index += _putchar(format[inv->i]);
 		else
 		{
-			char1 = format[i + 1], char2 = format[i + 2];
-			temp_func = is_modifier(char1, char2);
+			inv->c1 = format[inv->i + 1], inv->c2 = format[inv->i + 2];
+			temp_func = is_modifier(inv);
 			if (temp_func)
 			{
-				chars_written += temp_func(arg_list);
-				i += 2;
+				inv->buf_index += temp_func(inv);
+				inv->i += 2;
 			}
 			else
 			{
-				temp_func = match_specifier(char1);
+				temp_func = match_specifier(inv->c1);
 				if (temp_func)
 				{
-					chars_written += temp_func(arg_list);
-					i++;
+					inv->buf_index += temp_func(inv);
+					inv->i++;
 				}
 				else if (_strlenconst(format) != 1)
-					chars_written += _putchar('%');
+					inv->buf_index += _putchar('%');
 				else
-					return (end_func(arg_list));
+				{
+					inv->error = 1;
+					return (end_func(inv));
+				}
 			}
 		}
-		i++;
+		inv->i++;
 	}
-	va_end(arg_list);
-	return (chars_written);
+	return (end_func(inv));
 }

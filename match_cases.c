@@ -4,7 +4,7 @@
  * @c: the specific character specifier from format input string
  * Return: pointer to the helper function or NULL
  */
-int (*match_specifier(char c))(va_list)
+int (*match_specifier(char c))(inventory_t *)
 {
 	int i;
 	static matches_t specifiers_list[] = {
@@ -22,11 +22,10 @@ int (*match_specifier(char c))(va_list)
 }
 /**
  * is_modifier - matches modifier
- * @c1: the specific character specifier from format input string
- * @c2: the next character refering to the type of conversion
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: pointer to the helper function or NULL
  */
-int (*is_modifier(char c1, char c2))(va_list)
+int (*is_modifier(inventory_t *inv))(inventory_t *)
 {
 	int i;
 	static matches_t modifiers_short[] = {
@@ -42,16 +41,16 @@ int (*is_modifier(char c1, char c2))(va_list)
 		{'\0', NULL}
 	};
 
-	switch (c1)
+	switch (inv->c1)
 	{
 	case 'l':
 		for (i = 0; modifiers_long[i].ch; i++)
-			if (modifiers_long[i].ch == c2)
+			if (modifiers_long[i].ch == inv->c2)
 				return (modifiers_long[i].func);
 		break;
 	case 'h':
 		for (i = 0; modifiers_short[i].ch; i++)
-			if (modifiers_short[i].ch == c2)
+			if (modifiers_short[i].ch == inv->c2)
 				return (modifiers_short[i].func);
 		break;
 	default:

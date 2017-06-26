@@ -1,16 +1,16 @@
 #include "holberton.h"
 /**
  * p_longint - writes long integers to buffer
- * @arg_list: input list queued at appropriate integer to write
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of wrote
  */
-int p_longint(va_list arg_list)
+int p_longint(inventory_t *inv)
 {
 	long int n, size, ones, copy;
 	int nth, chars_written;
 
 	chars_written = 0;
-	n = va_arg(arg_list, long int);
+	n = va_arg(*(inv->args), long int);
 	ones = n % 10;
 	size = 1;
 	n /= 10;
@@ -39,12 +39,12 @@ int p_longint(va_list arg_list)
 }
 /**
  * p_ulongint - writes unsigned long integers to buffer or stdout in decimal
- * @arg_list: input list queued at appropriate unsigned long int to write
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of digits wrote
  */
-int p_ulongint(va_list arg_list)
+int p_ulongint(inventory_t *inv)
 {
-	unsigned long int n = va_arg(arg_list, unsigned long int), copy, size;
+	unsigned long int n = va_arg(*(inv->args), unsigned long int), copy, size;
 	int nth, chars_written = 0;
 
 	size = 1;
@@ -68,12 +68,12 @@ int p_ulongint(va_list arg_list)
 }
 /**
  * p_longlowhex - writes unsigned long int in base hexidecimal
- * @arg_list: input list queued at appropriate int to write
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote
  */
-int p_longlowhex(va_list arg_list)
+int p_longlowhex(inventory_t *inv)
 {
-	unsigned long int n = va_arg(arg_list, unsigned long int);
+	unsigned long int n = va_arg(*(inv->args), unsigned long int);
 	int i, chars_written = 0;
 	char *hex = _calloc(17, sizeof(char));
 	char hexvalues[] = "0123456789abcdef";
@@ -92,12 +92,12 @@ int p_longlowhex(va_list arg_list)
 }
 /**
  * p_longuphex - writes unsigned long integer in base hexidecimal upcase
- * @arg_list: input list queued at appropriate int to write
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote
  */
-int p_longuphex(va_list arg_list)
+int p_longuphex(inventory_t *inv)
 {
-	unsigned long int n = va_arg(arg_list, unsigned long int);
+	unsigned long int n = va_arg(*(inv->args), unsigned long int);
 	int i, chars_written = 0;
 	char *hex = _calloc(17, sizeof(char));
 	char hexvalues[] = "0123456789ABCDEF";
@@ -116,12 +116,12 @@ int p_longuphex(va_list arg_list)
 }
 /**
  * p_longoct - writes unsigned long integer to buffer or stdout in base 8
- * @arg_list: input list queued at appropriate int to write
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote
  */
-int p_longoct(va_list arg_list)
+int p_longoct(inventory_t *inv)
 {
-	unsigned long int n = va_arg(arg_list, unsigned long int);
+	unsigned long int n = va_arg(*(inv->args), unsigned long int);
 	int i, chars_written = 0;
 	char *oct = _calloc(23, sizeof(char));
 

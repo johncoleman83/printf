@@ -2,11 +2,22 @@
 
 /**
  * end_func - terminates _printf() in error cases
- * @arg_list: variable arguments list
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: -1 always
  */
-int end_func(va_list arg_list)
+int end_func(inventory_t *inv)
 {
-	va_end(arg_list);
-	return (-1);
+	unsigned int chars_written;
+	int error;
+
+	error = inv->error;
+	chars_written = inv->buf_index;
+	va_end(*(inv->args));
+	free(inv->buffer);
+	free(inv);
+
+	if (error)
+		return (-1);
+	else
+		return (chars_written);
 }

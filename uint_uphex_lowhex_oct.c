@@ -1,12 +1,12 @@
 #include "holberton.h"
 /**
  * p_uint - writes unsigned integers to buffer or stdout in decimal
- * @arg_list: input list queued at appropriate unsigned int to write to buffer
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of wrote to buffer
  */
-int p_uint(va_list arg_list)
+int p_uint(inventory_t *inv)
 {
-	unsigned int n = va_arg(arg_list, int), copy, size;
+	unsigned int n = va_arg(*(inv->args), int), copy, size;
 	int nth, chars_written = 0;
 
 	size = 1;
@@ -30,12 +30,12 @@ int p_uint(va_list arg_list)
 }
 /**
  * p_lowhex - writes unsigned integer to buffer or stdout in base hexidecimal
- * @arg_list: input list queued at appropriate int to write to buffer
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_lowhex(va_list arg_list)
+int p_lowhex(inventory_t *inv)
 {
-	unsigned int n = va_arg(arg_list, int);
+	unsigned int n = va_arg(*(inv->args), int);
 	int i, chars_written = 0;
 	char *hex = _calloc(9, sizeof(char));
 	char hexvalues[] = "0123456789abcdef";
@@ -54,12 +54,12 @@ int p_lowhex(va_list arg_list)
 }
 /**
  * p_uphex - writes unsigned integer to buffer in base hexidecimal upcase
- * @arg_list: input list queued at appropriate int to write to buffer
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_uphex(va_list arg_list)
+int p_uphex(inventory_t *inv)
 {
-	unsigned int n = va_arg(arg_list, int);
+	unsigned int n = va_arg(*(inv->args), int);
 	int i, chars_written = 0;
 	char *hex = _calloc(9, sizeof(char));
 	char hexvalues[] = "0123456789ABCDEF";
@@ -78,12 +78,12 @@ int p_uphex(va_list arg_list)
 }
 /**
  * p_oct - writes unsigned integer to buffer or stdout in base 8: octal
- * @arg_list: input list queued at appropriate int to write to buffer
+ * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_oct(va_list arg_list)
+int p_oct(inventory_t *inv)
 {
-	unsigned int n = va_arg(arg_list, int);
+	unsigned int n = va_arg(*(inv->args), int);
 	int i, chars_written = 0;
 	char *oct = _calloc(12, sizeof(char));
 
