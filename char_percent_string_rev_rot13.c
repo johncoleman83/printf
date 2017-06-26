@@ -4,65 +4,81 @@
  * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_char(inventory_t *inv)
+void p_char(inventory_t *inv)
 {
-	return (_putchar(va_arg(*(inv->args), int)));
+	inv->c0 = va_arg(*(inv->args), int);
+
+	write_buffer(inv);
 }
 /**
  * p_percent - writes a percent symbol to buffer or stdout
  * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_percent(inventory_t *inv)
+void p_percent(inventory_t *inv)
 {
-	(void)inv;
+	inv->c0 = '%';
 
-	return (_putchar('%'));
+	write_buffer(inv);
 }
 /**
  * p_string - writes string to buffer or stdout
  * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_string(inventory_t *inv)
+void p_string(inventory_t *inv)
 {
-	char *string = va_arg(*(inv->args), char *), *null_string = "(null)";
+	char *string = va_arg(*(inv->args), char *);
+	char *null_string = "(null)";
 
 	if (string == NULL)
 		string = null_string;
-	return (puts_mod(string));
+
+	puts_buffer(inv, string);
 }
 /**
  * p_rev_string - writes string to buffer or stdout in reverse
  * @inv: the arguments inventory with most commonly used arguments
  * Return: number of chars wrote to buffer
  */
-int p_rev_string(inventory_t *inv)
+void p_rev_string(inventory_t *inv)
 {
-	int i = 0, length;
-	char *string = va_arg(*(inv->args), char *);
+	int i = 0, j, length;
+	char *string, *copy;
+
+	string = va_arg(*(inv->args), char *);
 
 	length = _strlen(string);
 	if (length == 1)
 	{
-		_putchar(string[0]);
-		return (1);
+		inv->c0 = string[0];
+		write_buffer(inv);
 	}
-	for (i = length - 1; i >= 0; i--)
-		_putchar(string[i]);
-	return (length);
+	else
+	{
+		copy = _calloc(length + 1, sizeof(char));
+		for (i = length - 1, j = 0; i >= 0; i--, j++)
+			copy[j] = string[i];
+
+		puts_buffer(inv, copy);
+		free(copy);
+	}
 }
 /**
  * p_rot13 - translates string to ROT13 and writes to stdout buffer
  * @inv: the arguments inventory with most commonly used arguments
  * Return: string after conversion of ROT13
  */
-int p_rot13(inventory_t *inv)
+void p_rot13(inventory_t *inv)
 {
-	int i, j;
-	char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	char rot_13[] =   "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-	char *str = va_arg(*(inv->args), char *);
+	int i, j, l;
+	char *alphabet, *rot_13, *str, *copy;
+
+	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	rot_13 =   "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	str = va_arg(*(inv->args), char *);
+	l = _strlen(str);
+	copy = _calloc(l + 1, sizeof(char));
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
@@ -70,12 +86,13 @@ int p_rot13(inventory_t *inv)
 		{
 			if (str[i] == alphabet[j])
 			{
-				_putchar(rot_13[j]);
+				copy[i] = rot_13[j];
 				break;
 			}
 		}
 		if (j == 52)
-			_putchar(str[i]);
+			copy[i] = str[i];
 	}
-	return (i);
+
+	puts_buffer(inv, copy);
 }

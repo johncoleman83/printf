@@ -7,22 +7,33 @@
  */
 int main(void)
 {
-    int len;
-    int len2;
+    int len, len2, i;
 	unsigned int ui = UINT_MAX;
 	unsigned long int uli = ULONG_MAX;
 	unsigned short int usi = USHRT_MAX;
     void *addr;
+	char *superlong;
+
+    addr = (void *)0x7ffe637541f0;
+	superlong = malloc(sizeof(char) * 4096);
+	while (i < 4096)
+		superlong[i++] = 's';
 
     len = _printf("Order, my function first.\n");
     len2 = printf("standard printf() second.\n");
-    addr = (void *)0x7ffe637541f0;
     _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
+
+	len = _printf("SuperLong: %s\n", superlong);
+	len2 = printf("SuperLong: %s\n", superlong);
+    _printf("My Length:[%d, %i]\n", len, len);
+    printf("Length:[%d, %i]\n", len2, len2);
+
     len = _printf("Negative:[%d]\n", -762534);
     len2 = printf("Negative:[%d]\n", -762534);
     _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
+
 	printf("NULL check: ");
     _printf(NULL);
 	putchar('\n');
@@ -30,46 +41,57 @@ int main(void)
     printf("Unsigned:[%u]\n", ui);
     _printf("Unsigned octal:[%o]\n", ui);
     printf("Unsigned octal:[%o]\n", ui);
+
     len = _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
     len2 = printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
     _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
+
     _printf("Unsigned Short:[%hu]\n", usi);
     printf("Unsigned Short:[%hu]\n", usi);
     _printf("Unsigned octal Short:[%ho]\n", usi);
     printf("Unsigned octal Short:[%ho]\n", usi);
-    len = _printf("Unsigned hexadecimal Short:[%hx, %hX]\n", usi, usi);
+
+	len = _printf("Unsigned hexadecimal Short:[%hx, %hX]\n", usi, usi);
     len2 = printf("Unsigned hexadecimal Short:[%hx, %hX]\n", usi, usi);
     _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
-    _printf("Unsigned long:[%lu]\n", uli);
+
+	_printf("Unsigned long:[%lu]\n", uli);
     printf("Unsigned long:[%lu]\n", uli);
     _printf("Unsigned long octal:[%lo]\n", uli);
     printf("Unsigned long octal:[%lo]\n", uli);
     _printf("Unsigned long hexadecimal:[%lx, %lX]\n", uli, uli);
     printf("Unsigned long hexadecimal:[%lx, %lX]\n", uli, uli);
+
 	len = _printf("long max: %ld\n", LONG_MAX);
 	len2 = printf("long max: %ld\n", LONG_MAX);
     _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
+
 	len = _printf("long min: %ld\n", LONG_MIN);
 	len2 = printf("long min: %ld\n", LONG_MIN);
     _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
+
 	len = _printf("another test: %hX - %hX = %hX\n", USHRT_MAX, 2048, USHRT_MAX - 2048);
 	len2 = printf("another test: %hX - %hX = %hX\n", USHRT_MAX, 2048, USHRT_MAX - 2048);
     _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
-    _printf("Character:[%c]\n", 'H');
+
+	_printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
-    len = _printf("String:[%s]\n", "Upward Not Northward !");
+
+	len = _printf("String:[%s]\n", "Upward Not Northward !");
     len2 = printf("String:[%s]\n", "Upward Not Northward !");
     _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
-    len = _printf("Address:[%p]\n", addr);
+
+	len = _printf("Address:[%p]\n", addr);
     len2 = printf("Address:[%p]\n", addr);
     _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
+
 	_printf("print '%%hnewline' here:");
     len = _printf("%hy\n");
     _printf("\nLen:[%d]\n", len);
@@ -80,7 +102,8 @@ int main(void)
     _printf("\nLen:[%d]\n", len);
 	printf("print '%%' here:");
     printf("\nLen:[%d]\n", len2);
-	_printf("*****************\nCUSTOME TO MY _PRINTF\n");
+
+	_printf("*****************\nCUSTOM _PRINTF FUNCTIONALITY\n");
 	len = _printf("Reverse, 'hello!' :[%r]\n", "hello!");
 	len = _printf("rot13 of 'Holberton': [%R]\n", "Holberton");
 	len = _printf("reversed 1 char: [%r]\n", "c");

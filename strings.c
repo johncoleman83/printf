@@ -57,16 +57,14 @@ int _putchar(char c)
 }
 
 /**
- * puts_mod - prints string from pointer to string
- * @str: string to print
- *
- * Return: void
+ * puts_mod - prints input buffer
+ * @str: buffer to print
  */
-int puts_mod(char *str)
+void puts_mod(char *str)
 {
-	int l = _strlen(str);
+	unsigned int l = 0;
+
+	l = _strlen(str);
 
 	write(STDOUT_FILENO, str, l);
-
-	return (l);
 }

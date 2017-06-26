@@ -2,62 +2,74 @@
 /**
  * p_string_hex - writes string to buffer or stdout ascii
  * @inv: the arguments inventory with most commonly used arguments
- * Return: number of chars wrote to buffer
  */
-int p_string_hex(inventory_t *inv)
+void p_string_hex(inventory_t *inv)
 {
-	char *string = va_arg(*(inv->args), char*);
-	int c = 0, chars_written = 0;
-	int num;
-	char hexvalues[] = "0123456789ABCDEF", *null_string = "(null)";
+	char *string, *temp, *hexvalues, *null_string;
+	int c = 0, num;
+
+	hexvalues = "0123456789ABCDEF";
+	null_string = "(null)";
+	string = va_arg(*(inv->args), char*);
 
 	if (!string)
-		string = null_string;
-	while (string[c] != '\0')
 	{
-		num = string[c];
-		if (num > 31 && num < 127)
-			_putchar(num);
-		else
-		{
-			_putchar(92);
-			_putchar('x');
-			_putchar(hexvalues[(num / 16) % 16]);
-			_putchar(hexvalues[num % 16]);
-			chars_written += 3;
-		}
-		chars_written++;
-		c++;
+		string = null_string;
+		puts_buffer(inv, null_string);
 	}
-	return (chars_written);
+	else
+	{
+		temp = _calloc(5, sizeof(char));
+		temp[0] = 92;
+		temp[1] = 'x';
+		while (string[c] != '\0')
+		{
+			num = string[c];
+			if (num > 31 && num < 127)
+			{
+				inv->c0 = num;
+				write_buffer(inv);
+			}
+			else
+			{
+				temp[2] = hexvalues[(num / 16) % 16];
+				temp[3] = hexvalues[num % 16];
+				puts_buffer(inv, temp);
+			}
+			c++;
+		}
+		free(temp);
+	}
 }
 /**
  * p_pointer - writes pointer value (an address) to buffer in hexidecimal
  * @inv: the arguments inventory with most commonly used arguments
- * Return: number of chars wrote to buffer
  */
-int p_pointer(inventory_t *inv)
+void p_pointer(inventory_t *inv)
 {
-	int i, chars_written = 0;
-	void *pointer = va_arg(*(inv->args), void *);
+	int i, j;
 	unsigned long int pointer_value;
-	char *hex = _calloc(13, sizeof(char)), *null_string = "(nil)";
-	char hexvalues[] = "0123456789abcdef";
+	char *hex, *null_string, *hexvalues, *copy;
+	void *pointer;
+
+	pointer = va_arg(*(inv->args), void *);
+	hexvalues = "0123456789abcdef";
+	null_string = "(nil)";
 
 	if (!pointer)
+		puts_buffer(inv, null_string);
+	else
 	{
-		for (i = 0; null_string[i] != '\0'; i++)
-			_putchar(null_string[i]);
-		return (i);
+		hex = _calloc(13, sizeof(char));
+		puts_buffer(inv, "0x");
+		pointer_value = (unsigned long int)pointer;
+		for (i = 0; pointer_value; i++, pointer_value /= 16)
+			hex[i] = hexvalues[pointer_value % 16];
+		copy = _calloc(i + 1, sizeof(char));
+		for (j = 0, i--; i >= 0; j++, i--)
+			copy[j] = hex[i];
+		puts_buffer(inv, copy);
+		free(copy);
+		free(hex);
 	}
-	_putchar('0');
-	_putchar('x');
-	chars_written += 2;
-	pointer_value = (unsigned long int)pointer;
-	for (i = 0; pointer_value; i++, pointer_value /= 16)
-		hex[i] = hexvalues[pointer_value % 16];
-	for (i--; i >= 0; i--, chars_written++)
-		_putchar(hex[i]);
-	free(hex);
-	return (chars_written);
 }

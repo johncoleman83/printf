@@ -2,14 +2,12 @@
 /**
  * p_longint - writes long integers to buffer
  * @inv: the arguments inventory with most commonly used arguments
- * Return: number of wrote
  */
-int p_longint(inventory_t *inv)
+void p_longint(inventory_t *inv)
 {
 	long int n, size, ones, copy;
-	int nth, chars_written;
+	int nth;
 
-	chars_written = 0;
 	n = va_arg(*(inv->args), long int);
 	ones = n % 10;
 	size = 1;
@@ -18,8 +16,8 @@ int p_longint(inventory_t *inv)
 	if (ones < 0)
 	{
 		ones *= -1, copy *= -1, n *= -1;
-		_putchar('-');
-		chars_written++;
+		inv->c0 = '-';
+		write_buffer(inv);
 	}
 	if (copy > 0)
 	{
@@ -28,112 +26,122 @@ int p_longint(inventory_t *inv)
 		while (size > 0)
 		{
 			nth = n / size;
-			_putchar('0' + nth);
+			inv->c0 = ('0' + nth);
+			write_buffer(inv);
 			n -= nth * size;
 			size /= 10;
-			chars_written++;
 		}
 	}
-	_putchar('0' + ones);
-	return (++chars_written);
+	inv->c0 = ('0' + ones);
+	write_buffer(inv);
 }
 /**
  * p_ulongint - writes unsigned long integers to buffer or stdout in decimal
  * @inv: the arguments inventory with most commonly used arguments
- * Return: number of digits wrote
  */
-int p_ulongint(inventory_t *inv)
+void p_ulongint(inventory_t *inv)
 {
-	unsigned long int n = va_arg(*(inv->args), unsigned long int), copy, size;
-	int nth, chars_written = 0;
+	unsigned long int n, copy, size;
+	int nth;
 
+	n = va_arg(*(inv->args), unsigned long int);
 	size = 1;
 	copy = n;
 	if (n < 10)
 	{
-		_putchar('0' + n);
-		return (1);
+		inv->c0 = ('0' + n);
+		write_buffer(inv);
 	}
-	while (copy / 10 != 0)
-		copy /= 10, size *= 10;
-	while (size > 0)
+	else
 	{
-		nth = n / size;
-		_putchar('0' + nth);
-		n -= nth * size;
-		size /= 10;
-		chars_written++;
+		while (copy / 10 != 0)
+			copy /= 10, size *= 10;
+		while (size > 0)
+		{
+			nth = n / size;
+			inv->c0 = ('0' + nth);
+			write_buffer(inv);
+			n -= nth * size;
+			size /= 10;
+		}
 	}
-	return (chars_written);
 }
 /**
  * p_longlowhex - writes unsigned long int in base hexidecimal
  * @inv: the arguments inventory with most commonly used arguments
- * Return: number of chars wrote
  */
-int p_longlowhex(inventory_t *inv)
+void p_longlowhex(inventory_t *inv)
 {
-	unsigned long int n = va_arg(*(inv->args), unsigned long int);
-	int i, chars_written = 0;
-	char *hex = _calloc(17, sizeof(char));
-	char hexvalues[] = "0123456789abcdef";
+	unsigned long int n;
+	int i;
+	char *hex, *hexvalues;
+
+	n = va_arg(*(inv->args), unsigned long int);
+	hexvalues = "0123456789abcdef";
 
 	if (!n)
 	{
-		_putchar('0');
-		return (1);
+		inv->c0 = '0';
+		write_buffer(inv);
 	}
-	for (i = 0; n; i++, n /= 16)
-		hex[i] = hexvalues[n % 16];
-	for (i--; i >= 0; i--, chars_written++)
-		_putchar(hex[i]);
-	free(hex);
-	return (chars_written);
+	else
+	{
+		hex = _calloc(17, sizeof(char));
+		for (i = 0; n; i++, n /= 16)
+			hex[i] = hexvalues[n % 16];
+		puts_buffer(inv, hex);
+		free(hex);
+	}
 }
 /**
  * p_longuphex - writes unsigned long integer in base hexidecimal upcase
  * @inv: the arguments inventory with most commonly used arguments
- * Return: number of chars wrote
  */
-int p_longuphex(inventory_t *inv)
+void p_longuphex(inventory_t *inv)
 {
-	unsigned long int n = va_arg(*(inv->args), unsigned long int);
-	int i, chars_written = 0;
-	char *hex = _calloc(17, sizeof(char));
-	char hexvalues[] = "0123456789ABCDEF";
+	unsigned long int n;
+	int i;
+	char *hex, *hexvalues;
+
+	n = va_arg(*(inv->args), unsigned long int);
+	hexvalues = "0123456789ABCDEF";
 
 	if (!n)
 	{
-		_putchar('0');
-		return (1);
+		inv->c0 = '0';
+		write_buffer(inv);
 	}
-	for (i = 0; n; i++, n /= 16)
-		hex[i] = hexvalues[n % 16];
-	for (i--; i >= 0; i--, chars_written++)
-		_putchar(hex[i]);
-	free(hex);
-	return (chars_written);
+	else
+	{
+		hex = _calloc(17, sizeof(char));
+		for (i = 0; n; i++, n /= 16)
+			hex[i] = hexvalues[n % 16];
+		puts_buffer(inv, hex);
+		free(hex);
+	}
 }
 /**
  * p_longoct - writes unsigned long integer to buffer or stdout in base 8
  * @inv: the arguments inventory with most commonly used arguments
- * Return: number of chars wrote
  */
-int p_longoct(inventory_t *inv)
+void p_longoct(inventory_t *inv)
 {
-	unsigned long int n = va_arg(*(inv->args), unsigned long int);
-	int i, chars_written = 0;
-	char *oct = _calloc(23, sizeof(char));
+	unsigned long int n;
+	int i;
+	char *oct;
 
+	n = va_arg(*(inv->args), unsigned long int);
 	if (!n)
 	{
-		_putchar('0');
-		return (1);
+		inv->c0 = '0';
+		write_buffer(inv);
 	}
-	for (i = 0; n; i++, n /= 8)
-		oct[i] = (n % 8 + '0');
-	for (i--; i >= 0; i--, chars_written++)
-		_putchar(oct[i]);
-	free(oct);
-	return (chars_written);
+	else
+	{
+		oct = _calloc(23, sizeof(char));
+		for (i = 0; n; i++, n /= 8)
+			oct[i] = (n % 8 + '0');
+		puts_buffer(inv, oct);
+		free(oct);
+	}
 }

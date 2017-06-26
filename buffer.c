@@ -26,36 +26,36 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 /**
  * _realloc - reallocates a memory block using malloc and free
  * @ptr: pointer to reallocate memory
- * @old_size: size in bytes of allocated memory
- * @new_size: newsize of memory block in bytes
+ * @old: size in bytes of allocated memory
+ * @new: newsize of memory block in bytes
  *
  * Return: void pointer to new allocation of memory
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *_realloc(void *ptr, unsigned int old, unsigned int new)
 {
 	char *p;
 	unsigned int i;
 
 	if (ptr == NULL)
 	{
-		p = _calloc(new_size, sizeof(char));
+		p = _calloc(new, sizeof(char));
 		return (p);
 	}
 
-	if (new_size == 0)
+	if (new == 0)
 	{
 		free(ptr);
 		return (NULL);
 	}
 
-	if (old_size == new_size)
+	if (old == new)
 		return (ptr);
 
-	p = _calloc(new_size, sizeof(char));
+	p = _calloc(new, sizeof(char));
 	if (p == NULL)
 		return (NULL);
 
-	for (i = 0; i < old_size && i < new_size; i++)
+	for (i = 0; i < old && i < new; i++)
 		p[i] = ((char *)ptr)[i];
 
 	free(ptr);
@@ -69,20 +69,32 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  */
 void write_buffer(inventory_t *inv)
 {
+	unsigned int old, new;
+
 	inv->buffer[inv->buf_index++] = inv->c0;
 
 	if (inv->buf_index % BUFSIZE == 0)
-		_realloc(inv->buffer, inv->buf_index, inv->buf_index + BUFSIZE);
+	{
+		old = inv->buf_index;
+		new = inv->buf_index + BUFSIZE;
+		inv->buffer = _realloc(inv->buffer, old, new);
+	}
 }
 
 /**
- * print_buffer - prints input buffer
- * @buffer: buffer to print
+ * puts_buffer - puts string to buffer without newline
+ * @inv: the arguments inventory with most commonly used arguments
+ * @str: string to print
  */
-void print_buffer(char *buffer)
+void puts_buffer(inventory_t *inv, char *str)
 {
-	int i = 0;
+	int i, l;
 
-	while (buffer[i] != '\0')
-		_putchar(buffer[i++]);
+	l = _strlen(str);
+
+	for (i = 0; i < l; i++)
+	{
+		inv->c0 = str[i];
+		write_buffer(inv);
+	}
 }

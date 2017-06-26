@@ -4,7 +4,7 @@
  * @inv: the arguments inventory with most commonly used arguments
  * Return: pointer to the helper function or NULL
  */
-int (*match_specifier(inventory_t *inv))(inventory_t *)
+void (*match_specifier(inventory_t *inv))(inventory_t *)
 {
 	int i;
 	static matches_t specifiers_list[] = {
@@ -29,7 +29,7 @@ int (*match_specifier(inventory_t *inv))(inventory_t *)
  * @inv: the arguments inventory with most commonly used arguments
  * Return: pointer to the helper function or NULL
  */
-int (*is_modifier(inventory_t *inv))(inventory_t *)
+void (*is_modifier(inventory_t *inv))(inventory_t *)
 {
 	int i;
 	static matches_t modifiers_short[] = {

@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 {
 	va_list args_list;
 	inventory_t *inv;
-	int (*temp_func)(inventory_t *);
+	void (*temp_func)(inventory_t *);
 
 	if (!format)
 		return (-1);
@@ -41,21 +41,22 @@ int _printf(const char *format, ...)
 
 	while (format[inv->i])
 	{
-		if (format[inv->i] != '%')
-			inv->buf_index += _putchar(format[inv->i]);
+		inv->c0 = format[inv->i];
+		if (inv->c0 != '%')
+			write_buffer(inv);
 		else
 		{
 			inv->c1 = format[inv->i + 1], inv->c2 = format[inv->i + 2];
 			temp_func = is_modifier(inv);
 			if (temp_func)
-				inv->buf_index += temp_func(inv);
+				temp_func(inv);
 			else
 			{
 				temp_func = match_specifier(inv);
 				if (temp_func)
-					inv->buf_index += temp_func(inv);
-				else if (_strlenconst(format) != 1)
-					inv->buf_index += _putchar('%');
+					temp_func(inv);
+				else if (inv->c2)
+					write_buffer(inv);
 				else
 				{
 					inv->error = 1;
@@ -65,5 +66,6 @@ int _printf(const char *format, ...)
 		}
 		inv->i++;
 	}
+	puts_mod(inv->buffer);
 	return (end_func(inv));
 }

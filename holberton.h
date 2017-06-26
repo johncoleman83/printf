@@ -47,7 +47,7 @@ typedef struct inventory_s
 typedef struct matches_s
 {
 	char ch;
-	int (*func)(inventory_t *inv);
+	void (*func)(inventory_t *inv);
 } matches_t;
 
 /* initializing and ending functions */
@@ -59,39 +59,39 @@ int end_func(inventory_t *arg_inv);
 void *_calloc(unsigned int nmemb, unsigned int size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void write_buffer(inventory_t *inv);
-void print_buffer(char *buffer);
+void puts_buffer(inventory_t *inv, char *str);
 
 /* string functions */
 void rev_string(char *s);
 int _strlen(char *s);
 int _strlenconst(const char *s);
 int _putchar(char c);
-int puts_mod(char *str);
+void puts_mod(char *str);
 
 /* functions to match input with _printf functionality */
-int (*match_specifier(inventory_t *inv))(inventory_t *inv);
-int (*is_modifier(inventory_t *inv))(inventory_t *inv);
+void (*match_specifier(inventory_t *inv))(inventory_t *inv);
+void (*is_modifier(inventory_t *inv))(inventory_t *inv);
 
 /* handles long integers */
-int p_longint(inventory_t *inv);
-int p_ulongint(inventory_t *inv);
-int p_longoct(inventory_t *inv);
-int p_longlowhex(inventory_t *inv);
-int p_longuphex(inventory_t *inv);
+void p_longint(inventory_t *inv);
+void p_ulongint(inventory_t *inv);
+void p_longoct(inventory_t *inv);
+void p_longlowhex(inventory_t *inv);
+void p_longuphex(inventory_t *inv);
 
 /* handles specifier functions */
-int p_char(inventory_t *inv);
-int p_string(inventory_t *inv);
-int p_string_hex(inventory_t *inv);
-int p_pointer(inventory_t *inv);
-int p_rev_string(inventory_t *inv);
-int p_rot13(inventory_t *inv);
-int p_percent(inventory_t *inv);
-int p_int(inventory_t *inv);
-int p_uint(inventory_t *inv);
-int p_oct(inventory_t *inv);
-int p_lowhex(inventory_t *inv);
-int p_uphex(inventory_t *inv);
-int p_binary(inventory_t *inv);
+void p_char(inventory_t *inv);
+void p_string(inventory_t *inv);
+void p_string_hex(inventory_t *inv);
+void p_pointer(inventory_t *inv);
+void p_rev_string(inventory_t *inv);
+void p_rot13(inventory_t *inv);
+void p_percent(inventory_t *inv);
+void p_int(inventory_t *inv);
+void p_uint(inventory_t *inv);
+void p_oct(inventory_t *inv);
+void p_lowhex(inventory_t *inv);
+void p_uphex(inventory_t *inv);
+void p_binary(inventory_t *inv);
 
 #endif /* end include guard for header files */
