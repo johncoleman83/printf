@@ -25,10 +25,8 @@ int main(void)
 
 
 	_printf("************ Testing Standard Functionality ***************\n");
-    len = _printf("________Order_______\nmy _printf() first.\n");
-    len2 = printf("standard printf() second.\n");
-    _printf("My Length: [%d, %i]\n", len, len);
-    printf("Length: [%d, %i]\n", len2, len2);
+    _printf("________Order_______\nmy _printf() first.\n");
+    printf("standard printf() second.\n");
 	_printf("compile with following command\ngcc -Wall -Werror -Wextra -pedantic -w *.c\n");
 
 	len = _printf("\n\nSuperLong: %s\n", superlong);

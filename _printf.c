@@ -48,8 +48,9 @@ int _printf(const char *format, ...)
 			write_buffer(inv);
 		else
 		{
-			inv->c1 = format[inv->i + 1], inv->c2 = format[inv->i + 2];
-			temp_func = is_modifier(inv);
+			inv->c1 = format[inv->i + 1];
+			inv->c2 = inv->c1 ? format[inv->i + 2] : '\0';
+			temp_func = inv->c2 ? is_modifier(inv) : NULL;
 			if (temp_func)
 				temp_func(inv);
 			else
@@ -68,6 +69,5 @@ int _printf(const char *format, ...)
 		}
 		inv->i++;
 	}
-	puts_mod(inv->buffer);
 	return (end_func(inv));
 }
