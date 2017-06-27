@@ -2,6 +2,8 @@
 
 /**
  * build_inventory - builds variables inventory
+ * @args_list: variadic arguments list
+ * @format: format input string
  * Return: struct of arguments initialized
  */
 inventory_t *build_inventory(va_list *args_list, const char *format)
