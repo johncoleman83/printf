@@ -4,82 +4,149 @@
 .TH _PRINTF 3 "17 March 2017" "0.1" "Holberton Students _printf Manuel"
 
 .SH NAME
+.SH ""
 
 .B _printf
 - our version of printf.
 
 .SH SYNOPSIS
+.SH ""
 
-.B	#include "holberton.h"
+_printf() function takes 2 arguments: a character pointer to a string: format, \
+and a 'variable arguments list': arg_list. _printf() loops through the format \
+string searching for a conversion specifier, which is indicated with the '%' \
+symbol. If found, the match_specifier() function loops through an array of \
+structs (contianing character and function pairs) to find the specifier \
+function that is matched with the given conversion specifier from the format \
+string, and then returns a pointer to that paired function. _printf() uses the \
+pointer to that specifier function to call the specifier function on the next \
+queued argument from the arg_list. Each specifier function writes a character \
+one at a time as determined from the value in arg_list. In the buffer branch \
+and in the 'release: v0.1', our code writes the characters from the format \
+string and the associated specifiers to the buffer, and in the 'no-buffer' \
+branch, our code is instead written to standard output one at a time.
 
-	int _printf(const char *format, ...);
+.SS Compile
+
+.P
+.RS
+#include "holberton.h"
+
+$ gcc -Wall -Werror -Wextra -pedantic *.c
+.RE
+
+.SS Usage
+.RS
+
+int _printf(const char *[FORMAT], ...);
+
+FORMAT refers to a string with any number of specifiers followed by a '%' \
+symbol. i.e. "My name is %s and I am %d years old". '...' refers to a list \
+of variadic (variable arguments in C Language), which can be any number of \
+variables of any type. With the above example string, appropriate arguments \
+could be "Edwin Abbott Abbott", 179. These examples together should be called \
+as in the following example:
+
+.SS Example
+.RS
+
+_printf("My name is %s and I am %d years old", "Edwin Abbott Abbott", 179)
+.RE
 
 .SH DESCRIPTION
-	The function _printf() writes output to standard output. It writes the\
- output under the control of a format string that specifies how subsequent\
- arguments are converted for output.
+.SH ""
+
+The function _printf() writes output to standard output. It writes the output \
+under the control of a format string that specifies how subsequent arguments \
+are converted for output.
 
 .SS Return Value
-	Upon successful return, these functions return the number of characters\
- printed, which exclude the terminating null byte ('\0').
-.SH THE FLAG CHARACTERS
 
-.B  The flag characters are currently in development phase.
+Upon successful return, these functions return the number of characters \
+printed, which exclude the terminating null byte ('\0').
+
+.SH THE FLAG CHARACTERS
+.SH ""
+
+Flag characters are currently in development phase.
 
 .SH THE LENGTH MODIFIERS
+.SH ""
 
-.B  The length modifiers are currently in development phase.
+Length modifiers are currently in development phase.
 
 .SH THE CONVERSION SPECIFIERS
+.SH ""
 
-.SS c
-	The int argument converts to an unsigned char, and the resulting charac\
-ter is written.
-.P
-.SS s
-	The argument shall be a literal string. No special provisions are made\
- for multibyte characters.The behavior of printf with the s conversion\
- specifier is undefined if the argument value is not a pointer to a literal\
- string. Characters from the literal string array are written up to, but not\
- including, the terminating null byte ('\0').
-.P
-.SS %
-	A % character is written and no argument is converted. The complete con\
-version specification is '%%'.
-.P
-.SS b
-	The unsigned int argument is converted to binary.
-.P
-.SS d, i
-	The int argument is converted to signed decimal notation.
-.P
-.SS p
-	The pointer is printed in hexidecimal format preceded by '0x'.
-.P
-.SS r, R
-	'r' prints string in reverse. 'R' prints encrypted rot13.
+.RS
+Current arguments handled by conversion specifiers:
+
+.IT
+.B c
+- The integer or char argument converts to an unsigned char, and the resulting \
+character is written.
+
+.IT
+.B s
+- The argument shall be a literal string. No special provisions are made for \
+multibyte characters.The behavior of printf with the s conversion specifier \
+is undefined if the argument value is not a pointer to a literal string. \
+Characters from the literal string array are written up to, but not including, \
+the terminating null byte ('\0').
+
+.IT
+.B %
+- A % character is written and no argument is converted. The complete \
+conversion specification is '%%'.
+
+.IT
+.B b
+- The unsigned int argument is converted to binary.
+
+.IT
+.B d, i
+- The int argument is converted to signed decimal notation.
+
+.IT
+.B p
+- The pointer is printed in hexidecimal format preceded by '0x'.
+
+.IT
+.B r, R
+- 'r' prints string in reverse. 'R' prints encrypted rot13.
+
+.IT
+
+.B o, u, x, X
+- The unsigned int argument is converted to unsigned octal (o), unsigned \
+decimal (u), or unsigned hexidecimal notation (x or X); the letters abcdef are \
+used for x conversion and the letters ABCDEF for X conversion.
+
+.IT
+.B S
+- Prints ascii characters #32 - #127 as they appear in the argument string. \
+All other ascii characters are converted to hexidecimal, then written to \
+standard output.
+
+.RE
+
 .P
 
-.SS o, u, x, X
-	The unsigned int argument is converted to unsigned octal (o), unsigned\
- decimal (u), or unsigned hexidecimal notation (x or X); the letters abcdef are\
- used for x conversion and the letters ABCDEF for X conversion.
+.SH "SEE ALSO"
+.SH ""
+
+.BR printf(1),
+.BR asprintf(3),
+.BR dprintf(3),
+.BR scanf(3),
+.BR setlocale(3),
+.BR wcrtomb(3),
+.BR wprintf(3),
+.BR locale(5)
+
 .P
 
-.SS S
-	Prints ascii characters #32 - #127 as they appear in the argument\
- string. All other ascii characters are converted to hexidecimal, then written
- to standard output.
-.P
+.SH "AUTHOR"
+.SH ""
 
-.SH SEE ALSO
-.I printf(1), asprintf(3), dprintf(3), scanf(3), setlocale(3), wcrtomb(3),\
- wprintf(3), locale(5)
-.P
-
-.SH BUGS
-Unknown bugs exist for unknown cases of either 'c', 's', or % specifiers\
-Additionally, 'p' specifier has unknown bugs.  The 'r' and 'R' specifiers also\
-have unknown bugs.  Precision and flags have not been accounted for.\
-.SH AUTHOR
 David John Coleman II and Joann Vuong

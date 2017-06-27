@@ -40,15 +40,15 @@ The directory contents should be compiled with the following command:
 $ gcc -Wall -Werror -Wextra -pedantic *.c
 ```
 
-`_printf()` function may be used, in any C language program.  This is an example
-usage:
+`_printf()` function may be used, in any C language program.  This is the
+prototype:
 
 ```
-_printf([FORMAT], [ARGUMENT]...)
+_printf(const char *[FORMAT], ...)
 ```
 
 __FORMAT__ refers to a string with any number of specifiers followed by a '`%`'
-symbol.  i.e. `"My name is %s and I am %d years old"`.  __ARGUMENT__ refers to a
+symbol.  i.e. `"My name is %s and I am %d years old"`.  __...__ refers to a
 list of variadic (variable arguments in C Language), which can be any number of
 variables of any type.  With the above example string, appropriate arguments
 could be `"Edwin Abbott Abbott", 179`.  These examples together should be called
