@@ -6,6 +6,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <limits.h>
+#include <stdio.h>
 
 /* macros */
 
@@ -29,10 +30,10 @@
 typedef struct inventory_s
 {
 	const char *fmt;
-	unsigned int i;
+	int i;
 	va_list *args;
 	char *buffer;
-	unsigned int buf_index;
+	int buf_index;
 	char c0;
 	char c1;
 	char c2;

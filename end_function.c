@@ -7,17 +7,21 @@
  */
 int end_func(inventory_t *inv)
 {
-	unsigned int chars_written;
-	int error;
+	int return_value;
 
-	error = inv->error;
-	chars_written = inv->buf_index;
 	va_end(*(inv->args));
+
+	if (inv->error)
+	{
+		if (inv->i)
+			puts_mod(inv->buffer);
+		return_value = -1;
+	}
+	else
+		return_value = inv->buf_index;
+
 	free(inv->buffer);
 	free(inv);
 
-	if (error)
-		return (-1);
-	else
-		return (chars_written);
+	return (return_value);
 }

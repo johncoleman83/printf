@@ -1,5 +1,5 @@
 #include "holberton.h"
-#include <stdio.h>
+
 /**
  * main - Entry point
  *
@@ -7,111 +7,150 @@
  */
 int main(void)
 {
-    int len, len2, i;
-	unsigned int ui = UINT_MAX;
-	unsigned long int uli = ULONG_MAX;
-	unsigned short int usi = USHRT_MAX;
+    int len, len2, i, j;
     void *addr;
-	char *superlong;
+	char *superlong, *filler;
+
+	filler = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec. ";
 
 	superlong = calloc(4090, sizeof(char));
-	i = 0;
+	i = 0, j = 0;
 	while (i < 4089)
-		superlong[i++] = 's';
+	{
+		if (filler[j] == '\0')
+			j = 0;
+		superlong[i++] = filler[j++];
+	}
 	superlong[i] = '\0';
 
-    len = _printf("Order, my function first.\n");
-    len2 = printf("standard printf() second.\n");
-    _printf("My Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
 
-	len = _printf("SuperLong: %s\n", superlong);
-	len2 = printf("SuperLong: %s\n", superlong);
-    _printf("My Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
+	_printf("************ Testing Standard Functionality ***************\n");
+    len = _printf("________Order_______\nmy _printf() first.\n");
+    len2 = printf("standard printf() second.\n");
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+	_printf("compile with following command\ngcc -Wall -Werror -Wextra -pedantic -w *.c\n");
+
+	len = _printf("\n\nSuperLong: %s\n", superlong);
+	len2 = printf("\n\nSuperLong: %s\n", superlong);
+    _printf("\n\nMy Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+
+	free(superlong);
 
     len = _printf("Negative:[%d]\n", -762534);
     len2 = printf("Negative:[%d]\n", -762534);
-    _printf("My Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
 
-	printf("NULL check: ");
-    _printf(NULL);
-	putchar('\n');
-    _printf("Unsigned:[%u]\n", ui);
-    printf("Unsigned:[%u]\n", ui);
-    _printf("Unsigned octal:[%o]\n", ui);
-    printf("Unsigned octal:[%o]\n", ui);
+    _printf("Unsigned:[%u]\n", UINT_MAX);
+    printf("Unsigned:[%u]\n", UINT_MAX);
+    _printf("Unsigned octal:[%o]\n", UINT_MAX);
+    printf("Unsigned octal:[%o]\n", UINT_MAX);
 
-    len = _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    len2 = printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    _printf("My Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
+    len = _printf("Unsigned hexadecimal:[%x, %X]\n", UINT_MAX, UINT_MAX);
+    len2 = printf("Unsigned hexadecimal:[%x, %X]\n", UINT_MAX, UINT_MAX);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
 
-    _printf("Unsigned Short:[%hu]\n", usi);
-    printf("Unsigned Short:[%hu]\n", usi);
-    _printf("Unsigned octal Short:[%ho]\n", usi);
-    printf("Unsigned octal Short:[%ho]\n", usi);
+    _printf("Unsigned Short:[%hu]\n", USHRT_MAX);
+    printf("Unsigned Short:[%hu]\n", USHRT_MAX);
+    _printf("Unsigned octal Short:[%ho]\n", USHRT_MAX);
+    printf("Unsigned octal Short:[%ho]\n", USHRT_MAX);
 
-	len = _printf("Unsigned hexadecimal Short:[%hx, %hX]\n", usi, usi);
-    len2 = printf("Unsigned hexadecimal Short:[%hx, %hX]\n", usi, usi);
-    _printf("My Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
+	len = _printf("Unsigned hexadecimal Short:[%hx, %hX]\n", USHRT_MAX, USHRT_MAX);
+    len2 = printf("Unsigned hexadecimal Short:[%hx, %hX]\n", USHRT_MAX, USHRT_MAX);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
 
-	_printf("Unsigned long:[%lu]\n", uli);
-    printf("Unsigned long:[%lu]\n", uli);
-    _printf("Unsigned long octal:[%lo]\n", uli);
-    printf("Unsigned long octal:[%lo]\n", uli);
-    _printf("Unsigned long hexadecimal:[%lx, %lX]\n", uli, uli);
-    printf("Unsigned long hexadecimal:[%lx, %lX]\n", uli, uli);
+	_printf("Unsigned long:[%lu]\n", ULONG_MAX);
+    printf("Unsigned long:[%lu]\n", ULONG_MAX);
+    _printf("Unsigned long octal:[%lo]\n", ULONG_MAX);
+    printf("Unsigned long octal:[%lo]\n", ULONG_MAX);
+    _printf("Unsigned long hexadecimal:[%lx, %lX]\n", ULONG_MAX, ULONG_MAX);
+    printf("Unsigned long hexadecimal:[%lx, %lX]\n", ULONG_MAX, ULONG_MAX);
 
 	len = _printf("long max: %ld\n", LONG_MAX);
 	len2 = printf("long max: %ld\n", LONG_MAX);
-    _printf("My Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
 
 	len = _printf("long min: %ld\n", LONG_MIN);
 	len2 = printf("long min: %ld\n", LONG_MIN);
-    _printf("My Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
 
 	len = _printf("another test: %hX - %hX = %hX\n", USHRT_MAX, 2048, USHRT_MAX - 2048);
 	len2 = printf("another test: %hX - %hX = %hX\n", USHRT_MAX, 2048, USHRT_MAX - 2048);
-    _printf("My Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
 
 	_printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
 
 	len = _printf("String:[%s]\n", "Upward Not Northward !");
     len2 = printf("String:[%s]\n", "Upward Not Northward !");
-    _printf("My Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
 
     addr = (void *)0x7ffe637541f0;
 	len = _printf("Address:[%p]\n", addr);
     len2 = printf("Address:[%p]\n", addr);
-    _printf("My Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
 
-	_printf("print '%%hnewline' here:");
+	_printf("\n\n****************** debugging *******************\n");
+	printf("NULL checks:\n");
+    len = _printf(NULL);
+	len2 = printf(NULL);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+
+	len = _printf("test print %% + 'r' with no args: [%%r]\n");
+	_printf("test print %% + 'd' with no args: [%%d]\n");
+    len2 = printf("test print %% + 'r' with no args: [%%r]\n");
+	printf("test print %% + 'd' with no args: [%%d]\n");
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+
+
+	_printf("custom print this '%%hy\\n' next: ");
     len = _printf("%hy\n");
-    _printf("\nLen:[%d]\n", len);
-	printf("print '%%hnewline' here:");
-    printf("\nLen:[%d]\n", len2);
-	_printf("print '%%' here:");
-    len = _printf("%");
-    _printf("\nLen:[%d]\n", len);
-	printf("print '%%' here:");
-    printf("\nLen:[%d]\n", len2);
+	printf("std print this '%%hy\\n' next: ");
+	len2 = printf("%hy\n");
+	_printf("My Length: [%d]\n", len);
+	printf("Length: [%d]\n", len2);
 
-	_printf("*****************\nCUSTOM _PRINTF FUNCTIONALITY\n");
+	_printf("print one '%%' here:");
+    len = _printf("%");
+	printf("\nprint one '%%' here:");
+	len2 = printf("%");
+	_printf("My Length: [%d]\n", len);
+    printf("Length: [%d]\n", len2);
+
+	_printf("print trailing '%%' here:\n");
+    len = _printf("testing this %");
+	printf("print trailing '%%' here:\n");
+	len2 = printf("testing this %");
+	_printf("My Length: [%d]\n", len);
+    printf("Length: [%d]\n", len2);
+
+	_printf("print '%%!\\n' then '%%K\\n' next: ");
+	len = _printf("%!\n");
+	printf("print '%%!\\n' then '%%K\\n' next: ");
+	len2 = printf("%!\n");
+	_printf("My Length: [%d]\n", len);
+    printf("Length: [%d]\n", len2);
+
+	len = _printf("%K\n");
+	len2 = printf("%K\n");
+	_printf("My Length: [%d]\n", len);
+    printf("Length: [%d]\n", len2);
+
+	_printf("\n***********CUSTOM _PRINTF FUNCTIONALITY************\n");
 	len = _printf("Reverse, 'hello!' :[%r]\n", "hello!");
-	len = _printf("rot13 of 'Holberton': [%R]\n", "Holberton");
+	len = _printf("rot13 of 'Holberton', expected 'Ubyoregba': [%R]\n", "Holberton");
 	len = _printf("reversed 1 char: [%r]\n", "c");
-    _printf("print percent symbol + 'r' with no args: [%%r]\n");
-	_printf("print percent symbol + 'd' with no args: [%%d]\n");
-	free(superlong);
 
 	return (0);
 }

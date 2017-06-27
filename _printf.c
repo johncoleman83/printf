@@ -57,7 +57,7 @@ int _printf(const char *format, ...)
 				temp_func = match_specifier(inv);
 				if (temp_func)
 					temp_func(inv);
-				else if (inv->c2)
+				else if (inv->c1)
 					write_buffer(inv);
 				else
 				{
