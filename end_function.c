@@ -7,7 +7,7 @@
  */
 int end_func(inventory_t *inv)
 {
-	int return_value;
+	int ret_value;
 
 	va_end(*(inv->args));
 
@@ -15,13 +15,13 @@ int end_func(inventory_t *inv)
 	{
 		if (inv->i)
 			puts_mod(inv->buffer);
-		return_value = -1;
+		ret_value = -1;
 	}
 	else
-		return_value = inv->buf_index;
+		ret_value = inv->buf_index;
 
 	free(inv->buffer);
 	free(inv);
 
-	return (return_value);
+	return (ret_value);
 }
