@@ -72,12 +72,25 @@ void puts_mod(char *str);
 void (*match_specifier(inventory_t *inv))(inventory_t *inv);
 void (*is_modifier(inventory_t *inv))(inventory_t *inv);
 
-/* handles long integers */
-void p_longint(inventory_t *inv);
-void p_ulongint(inventory_t *inv);
-void p_longoct(inventory_t *inv);
+/* hexadecimal */
+void print_hex(inventory_t *inv, unsigned long int n, char *conv, int size);
 void p_longlowhex(inventory_t *inv);
 void p_longuphex(inventory_t *inv);
+void p_lowhex(inventory_t *inv);
+void p_uphex(inventory_t *inv);
+
+/* integers */
+void print_integers(inventory_t *inv, long int n);
+void p_int(inventory_t *inv);
+void p_longint(inventory_t *inv);
+void print_unsigned(inventory_t *inv, unsigned long int n);
+void p_uint(inventory_t *inv);
+void p_ulongint(inventory_t *inv);
+
+/* octals */
+void print_oct(inventory_t *inv, unsigned long int n, int size);
+void p_oct(inventory_t *inv);
+void p_longoct(inventory_t *inv);
 
 /* handles specifier functions */
 void p_char(inventory_t *inv);
@@ -87,11 +100,6 @@ void p_pointer(inventory_t *inv);
 void p_rev_string(inventory_t *inv);
 void p_rot13(inventory_t *inv);
 void p_percent(inventory_t *inv);
-void p_int(inventory_t *inv);
-void p_uint(inventory_t *inv);
-void p_oct(inventory_t *inv);
-void p_lowhex(inventory_t *inv);
-void p_uphex(inventory_t *inv);
 void p_binary(inventory_t *inv);
 
 #endif /* end include guard for header files */
