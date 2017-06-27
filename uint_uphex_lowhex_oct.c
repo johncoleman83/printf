@@ -73,7 +73,6 @@ void p_uphex(inventory_t *inv)
 	char *hex, *copy, *hexvalues;
 
 	hexvalues = "0123456789ABCDEF";
-	hex = _calloc(9, sizeof(char));
 	n = va_arg(*(inv->args), int);
 
 	if (!n)

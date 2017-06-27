@@ -95,4 +95,5 @@ void p_rot13(inventory_t *inv)
 	}
 
 	puts_buffer(inv, copy);
+	free(copy);
 }

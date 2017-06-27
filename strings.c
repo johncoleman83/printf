@@ -38,7 +38,7 @@ int _strlenconst(const char *s)
  */
 int _strlen(char *s)
 {
-	int len = 0;
+	unsigned int len = 0;
 
 	while (s[len] != '\0')
 		len++;
@@ -62,7 +62,7 @@ int _putchar(char c)
  */
 void puts_mod(char *str)
 {
-	unsigned int l = 0;
+	unsigned int l;
 
 	l = _strlen(str);
 

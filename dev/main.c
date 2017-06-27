@@ -14,10 +14,11 @@ int main(void)
     void *addr;
 	char *superlong;
 
-    addr = (void *)0x7ffe637541f0;
-	superlong = malloc(sizeof(char) * 4096);
-	while (i < 4096)
+	superlong = calloc(4090, sizeof(char));
+	i = 0;
+	while (i < 4089)
 		superlong[i++] = 's';
+	superlong[i] = '\0';
 
     len = _printf("Order, my function first.\n");
     len2 = printf("standard printf() second.\n");
@@ -87,6 +88,7 @@ int main(void)
     _printf("My Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
 
+    addr = (void *)0x7ffe637541f0;
 	len = _printf("Address:[%p]\n", addr);
     len2 = printf("Address:[%p]\n", addr);
     _printf("My Length:[%d, %i]\n", len, len);
@@ -109,5 +111,7 @@ int main(void)
 	len = _printf("reversed 1 char: [%r]\n", "c");
     _printf("print percent symbol + 'r' with no args: [%%r]\n");
 	_printf("print percent symbol + 'd' with no args: [%%d]\n");
-    return (0);
+	free(superlong);
+
+	return (0);
 }

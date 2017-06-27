@@ -17,7 +17,10 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	p = malloc(size * nmemb);
 	if (p == NULL)
+	{
+		free(p);
 		return (NULL);
+	}
 	for (i = 0; i < nmemb * size; i++)
 		p[i] = '\0';
 	return ((void *)p);
@@ -41,13 +44,11 @@ void *_realloc(void *ptr, unsigned int old, unsigned int new)
 		p = _calloc(new, sizeof(char));
 		return (p);
 	}
-
 	if (new == 0)
 	{
 		free(ptr);
 		return (NULL);
 	}
-
 	if (old == new)
 		return (ptr);
 
@@ -57,10 +58,9 @@ void *_realloc(void *ptr, unsigned int old, unsigned int new)
 
 	for (i = 0; i < old && i < new; i++)
 		p[i] = ((char *)ptr)[i];
-
 	free(ptr);
 
-	return (p);
+	return ((void *)p);
 }
 
 /**
@@ -73,10 +73,10 @@ void write_buffer(inventory_t *inv)
 
 	inv->buffer[inv->buf_index++] = inv->c0;
 
-	if (inv->buf_index % BUFSIZE == 0)
+	if ((inv->buf_index + 1) % BUFSIZE == 0)
 	{
-		old = inv->buf_index;
-		new = inv->buf_index + BUFSIZE;
+		old = inv->buf_index + 1;
+		new = old + BUFSIZE;
 		inv->buffer = _realloc(inv->buffer, old, new);
 	}
 }
