@@ -28,13 +28,18 @@ void p_percent(inventory_t *inv)
  */
 void p_string(inventory_t *inv)
 {
-	char *string = va_arg(*(inv->args), char *);
-	char *null_string = "(null)";
+	int l;
+	char *string, *null_string;
+
+	string = va_arg(*(inv->args), char *);
+	null_string = "(null)";
 
 	if (string == NULL)
 		string = null_string;
 
-	puts_buffer(inv, string);
+	l = _strlen(string);
+	if (l)
+		puts_buffer(inv, string);
 }
 /**
  * p_rev_string - writes string to buffer or stdout in reverse
@@ -77,23 +82,27 @@ void p_rot13(inventory_t *inv)
 	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	rot_13 =   "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 	str = va_arg(*(inv->args), char *);
-	l = _strlen(str);
-	copy = _calloc(l + 1, sizeof(char));
+	l = str ? _strlen(str) : 0;
 
-	for (i = 0; str[i] != '\0'; i++)
+	if (l)
 	{
-		for (j = 0; j < 52; j++)
-		{
-			if (str[i] == alphabet[j])
-			{
-				copy[i] = rot_13[j];
-				break;
-			}
-		}
-		if (j == 52)
-			copy[i] = str[i];
-	}
+		copy = _calloc(l + 1, sizeof(char));
 
-	puts_buffer(inv, copy);
-	free(copy);
+		for (i = 0; str[i] != '\0'; i++)
+		{
+			for (j = 0; j < 52; j++)
+			{
+				if (str[i] == alphabet[j])
+				{
+					copy[i] = rot_13[j];
+					break;
+				}
+			}
+			if (j == 52)
+				copy[i] = str[i];
+		}
+
+		puts_buffer(inv, copy);
+		free(copy);
+	}
 }
