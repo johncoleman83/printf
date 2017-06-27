@@ -1,11 +1,11 @@
 #include "holberton.h"
 
 /**
- * print_unsigned - writes unsigned long integers to buffer
+ * print_unsign - writes unsigned long integers to buffer
  * @inv: the arguments inventory with most commonly used arguments
  * @n: unsigned long int to print (function can be used for shorts as well)
  */
-void print_unsigned(inventory_t *inv, unsigned long int n)
+void print_unsign(inventory_t *inv, unsigned long int n)
 {
 	unsigned long int copy, size;
 	int nth;
@@ -38,11 +38,11 @@ void print_unsigned(inventory_t *inv, unsigned long int n)
  */
 void p_uint(inventory_t *inv)
 {
-	unsigned int long n;
+	unsigned int n;
 
 	n = va_arg(*(inv->args), int);
 
-	print_unsigned(inv, n);
+	print_unsign(inv, (unsigned long int)n);
 }
 
 /**
@@ -55,5 +55,5 @@ void p_ulongint(inventory_t *inv)
 
 	n = va_arg(*(inv->args), unsigned long int);
 
-	print_unsigned(inv, n);
+	print_unsign(inv, n);
 }

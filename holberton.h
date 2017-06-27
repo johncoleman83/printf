@@ -83,7 +83,7 @@ void p_uphex(inventory_t *inv);
 void print_integers(inventory_t *inv, long int n);
 void p_int(inventory_t *inv);
 void p_longint(inventory_t *inv);
-void print_unsigned(inventory_t *inv, unsigned long int n);
+void print_unsign(inventory_t *inv, unsigned long int n);
 void p_uint(inventory_t *inv);
 void p_ulongint(inventory_t *inv);
 
