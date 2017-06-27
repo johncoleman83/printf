@@ -27,6 +27,6 @@ void p_binary(inventory_t *inv)
 
 		puts_buffer(inv, copy);
 		free(copy);
-		free(binary);
 	}
+	free(binary);
 }

@@ -104,6 +104,16 @@ int main(void)
     _printf("My Length: [%d, %i]\n", len, len);
     printf("Length: [%d, %i]\n", len2, len2);
 
+    len = _printf("NULL string: %s\n", NULL);
+	len2 = printf("NULL string: %s\n", NULL);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+
+    len = _printf("NULL pointer: %p\n", NULL);
+	len2 = printf("NULL pointer: %p\n", NULL);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+
 	len = _printf("test print %% + 'r' with no args: [%%r]\n");
 	_printf("test print %% + 'd' with no args: [%%d]\n");
     len2 = printf("test print %% + 'r' with no args: [%%r]\n");
@@ -149,6 +159,7 @@ int main(void)
 	len = _printf("Reverse, 'hello!' :[%r]\n", "hello!");
 	len = _printf("rot13 of 'Holberton', expected 'Ubyoregba': [%R]\n", "Holberton");
 	len = _printf("reversed 1 char: [%r]\n", "c");
+	len = _printf("binary, expected: '1100010' - %b\n", 98);
 
 	return (0);
 }
