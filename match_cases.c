@@ -7,8 +7,9 @@
  */
 void (*match_specifier(inventory_t *inv))(inventory_t *)
 {
-	int i = 0;
+	int j, flag = 0, i = 0;
 	char check;
+	static const char const modifiers[] = "hl+#";
 	static matches_t specifiers_list[] = {
 		{'d', p_int}, {'i', p_int}, {'x', p_lowhex}, {'X', p_uphex},
 		{'o', p_oct}, {'u', p_ulongint}, {'c', p_char}, {'s', p_string},
@@ -20,17 +21,20 @@ void (*match_specifier(inventory_t *inv))(inventory_t *)
 		{'X', p_longuphex}, {'o', p_longoct}, {'u', p_ulongint}, {'\0', NULL}
 	};
 
-	if (inv->c1 == 'h' || inv->c1 == 'l')
-		check = inv->c2;
-	else
-		check = inv->c1;
+	check = inv->c1;
+	for (j = 0; modifiers[j] != '\0'; j++)
+		if (modifiers[j] == inv->c1)
+		{
+			flag = 1;
+			check = inv->c2;
+		}
 	while (TRUE)
 	{
 		if (specifiers_list[i].ch == '\0')
 			return (NULL);
 		if (specifiers_list[i].ch == check)
 		{
-			if (inv->c1 == 'l' || inv->c1 == 'h')
+			if (flag)
 				inv->i += 2;
 			else
 				inv->i++;

@@ -13,6 +13,8 @@
 #define BUFSIZE 1024
 #define TRUE (1 == 1)
 #define FALSE !TRUE
+#define LOWHEX 0
+#define UPHEX 1
 
 /* structs */
 /**
@@ -25,6 +27,7 @@
  * @c0: character to be written to buffer
  * @c1: character checking after % character
  * @c2: character to check 2 spaces after % symbol
+ * @c3: unused for now, but may become a third specifier
  * @error: indicates error or not (0 no error, 1 error)
  */
 typedef struct inventory_s
@@ -37,6 +40,7 @@ typedef struct inventory_s
 	char c0;
 	char c1;
 	char c2;
+	char c3;
 	int error;
 } inventory_t;
 
@@ -69,11 +73,12 @@ int _strlenconst(const char *s);
 int _putchar(char c);
 void puts_mod(char *str);
 
-/* function matches input with _printf functionality */
+/* parse and match functionality */
 void (*match_specifier(inventory_t *inv))(inventory_t *inv);
+void parse_specifiers(inventory_t *inv);
 
 /* hexadecimal */
-void print_hex(inventory_t *inv, unsigned long int n, char *conv, int size);
+void print_hex(inventory_t *inv, unsigned long int n, int hexcase, int size);
 void p_longlowhex(inventory_t *inv);
 void p_longuphex(inventory_t *inv);
 void p_lowhex(inventory_t *inv);

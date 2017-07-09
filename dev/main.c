@@ -46,8 +46,23 @@ int main(void)
     _printf("Unsigned octal: [%o]\n", UINT_MAX);
     printf("Unsigned octal: [%o]\n", UINT_MAX);
 
-    len = _printf("Unsigned hexadecimal: [%x, %X]\n", UINT_MAX, UINT_MAX);
-    len2 = printf("Unsigned hexadecimal: [%x, %X]\n", UINT_MAX, UINT_MAX);
+    len = _printf("hexadecimal: [%x, %X]\n", 5555, 33333);
+    len2 = printf("hexadecimal: [%x, %X]\n", 5555, 33333);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+
+    len = _printf("Unsigned max hexadecimal: [%x, %X]\n", UINT_MAX, UINT_MAX);
+    len2 = printf("Unsigned max hexadecimal: [%x, %X]\n", UINT_MAX, UINT_MAX);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+
+    len = _printf("hexadecimal with '#': [%#x, %#X]\n", 5555, 33333);
+    len2 = printf("hexadecimal with '#': [%#x, %#X]\n", 5555, 33333);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+
+    len = _printf("oct with #: [%#o, %#o]\n", 5555, 33333);
+    len2 = printf("oct with #: [%#o, %#o]\n", 5555, 33333);
     _printf("My Length: [%d, %i]\n", len, len);
     printf("Length: [%d, %i]\n", len2, len2);
 
@@ -85,6 +100,16 @@ int main(void)
 
 	_printf("Character: [%c]\n", 'H');
     printf("Character: [%c]\n", 'H');
+
+	len = _printf("int with '+' flag: %+d\n", 1234);
+	len2 = printf("int with '+' flag: %+d\n", 1234);
+	_printf("My Length: [%d]\n", len);
+    printf("Length: [%d]\n", len2);
+
+	len = _printf("int with '+' flag and ' ' spaces: % + d\n", 1234);
+	len2 = printf("int with '+' flag and ' ' spaces: % + d\n", 1234);
+	_printf("My Length: [%d]\n", len);
+    printf("Length: [%d]\n", len2);
 
 	len = _printf("String: [%s]\n", "Upward Not Northward !");
     len2 = printf("String: [%s]\n", "Upward Not Northward !");

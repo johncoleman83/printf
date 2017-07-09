@@ -26,6 +26,11 @@ void print_oct(inventory_t *inv, unsigned long int n, int size)
 		for (j = 0, i--; i >= 0; j++, i--)
 			copy[j] = oct[i];
 
+		if (inv->c1 == '#')
+		{
+			inv->c0 = '0';
+			write_buffer(inv);
+		}
 		puts_buffer(inv, copy);
 		free(oct);
 		free(copy);

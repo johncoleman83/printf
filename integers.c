@@ -20,6 +20,11 @@ void print_integers(inventory_t *inv, long int n)
 		inv->c0 = '-';
 		write_buffer(inv);
 	}
+	else if (inv->c1 == '+')
+	{
+		inv->c0 = '+';
+		write_buffer(inv);
+	}
 	if (copy > 0)
 	{
 		while (copy / 10 != 0)

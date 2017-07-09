@@ -48,8 +48,7 @@ int _printf(const char *format, ...)
 			write_buffer(inv);
 		else
 		{
-			inv->c1 = format[inv->i + 1];
-			inv->c2 = inv->c1 ? format[inv->i + 2] : '\0';
+			parse_specifiers(inv);
 			temp_func = match_specifier(inv);
 			if (temp_func)
 				temp_func(inv);
@@ -61,4 +60,30 @@ int _printf(const char *format, ...)
 		inv->i++;
 	}
 	return (end_func(inv));
+}
+
+/**
+ * parse_specifiers - parses characters that follow the % character
+ * @inv: the arguments inventory
+ */
+void parse_specifiers(inventory_t *inv)
+{
+	int i = inv->i + 1;
+
+	while (inv->fmt[i] == ' ')
+	{
+		i++;
+		inv->i++;
+	}
+
+	inv->c1 = inv->fmt[i++];
+
+	while (inv->fmt[i] == ' ')
+	{
+		i++;
+		inv->i++;
+	}
+
+	inv->c2 = inv->c1 ? inv->fmt[i++] : '\0';
+	inv->c3 = inv->c2 ? inv->fmt[i] : '\0';
 }

@@ -4,14 +4,26 @@
  * print_hex - writes in base hexidecimal
  * @inv: the arguments inventory with most commonly used arguments
  * @n: unsigned long int number to be converted
- * @conv: the conversion string
+ * @hexcase: the hexcase either upper or lower
  * @size: the size to be malloc'd
  */
-void print_hex(inventory_t *inv, unsigned long int n, char *conv, int size)
+void print_hex(inventory_t *inv, unsigned long int n, int hexcase, int size)
 {
-	int i;
-	char *hex;
+	int i, j;
+	char *hex, *conv, *pre, *copy;
+	static const char * const convset[] = {
+		"0123456789abcdef", "0123456789ABCDEF", NULL
+	};
+	static const char * const preset[] = {
+		"0x", "0X", NULL
+	};
 
+	conv = convset[hexcase];
+	if (inv->c1 == '#')
+	{
+		pre = preset[hexcase];
+		puts_buffer(inv, pre);
+	}
 	if (!n)
 	{
 		inv->c0 = '0';
@@ -22,8 +34,12 @@ void print_hex(inventory_t *inv, unsigned long int n, char *conv, int size)
 		hex = _calloc(size, sizeof(char));
 		for (i = 0; n; i++, n /= 16)
 			hex[i] = conv[n % 16];
-		puts_buffer(inv, hex);
+		copy = _calloc(i + 1, sizeof(char));
+		for (j = 0, i--; i >= 0; j++, i--)
+			copy[j] = hex[i];
+		puts_buffer(inv, copy);
 		free(hex);
+		free(copy);
 	}
 }
 
@@ -34,12 +50,10 @@ void print_hex(inventory_t *inv, unsigned long int n, char *conv, int size)
 void p_lowhex(inventory_t *inv)
 {
 	unsigned int n;
-	char *conv;
 
-	conv = "0123456789abcdef";
 	n = va_arg(*(inv->args), int);
 
-	print_hex(inv, (unsigned long int)n, conv, 9);
+	print_hex(inv, (unsigned long int)n, LOWHEX, 9);
 }
 
 /**
@@ -49,12 +63,10 @@ void p_lowhex(inventory_t *inv)
 void p_uphex(inventory_t *inv)
 {
 	unsigned int n;
-	char *conv;
 
-	conv = "0123456789ABCDEF";
 	n = va_arg(*(inv->args), int);
 
-	print_hex(inv, (unsigned long int)n, conv, 9);
+	print_hex(inv, (unsigned long int)n, UPHEX, 9);
 }
 
 /**
@@ -64,12 +76,10 @@ void p_uphex(inventory_t *inv)
 void p_longlowhex(inventory_t *inv)
 {
 	unsigned long int n;
-	char *conv;
 
 	n = va_arg(*(inv->args), unsigned long int);
-	conv = "0123456789abcdef";
 
-	print_hex(inv, n, conv, 17);
+	print_hex(inv, n, LOWHEX, 17);
 }
 
 /**
@@ -79,10 +89,8 @@ void p_longlowhex(inventory_t *inv)
 void p_longuphex(inventory_t *inv)
 {
 	unsigned long int n;
-	char *conv;
 
 	n = va_arg(*(inv->args), unsigned long int);
-	conv = "0123456789ABCDEF";
 
-	print_hex(inv, n, conv, 17);
+	print_hex(inv, n, UPHEX, 17);
 }
