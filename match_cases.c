@@ -9,7 +9,7 @@ void (*match_specifier(inventory_t *inv))(inventory_t *)
 {
 	int j, flag = 0, i = 0;
 	char check;
-	static const char const modifiers[] = "hl+#";
+	static const char modifiers[] = "hl+#";
 	static matches_t specifiers_list[] = {
 		{'d', p_int}, {'i', p_int}, {'x', p_lowhex}, {'X', p_uphex},
 		{'o', p_oct}, {'u', p_ulongint}, {'c', p_char}, {'s', p_string},

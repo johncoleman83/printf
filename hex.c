@@ -10,7 +10,8 @@
 void print_hex(inventory_t *inv, unsigned long int n, int hexcase, int size)
 {
 	int i, j;
-	char *hex, *conv, *pre, *copy;
+	char *hex, *copy;
+	const char *conv, *pre;
 	static const char * const convset[] = {
 		"0123456789abcdef", "0123456789ABCDEF", NULL
 	};
@@ -22,7 +23,7 @@ void print_hex(inventory_t *inv, unsigned long int n, int hexcase, int size)
 	if (inv->c1 == '#')
 	{
 		pre = preset[hexcase];
-		puts_buffer(inv, pre);
+		puts_buffer(inv, (char *)pre);
 	}
 	if (!n)
 	{

@@ -1,4 +1,4 @@
-#include "../holberton.h"
+#include "holberton.h"
 /**
  * main - custom main file to test for my _printf()
  * Return: Always 0
