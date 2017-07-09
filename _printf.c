@@ -50,21 +50,15 @@ int _printf(const char *format, ...)
 		{
 			inv->c1 = format[inv->i + 1];
 			inv->c2 = inv->c1 ? format[inv->i + 2] : '\0';
-			temp_func = inv->c2 ? is_modifier(inv) : NULL;
+			temp_func = match_specifier(inv);
 			if (temp_func)
 				temp_func(inv);
+			else if (inv->c1)
+				write_buffer(inv);
 			else
 			{
-				temp_func = match_specifier(inv);
-				if (temp_func)
-					temp_func(inv);
-				else if (inv->c1)
-					write_buffer(inv);
-				else
-				{
-					inv->error = 1;
-					return (end_func(inv));
-				}
+				inv->error = 1;
+				return (end_func(inv));
 			}
 		}
 		inv->i++;

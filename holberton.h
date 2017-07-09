@@ -69,9 +69,8 @@ int _strlenconst(const char *s);
 int _putchar(char c);
 void puts_mod(char *str);
 
-/* functions to match input with _printf functionality */
+/* function matches input with _printf functionality */
 void (*match_specifier(inventory_t *inv))(inventory_t *inv);
-void (*is_modifier(inventory_t *inv))(inventory_t *inv);
 
 /* hexadecimal */
 void print_hex(inventory_t *inv, unsigned long int n, char *conv, int size);
