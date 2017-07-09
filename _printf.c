@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 	va_start(args_list, format);
 	inv = build_inventory(&args_list, format);
 
-	while (format[inv->i])
+	while (format[inv->i] && !inv->error)
 	{
 		inv->c0 = format[inv->i];
 		if (inv->c0 != '%')
@@ -56,10 +56,7 @@ int _printf(const char *format, ...)
 			else if (inv->c1)
 				write_buffer(inv);
 			else
-			{
 				inv->error = 1;
-				return (end_func(inv));
-			}
 		}
 		inv->i++;
 	}
