@@ -68,8 +68,10 @@ int _printf(const char *format, ...)
  */
 void parse_specifiers(inventory_t *inv)
 {
-	int i = inv->i + 1;
+	int j, i;
+	static const char flags[] = "hl+#";
 
+	i = inv->i + 1;
 	while (inv->fmt[i] == ' ')
 	{
 		i++;
@@ -78,10 +80,17 @@ void parse_specifiers(inventory_t *inv)
 
 	inv->c1 = inv->fmt[i++];
 
-	while (inv->fmt[i] == ' ')
+	for (j = 0; flags[j] != '\0'; j++)
 	{
-		i++;
-		inv->i++;
+		if (inv->c1 == flags[j])
+		{
+			while (inv->fmt[i] == ' ')
+			{
+				i++;
+				inv->i++;
+			}
+			break;
+		}
 	}
 
 	inv->c2 = inv->c1 ? inv->fmt[i++] : '\0';
