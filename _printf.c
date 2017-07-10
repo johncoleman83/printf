@@ -12,12 +12,18 @@ inventory_t *build_inventory(va_list *args_list, const char *format)
 
 	inv = malloc(sizeof(inventory_t) * 1);
 
-	inv->buffer = _calloc(BUFSIZE, sizeof(char));
-	inv->buf_index = 0;
-	inv->args = args_list;
-	inv->fmt = format;
-	inv->i = 0;
-	inv->error = 0;
+	if (inv)
+	{
+		inv->buffer = _calloc(BUFSIZE, sizeof(char));
+		inv->buf_index = 0;
+		inv->args = args_list;
+		inv->fmt = format;
+		inv->i = 0;
+		if (!inv->buffer)
+			inv->error = 1;
+		else
+			inv->error = 0;
+	}
 
 	return (inv);
 }
@@ -40,10 +46,8 @@ int _printf(const char *format, ...)
 		return (-1);
 	va_start(args_list, format);
 	inv = build_inventory(&args_list, format);
-	if (inv->buffer == NULL)
-		inv->error = 1;
 
-	while (format[inv->i] && !inv->error)
+	while (inv && format[inv->i] && !inv->error)
 	{
 		inv->c0 = format[inv->i];
 		if (inv->c0 != '%')

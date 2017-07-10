@@ -9,15 +9,20 @@ int end_func(inventory_t *inv)
 {
 	int ret_value;
 
-	ret_value = inv->error ? -1 : inv->buf_index;
+	if (inv)
+	{
+		ret_value = inv->error ? -1 : inv->buf_index;
 
-	if (inv->i)
-		puts_mod(inv->buffer);
+		if (inv->i)
+			puts_mod(inv->buffer);
 
-	va_end(*(inv->args));
-	if (inv->buffer)
-		free(inv->buffer);
-	free(inv);
+		va_end(*(inv->args));
+		if (inv->buffer)
+			free(inv->buffer);
+		free(inv);
+	}
+	else
+		ret_value = -1;
 
 	return (ret_value);
 }
