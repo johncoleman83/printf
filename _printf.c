@@ -66,7 +66,11 @@ int _printf(const char *format, ...)
 				write_buffer(inv);
 			}
 			else
+			{
+				if (inv->space)
+					inv->buffer[--(inv->buf_index)] = '\0';
 				inv->error = 1;
+			}
 		}
 		inv->i++;
 	}
