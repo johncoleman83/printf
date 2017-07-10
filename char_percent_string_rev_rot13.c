@@ -19,6 +19,9 @@ void p_percent(inventory_t *inv)
 {
 	inv->c0 = '%';
 
+	if (inv->space)
+		inv->space = 0, inv->buf_index--;
+
 	write_buffer(inv);
 }
 /**

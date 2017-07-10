@@ -17,11 +17,6 @@ void print_hex(inventory_t *inv, unsigned long int n, int hexcase, int size)
 	static const char * const preset[] = { "0x", "0X", NULL };
 
 	conv = convset[hexcase];
-	if (inv->c1 == '#')
-	{
-		pre = preset[hexcase];
-		puts_buffer(inv, (char *)pre);
-	}
 	if (!n)
 	{
 		inv->c0 = '0';
@@ -29,6 +24,11 @@ void print_hex(inventory_t *inv, unsigned long int n, int hexcase, int size)
 	}
 	else
 	{
+		if (inv->c1 == '#')
+		{
+			pre = preset[hexcase];
+			puts_buffer(inv, (char *)pre);
+		}
 		hex = _calloc(size, sizeof(char));
 		if (hex)
 		{

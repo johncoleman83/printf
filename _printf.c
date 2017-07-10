@@ -87,7 +87,6 @@ void parse_specifiers(inventory_t *inv)
 		i++, inv->i++, space = 1;
 
 	inv->c1 = inv->fmt[i++];
-
 	if (space && inv->c1 != '+')
 	{
 		space = 0, inv->space = 1, inv->c0 = ' ';
@@ -107,7 +106,6 @@ void parse_specifiers(inventory_t *inv)
 			break;
 		}
 	}
-
 	inv->c2 = inv->c1 ? inv->fmt[i++] : '\0';
 	inv->c3 = inv->c2 ? inv->fmt[i] : '\0';
 }
