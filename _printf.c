@@ -74,8 +74,8 @@ void parse_specifiers(inventory_t *inv)
 	i = inv->i + 1;
 	while (inv->fmt[i] == ' ')
 	{
-		i++;
-		inv->i++;
+		i++, inv->i++, inv->c0 = ' ';
+		write_buffer(inv);
 	}
 
 	inv->c1 = inv->fmt[i++];
@@ -86,8 +86,8 @@ void parse_specifiers(inventory_t *inv)
 		{
 			while (inv->fmt[i] == ' ')
 			{
-				i++;
-				inv->i++;
+				i++, inv->i++, inv->c0 = ' ';
+				write_buffer(inv);
 			}
 			break;
 		}
