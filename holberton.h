@@ -24,6 +24,7 @@
  * @args: the variadic arguments list of input arguments
  * @buffer: buffer to be written to before writing to stdout
  * @buf_index: index to traverse the buffer, also total chars written
+ * @flag: notifies if there was a modifier flag
  * @c0: character to be written to buffer
  * @c1: character checking after % character
  * @c2: character to check 2 spaces after % symbol
@@ -37,6 +38,7 @@ typedef struct inventory_s
 	va_list *args;
 	char *buffer;
 	int buf_index;
+	int flag;
 	char c0;
 	char c1;
 	char c2;

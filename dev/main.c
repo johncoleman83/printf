@@ -134,7 +134,26 @@ int main(void)
     _printf("My Length: [%d, %i]\n", len, len);
     printf("Length: [%d, %i]\n", len2, len2);
 
-    len = _printf("NULL string: %s\n", NULL);
+	printf("*** checking '%%' 'hldx' w/ no args ***\n");
+    len = _printf("try 'h' %h\n");
+	len2 = printf("try 'h' %h\n");
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+    len = _printf("try 'l' %l\n");
+	len2 = printf("try 'l' %l\n");
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+    len = _printf("try 'd' %d\n");
+	len2 = printf("try 'd' %d\n");
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+    len = _printf("try 'x' %x\n");
+	len2 = printf("try 'x' %x\n");
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+
+
+	len = _printf("NULL string: %s\n", NULL);
 	len2 = printf("NULL string: %s\n", NULL);
     _printf("My Length: [%d, %i]\n", len, len);
     printf("Length: [%d, %i]\n", len2, len2);

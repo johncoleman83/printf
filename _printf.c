@@ -19,6 +19,7 @@ inventory_t *build_inventory(va_list *args_list, const char *format)
 		inv->args = args_list;
 		inv->fmt = format;
 		inv->i = 0;
+		inv->flag = 0;
 		if (!inv->buffer)
 			inv->error = 1;
 		else
@@ -59,7 +60,11 @@ int _printf(const char *format, ...)
 			if (temp_func)
 				temp_func(inv);
 			else if (inv->c1)
+			{
+				if (inv->flag)
+					inv->flag = 0;
 				write_buffer(inv);
+			}
 			else
 				inv->error = 1;
 		}
