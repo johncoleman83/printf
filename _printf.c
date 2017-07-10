@@ -68,25 +68,29 @@ int _printf(const char *format, ...)
  */
 void parse_specifiers(inventory_t *inv)
 {
-	int j, i;
+	int j, i, space = 0;
 	static const char flags[] = "hl+#";
 
 	i = inv->i + 1;
 	while (inv->fmt[i] == ' ')
-	{
-		i++, inv->i++, inv->c0 = ' ';
-		write_buffer(inv);
-	}
+		i++, inv->i++, space = 1;
 
 	inv->c1 = inv->fmt[i++];
 
+	if (space && inv->c1 != '+')
+	{
+		space = 0, inv->c0 = ' ';
+		write_buffer(inv);
+	}
 	for (j = 0; flags[j] != '\0'; j++)
 	{
 		if (inv->c1 == flags[j])
 		{
 			while (inv->fmt[i] == ' ')
+				i++, inv->i++, space = 1;
+			if (space && inv->c1 != '+')
 			{
-				i++, inv->i++, inv->c0 = ' ';
+				inv->c0 = ' ';
 				write_buffer(inv);
 			}
 			break;
