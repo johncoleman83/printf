@@ -79,10 +79,10 @@ int _printf(const char *format, ...)
  */
 void parse_specifiers(inventory_t *inv)
 {
-	int j, i, space = 0;
+	int j, i = inv->i + 1, space = 0;
 	static const char flags[] = "hl+#";
 
-	i = inv->i + 1;
+	inv->space = 0;
 	while (inv->fmt[i] == ' ')
 		i++, inv->i++, space = 1;
 
@@ -90,7 +90,7 @@ void parse_specifiers(inventory_t *inv)
 
 	if (space && inv->c1 != '+')
 	{
-		space = 0, inv->c0 = ' ';
+		space = 0, inv->space = 1, inv->c0 = ' ';
 		write_buffer(inv);
 	}
 	for (j = 0; flags[j] != '\0'; j++)

@@ -25,6 +25,7 @@
  * @buffer: buffer to be written to before writing to stdout
  * @buf_index: index to traverse the buffer, also total chars written
  * @flag: notifies if there was a modifier flag
+ * @space: notifies if space was printed
  * @c0: character to be written to buffer
  * @c1: character checking after % character
  * @c2: character to check 2 spaces after % symbol
@@ -39,6 +40,7 @@ typedef struct inventory_s
 	char *buffer;
 	int buf_index;
 	int flag;
+	int space;
 	char c0;
 	char c1;
 	char c2;

@@ -18,6 +18,8 @@ void print_integers(inventory_t *inv, long int n)
 	{
 		ones *= -1, copy *= -1, n *= -1;
 		inv->c0 = '-';
+		if (inv->space)
+			inv->space = 0, inv->buf_index--;
 		write_buffer(inv);
 	}
 	else if (inv->c1 == '+')
