@@ -4,6 +4,9 @@ dist: trusty
 
 sudo: false
 
+notifications:
+    email: false
+
 compiler: gcc
 
 script: ./dev/init_test.sh
