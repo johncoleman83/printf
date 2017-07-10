@@ -19,21 +19,29 @@ void print_oct(inventory_t *inv, unsigned long int n, int size)
 	else
 	{
 		oct = _calloc(size, sizeof(char));
-		for (i = 0; n; i++, n /= 8)
-			oct[i] = (n % 8 + '0');
-
-		copy = _calloc(i + 1, sizeof(char));
-		for (j = 0, i--; i >= 0; j++, i--)
-			copy[j] = oct[i];
-
-		if (inv->c1 == '#')
+		if (oct)
 		{
-			inv->c0 = '0';
-			write_buffer(inv);
+			for (i = 0; n; i++, n /= 8)
+				oct[i] = (n % 8 + '0');
+			copy = _calloc(i + 1, sizeof(char));
+			if (copy)
+			{
+				for (j = 0, i--; i >= 0; j++, i--)
+					copy[j] = oct[i];
+				if (inv->c1 == '#')
+				{
+					inv->c0 = '0';
+					write_buffer(inv);
+				}
+				puts_buffer(inv, copy);
+				free(copy);
+			}
+			else
+				inv->error = 1;
+			free(oct);
 		}
-		puts_buffer(inv, copy);
-		free(oct);
-		free(copy);
+		else
+			inv->error = 1;
 	}
 }
 

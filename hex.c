@@ -10,14 +10,11 @@
 void print_hex(inventory_t *inv, unsigned long int n, int hexcase, int size)
 {
 	int i, j;
-	char *hex, *copy;
+	char *hex = NULL, *copy = NULL;
 	const char *conv, *pre;
 	static const char * const convset[] = {
-		"0123456789abcdef", "0123456789ABCDEF", NULL
-	};
-	static const char * const preset[] = {
-		"0x", "0X", NULL
-	};
+		"0123456789abcdef", "0123456789ABCDEF", NULL };
+	static const char * const preset[] = { "0x", "0X", NULL };
 
 	conv = convset[hexcase];
 	if (inv->c1 == '#')
@@ -33,14 +30,24 @@ void print_hex(inventory_t *inv, unsigned long int n, int hexcase, int size)
 	else
 	{
 		hex = _calloc(size, sizeof(char));
-		for (i = 0; n; i++, n /= 16)
-			hex[i] = conv[n % 16];
-		copy = _calloc(i + 1, sizeof(char));
-		for (j = 0, i--; i >= 0; j++, i--)
-			copy[j] = hex[i];
-		puts_buffer(inv, copy);
-		free(hex);
-		free(copy);
+		if (hex)
+		{
+			for (i = 0; n; i++, n /= 16)
+				hex[i] = conv[n % 16];
+			copy = _calloc(i + 1, sizeof(char));
+			if (copy)
+			{
+				for (j = 0, i--; i >= 0; j++, i--)
+					copy[j] = hex[i];
+				puts_buffer(inv, copy);
+				free(copy);
+			}
+			else
+				inv->error = 1;
+			free(hex);
+		}
+		else
+			inv->error = 1;
 	}
 }
 

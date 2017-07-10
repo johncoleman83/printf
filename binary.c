@@ -11,22 +11,31 @@ void p_binary(inventory_t *inv)
 	char *binary, *copy;
 
 	binary = _calloc(33, sizeof(char));
-
-	for (i = 0; n; i++, n /= 2)
-		binary[i] = ((n % 2) + '0');
-	if (i == 0)
+	if (binary)
 	{
-		inv->c0 = '0';
-		write_buffer(inv);
+		for (i = 0; n; i++, n /= 2)
+			binary[i] = ((n % 2) + '0');
+		if (i == 0)
+		{
+			inv->c0 = '0';
+			write_buffer(inv);
+		}
+		else
+		{
+			copy = _calloc(i + 1, sizeof(char));
+			if (copy)
+			{
+				for (j = 0, i--; i >= 0; j++, i--)
+					copy[j] = binary[i];
+
+				puts_buffer(inv, copy);
+				free(copy);
+			}
+			else
+				inv->error = 1;
+		}
+		free(binary);
 	}
 	else
-	{
-		copy = _calloc(i + 1, sizeof(char));
-		for (j = 0, i--; i >= 0; j++, i--)
-			copy[j] = binary[i];
-
-		puts_buffer(inv, copy);
-		free(copy);
-	}
-	free(binary);
+		inv->error = 1;
 }

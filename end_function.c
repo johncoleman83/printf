@@ -15,7 +15,8 @@ int end_func(inventory_t *inv)
 		puts_mod(inv->buffer);
 
 	va_end(*(inv->args));
-	free(inv->buffer);
+	if (inv->buffer)
+		free(inv->buffer);
 	free(inv);
 
 	return (ret_value);

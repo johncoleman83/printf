@@ -70,14 +70,22 @@ void *_realloc(void *ptr, unsigned int old, unsigned int new)
 void write_buffer(inventory_t *inv)
 {
 	unsigned int old, new;
+	char *temp;
 
-	inv->buffer[inv->buf_index++] = inv->c0;
-
-	if ((inv->buf_index + 1) % BUFSIZE == 0)
+	if (inv->buffer)
 	{
-		old = inv->buf_index + 1;
-		new = old + BUFSIZE;
-		inv->buffer = _realloc(inv->buffer, old, new);
+		inv->buffer[inv->buf_index++] = inv->c0;
+
+		if ((inv->buf_index + 1) % BUFSIZE == 0)
+		{
+			old = inv->buf_index + 1;
+			new = old + BUFSIZE;
+			temp = _realloc(inv->buffer, old, new);
+			if (!temp)
+				inv->error = 1;
+			else
+				inv->buffer = temp;
+		}
 	}
 }
 

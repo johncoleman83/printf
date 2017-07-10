@@ -40,6 +40,8 @@ int _printf(const char *format, ...)
 		return (-1);
 	va_start(args_list, format);
 	inv = build_inventory(&args_list, format);
+	if (inv->buffer == NULL)
+		inv->error = 1;
 
 	while (format[inv->i] && !inv->error)
 	{
