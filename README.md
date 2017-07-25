@@ -62,6 +62,23 @@ _printf("My name is %s and I am %d years old", "Edwin Abbott Abbott", 179)
 
 * For a brief explanation of each file, please see the file `./FILELIST.md`
 
+## Tests
+
+To run tests, to check the overall functionality of the program, compile
+with `main.c` as the main file:
+
+```
+$ cp dev/main.c .
+$ gcc *.c
+```
+
+To run tests to check that the code compiles correctly, run the following bash
+script.  This script uses the `-Warning` flags from the usage section.
+
+```
+$ ./dev/init.sh
+```
+
 ## Authors
 
 David John Coleman II - http://www.davidjohncoleman.com/  

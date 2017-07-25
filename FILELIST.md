@@ -8,24 +8,19 @@ function.
 modifiers with the associated helper functions
 
   #### functions contianed in this file:
-  * `match_modifier()`: checks if the trailing character after the '%' is a
-  modifier
   * `match_specifier()`: checks if the trailing character after the '%' is a
-  specifier
+  specifier, and looks for modifiers as well
 
   #### files that contain the functions associated with all the specifiers
-  * `./char_percent_string_rev_rot13.c`: functions to write specifiers: (char),
-  (string), (percent), (reverse string), and (rot13) to the buffer.
-  * `uint_uphex_lowhex_oct.c`: functions to write specifiers: (unsigned int),
+  * `./character_write_buffer.c`, `reversed_string.c`, `rot13.c`,
+  `string_write_buffer.c`: functions to write specifiers: (char), (string),
+  (percent), (reverse string), and (rot13) to the buffer.
+  * `unsigned_int.c`, `hex.c`: functions to write specifiers: (unsigned int),
   (octal), (hexidecimal lowercase), (hexidecimal uppercase)
-  * `./int_binary.c`: functions to write specifiers: (integer), and (binary)
+  * `./binary.c`: functions to write specifiers: (integer), and (binary)
   to the buffer.
   * `./string_pointer.c`: functions to write specifiers: (string and hex
   combination), and (pointers in hexidecimal).
-
-  #### files that contain modifier functions
-  * `./modifiers_long.c`: contains functions to print long integers in
-  signed and unsigned decimal, and unsigned hex and octal.
 
 * `./strings.c`: file that contains strings functions
 
