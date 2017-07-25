@@ -101,6 +101,11 @@ int main(void)
 	_printf("Character: [%c]\n", 'H');
     printf("Character: [%c]\n", 'H');
 
+	len = _printf("NULL Character here: '[%c]'\n", '\0');
+    len2 = printf("NULL Character here: '[%c]'\n", '\0');
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+
 	len = _printf("int with '+' flag: %+d\n", 1234);
 	len2 = printf("int with '+' flag: %+d\n", 1234);
 	_printf("My Length: [%d]\n", len);
@@ -108,6 +113,11 @@ int main(void)
 
 	len = _printf("int with '+' flag and ' ' spaces: % + d\n", 1234);
 	len2 = printf("int with '+' flag and ' ' spaces: % + d\n", 1234);
+	_printf("My Length: [%d]\n", len);
+    printf("Length: [%d]\n", len2);
+
+	len = _printf("int with '+' flag and ' ' multi-spaces: %   +   d\n", 1234);
+	len2 = printf("int with '+' flag and ' ' multi-spaces: %   +   d\n", 1234);
 	_printf("My Length: [%d]\n", len);
     printf("Length: [%d]\n", len2);
 
@@ -134,7 +144,7 @@ int main(void)
     _printf("My Length: [%d, %i]\n", len, len);
     printf("Length: [%d, %i]\n", len2, len2);
 
-	printf("*** checking '%%' 'hldx' w/ no args ***\n");
+	printf("\n*** checking '%%' 'hldx' w/ no args ***\n");
     len = _printf("try 'h' %h\n");
 	len2 = printf("try 'h' %h\n");
     _printf("My Length: [%d, %i]\n", len, len);
@@ -151,6 +161,28 @@ int main(void)
 	len2 = printf("try 'x' %x\n");
     _printf("My Length: [%d, %i]\n", len, len);
     printf("Length: [%d, %i]\n", len2, len2);
+	printf("\n*** checking '%%' 'ds' with spaces ***\n");
+    len = _printf("1 space 'd' % d\n", 98);
+	len2 = printf("1 space 'd' % d\n", 98);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+    len = _printf("1 space 's' % s\n", "battery");
+	len2 = printf("1 space 's' % s\n", "battery");
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+    len = _printf("5 spaces 'd' %     d\n", 98);
+	len2 = printf("5 spaces 'd' %     d\n", 98);
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+    len = _printf("5 spaces 's' %     s\n", "battery");
+	len2 = printf("5 spaces's' %     s\n", "battery");
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+    len = _printf("5 spaces 'c' %     c\n", 'b');
+	len2 = printf("5 spaces 'c' %     c\n", 'b');
+    _printf("My Length: [%d, %i]\n", len, len);
+    printf("Length: [%d, %i]\n", len2, len2);
+	printf("\n*** checking NULL ***\n");
 
 
 	len = _printf("NULL string: %s\n", NULL);

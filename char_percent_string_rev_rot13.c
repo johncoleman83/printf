@@ -8,7 +8,8 @@ void p_char(inventory_t *inv)
 {
 	inv->c0 = va_arg(*(inv->args), int);
 
-	write_buffer(inv);
+	if (inv->c0)
+		write_buffer(inv);
 }
 /**
  * p_percent - writes a percent symbol to buffer or stdout
