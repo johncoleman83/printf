@@ -75,7 +75,7 @@ void rev_string(char *s);
 int _strlen(char *s);
 int _strlenconst(const char *s);
 int _putchar(char c);
-void puts_mod(char *str);
+void puts_mod(char *str, unsigned int l);
 
 /* parse and match functionality */
 void (*match_specifier(inventory_t *inv))(inventory_t *inv);

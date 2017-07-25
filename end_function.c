@@ -14,7 +14,7 @@ int end_func(inventory_t *inv)
 		ret_value = inv->error ? -1 : inv->buf_index;
 
 		if (inv->i)
-			write(STDOUT_FILENO, inv->buffer, inv->buf_index);
+			puts_mod(inv->buffer, inv->buf_index);
 
 		va_end(*(inv->args));
 		if (inv->buffer)
