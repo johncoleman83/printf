@@ -86,4 +86,4 @@ Joann Vuong - https://github.com/jvpupcat
 
 ## License
 
-Public Domain, no copyright protection
+MIT License
