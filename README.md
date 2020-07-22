@@ -8,7 +8,7 @@ This Repo has has all the code necessary for our (David John Coleman II and
 Joann Vuong's) custom function called ``_printf()``.  It is a mini-version of C
 Language function ``printf()`` from ``stdio.h``, and our function ``_printf()``
 attempts to replicate the exact same process as the C function ``printf()``.
-This project was completed as a part of the curriculum for Holberton School.
+This project was completed as a part of the curriculum for Bootcamp School.
 
 ### C language standard functions used
 

@@ -34,7 +34,7 @@ modifiers with the associated helper functions
   function became obsolete when we realized that we could not write to a
   variable argument list item.
 
-* `./holberton.h`: header file that contains all necessary included libraries
+* `./bootcamp.h`: header file that contains all necessary included libraries
 for all functions, the struct prototype and type definition for the struct,
 and prototypes for all functions
 * `./man_printf`: manual file including the manual for how our custom printf

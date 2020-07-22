@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "bootcamp.h"
 
 /**
  * main - Entry point
@@ -238,7 +238,7 @@ int main(void)
 
 	_printf("\n***********CUSTOM _PRINTF FUNCTIONALITY************\n");
 	len = _printf("Reverse, 'hello!': [%r]\n", "hello!");
-	len = _printf("rot13 of 'Holberton', expected 'Ubyoregba': [%R]\n", "Holberton");
+	len = _printf("rot13 of 'Bootcamp', expected 'Ubyoregba': [%R]\n", "Bootcamp");
 	len = _printf("reversed 1 char: [%r]\n", "c");
 	len = _printf("binary, expected: '1100010' - %b\n", 98);
 

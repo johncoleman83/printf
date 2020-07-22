@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-#include "holberton.h"
+#include "bootcamp.h"
 
 /**
  * main - Entry point

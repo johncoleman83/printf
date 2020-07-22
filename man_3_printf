@@ -1,7 +1,7 @@
 .\" printf man page
 .\"
 .\"
-.TH _PRINTF 3 "17 March 2017" "0.1" "Holberton Students _printf Manuel"
+.TH _PRINTF 3 "17 March 2017" "0.1" "Bootcamp Students _printf Manuel"
 
 .SH NAME
 .SH ""
@@ -30,7 +30,7 @@ branch, our code is instead written to standard output one at a time.
 
 .P
 .RS
-#include "holberton.h"
+#include "bootcamp.h"
 
 $ gcc -Wall -Werror -Wextra -pedantic *.c
 .RE

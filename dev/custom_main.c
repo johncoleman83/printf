@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "bootcamp.h"
 /**
  * main - custom main file to test for my _printf()
  * Return: Always 0
@@ -37,16 +37,16 @@ int main(void)
 	len = _printf("unsigned: %u, max:%u, too large %u, char: %u, NULL: %u:\n", 4, UINT_MAX, 999999999999, 'c', NULL);
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("String_Hex: %S, NULL: %S:\n", "Holberton\nSchool\t", NULL);
+	len = _printf("String_Hex: %S, NULL: %S:\n", "Bootcamp\nSchool\t", NULL);
 	_printf("Len :[%d]\n", len);
 
 	len = _printf("pointer: %p, NULL: %p\n", &len, NULL);
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("reversed string: %r NULL: %r:\n", "Holberton", NULL);
+	len = _printf("reversed string: %r NULL: %r:\n", "Bootcamp", NULL);
 	_printf("Len :[%d]\n", len);
 
-	len = _printf("rot13 string: %R NULL: %R:\n", "Holberton", NULL);
+	len = _printf("rot13 string: %R NULL: %R:\n", "Bootcamp", NULL);
 	_printf("Len :[%d]\n", len);
 
 	len = _printf("give me binary or give me death: 2: %b, 0: %b, 4294967295: %b, 99999999999999: %b:\n", 2, 0, UINT_MAX, 99999999999999);

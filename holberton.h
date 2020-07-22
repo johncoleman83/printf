@@ -1,5 +1,5 @@
-#ifndef _HOLBERTON_H_
-#define _HOLBERTON_H_
+#ifndef _BOOTCAMP_H_
+#define _BOOTCAMP_H_
 
 /* begin standard C header files */
 #include <stdlib.h>
